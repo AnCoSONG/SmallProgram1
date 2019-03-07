@@ -173,6 +173,7 @@
 ```javascript
 {
     openid: "asdf43fdsx",                       // 用户的已鉴权id
+    shop_id: "1001"                             // 该奶茶的商家id
     raw_location: {                             // 由gps设备得到的地理信息，用于鉴别用户输入真实性 
         longitude: "235.4234",                  // 由微信地理定位组件生成的经度数据
         latitude: "998.5234"                    // 由微信地理定位组件生成的纬度数据
@@ -192,7 +193,12 @@
 {
     serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
-    reason: "success"                           // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+    reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+    shop: {
+        id: "1001",
+        name: "益禾堂",
+        other_name: "中南大学店"
+    }
 }
 ```
 
@@ -216,15 +222,25 @@
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     drink: {
-        light: 100,                             // 奶茶杯积分数
-        ticket: [                               // 奶茶券列表
+        lights: [                               // 奶茶杯积分数
+            {
+                number: 20,
+                shop: {
+                    id: "1001",                      // 商家唯一id
+                    name: "益禾堂",                   // 商家名称
+                    other_name: "中南大学店"           // 上架分店名称
+                }
+            }
+        ],
+        tickets: [                               // 奶茶券列表
             {
                 ticket_id: "21jws7dfdc",             // id
                 create_time: "2018-12-30 13:30:34",  // 创建时间
                 effect_time: "48",                   // 有效时间（单位：小时）
                 shop: {
+                    id: "1001",                      // 商家唯一id
                     name: "益禾堂",                   // 商家名称
-                    other_name: "中南大学店"           // 上架分店名称 
+                    other_name: "中南大学店"           // 上架分店名称
                 },
                 item: {
                     item_type: 0,                    // 商品类型：0-一般商品，1-每月推荐商品
@@ -237,8 +253,9 @@
                 create_time: "2019-01-30 12:20:20",  // 创建时间
                 effect_time: "24",                   // 有效时间（单位：小时）
                 shop: {
+                    id: "1002",                      // 上架唯一id
                     name: "书亦烧仙草",                // 商家名称
-                    other_name: "中南大学店"           // 上架分店名称 
+                    other_name: "中南大学店"           // 上架分店名称
                 },
                 item: {
                     item_type: 1,                    // 商品类型：0-一般商品，1-每月推荐商品
@@ -252,4 +269,63 @@
 }
 ```
 
-## 
+## 获取全部可用的奶茶店列表
+
+> 返回全部奶茶店列表
+
+### 传入参数
+
+```javascript
+{
+    openid: "asdf43fdsx"          // 用户的已鉴权id
+}
+```
+
+### 接受参数
+
+```javascript
+{
+    serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
+    status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
+    reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+    shops: [
+        {
+            id: "1001",                      // 商家唯一id
+            name: "益禾堂",                   // 商家名称
+            other_name: "中南大学店"           // 上架分店名称
+        },
+        {
+            id: "1002",                      // 上架唯一id
+            name: "书亦烧仙草",                // 商家名称
+            other_name: "中南大学店"           // 上架分店名称
+        },
+        ...
+    ]
+}
+```
+
+## 获取全部奶茶券兑换规则
+
+> 返回全部奶茶券兑换规则
+
+### 传入参数
+
+```javascript
+{
+    openid: "asdf43fdsx"          // 用户的已鉴权id
+}
+```
+
+### 接受参数
+
+```javascript
+{
+    serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
+    status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
+    reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+    roles: {
+        single: "8:1",                          // 一般商品
+        recommand: "6:1"                        // 每月推荐单品
+    }
+}
+```
