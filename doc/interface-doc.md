@@ -31,7 +31,6 @@
 
 ```javascript
 {
-    openid: "jr3dyas",         // 用户的已鉴权id
     raw_location: {                             // 由gps设备得到的地理信息，用于鉴别用户输入真实性
         place_name: "成都市双流区四川大学西园七舍", // 由微信地理定位组建得到的地点全名  
         longitude: "235.4234",                 // 由微信地理定位组件生成的经度数据
@@ -74,9 +73,6 @@
 ### 传入参数
 
 ```javascript
-{
-    openid: "2bv38rdcx"         // 用户的已鉴权id
-}
 ```
 
 ### 返回参数
@@ -97,9 +93,6 @@
 ### 传入参数
 
 ```javascript
-{
-    openid: "asdf43fdsx"          // 用户的已鉴权id
-}
 ```
 
 ### 返回参数
@@ -120,9 +113,6 @@
 ### 传入参数
 
 ```javascript
-{
-        openid: "asdf43fdsx"          // 用户的已鉴权id
-}
 ```
 
 ### 返回参数
@@ -145,7 +135,6 @@
 
 ```javascript
 {
-    openid: "asdf43fdsx",          // 用户的已鉴权id
     cost_light: "20"               // 花费的积分数，
 }
 ```
@@ -172,7 +161,6 @@
 
 ```javascript
 {
-    openid: "asdf43fdsx",                       // 用户的已鉴权id
     shop_id: "1001"                             // 该奶茶的商家id
     raw_location: {                             // 由gps设备得到的地理信息，用于鉴别用户输入真实性 
         longitude: "235.4234",                  // 由微信地理定位组件生成的经度数据
@@ -209,9 +197,6 @@
 ### 传入参数
 
 ```javascript
-{
-    openid: "asdf43fdsx"          // 用户的已鉴权id
-}
 ```
 
 ### 返回参数
@@ -276,9 +261,6 @@
 ### 传入参数
 
 ```javascript
-{
-    openid: "asdf43fdsx"          // 用户的已鉴权id
-}
 ```
 
 ### 接受参数
@@ -311,9 +293,6 @@
 ### 传入参数
 
 ```javascript
-{
-    openid: "asdf43fdsx"          // 用户的已鉴权id
-}
 ```
 
 ### 接受参数
