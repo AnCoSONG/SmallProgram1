@@ -21,14 +21,24 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   let result = {
-    serv_time: moment().format("YYYY-MM-DD HH:mm:SS")
+    serv_time: moment().format("YYYY-MM-DD HH:mm:ss")
   }
 
-  result.doll_paper = await coll.where({ owner: wxContext.OPENID }).get();
+  await coll.where({ owner: wxContext.OPENID }).get().then(function(res) {
+    result.doll_paper = res.data;
 
-  result.doll_paper = result.doll_paper.data;
+    result.status = "SUCCESS";
+    result.reason = "success";
+  }, function(res) {
+    result.doll_paper = [];
 
-  return await result;
+    result.status = "FAILURE";
+    result.reason = res.errMsg;
+  } );
+
+
+
+  return result;
   // return {
   //   event,
   //   openid: wxContext.OPENID,

@@ -169,7 +169,7 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "getdollpaperinfo",
+      name: "getbatteryrule",
       data: { 
       },
       success: res => {
