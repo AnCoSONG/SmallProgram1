@@ -107,6 +107,11 @@
             id: "abx5c78",                           // 娃娃券id
             create_time: "2019-03-02 17:30:21",      // 创建时间
             effect_time: "32"                        // 有效时间（单位:小时）
+        },
+        {
+            id: "jx7dfcbx",                          // 娃娃券id
+            create_time: "2019-04-05 12:30:33",      // 创建时间
+            effect_time: "48"                        // 有效时间（单位:小时）
         }
     ]
 }
@@ -153,8 +158,19 @@
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     result: {
-        left_light: 13,                         // 剩余的电池积分数，失败返回0
-        left_doll: 10                           // 剩余的抓娃娃券数，失败返回0
+        left_light_num: 13,                         // 剩余的电池积分数，失败返回0
+        left_doll: [                                // 当前抓娃娃券具体信息,失败返回[]
+        {
+            id: "abx5c78",                           // 娃娃券id
+            create_time: "2019-03-02 17:30:21",      // 创建时间
+            effect_time: "32"                        // 有效时间（单位:小时）
+        },
+        {
+            id: "jx7dfcbx",                          // 娃娃券id
+            create_time: "2019-04-05 12:30:33",      // 创建时间
+            effect_time: "48"                        // 有效时间（单位:小时）
+        }
+    ]                         
     }
 }
 ```
