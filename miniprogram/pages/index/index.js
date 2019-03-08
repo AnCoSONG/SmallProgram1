@@ -1,4 +1,8 @@
 // miniprogram/pages/home/home.js
+
+// 全局app引用
+const app = getApp()
+
 Page({
 
   /**
@@ -28,6 +32,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    // 登录获取openid
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        // 登录成功获取openid
+        // 存入app.golbalData.openid保存
+        app.globalData.openid = res.result.openid;
+      },
+      fail: err => {
+        console.log(err);
+      }
+
+    });
 
   },
 
@@ -131,5 +150,37 @@ Page({
     this.setData({
       page_loading: false
     })
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /// ////////////// 测试接口用
+  onTestInterface() {
+    wx.cloud.callFunction({
+      name: "getdollpaperinfo",
+      data: { 
+      },
+      success: res => {
+        console.log(res.result);
+      },
+      fail: err => {
+        console.log(err);
+        console.error;
+      } 
+ 
+   
+    });
   }
 })
