@@ -1,7 +1,99 @@
-<!--miniprogram/pages/home/home.wxml-->
-<van-row>
-  <van-col span="12" class="text-center">
-    
+<!-- miniprogram/pages/home/home.wxml -->
+<!-- <van-row gutter="20">
+  <van-col span="12" offset="6" custom-class="title">
+    <view>保护</view>
+    <view>我们的环境</view>
   </van-col>
-  <van-col span="12" class="text-center"></van-col>
-</van-row>
+   <van-col span="12" offset="6" custom-class="text-center">
+    <view class="flex-button" style='flex-direction: column;'>
+      <view class="item">
+        <van-button plain type="primary">奶茶杯</van-button>
+      </view>
+      <view class="item">
+        <van-button plain type="primary">废电池</van-button>
+      </view>
+    </view>
+  </van-col> 
+</van-row> -->
+<!-- <van-row>
+  <view class="project-list">
+    <template wx:for="{{list}}" wx:for-index="idx" wx:for-item="item" is="projectItem" data="{{...item, ...{idx:idx} }}"></template>
+  </view>
+</van-row> -->
+<!-- <van-row gutter="20">
+  <view class="topUserInfo">
+    <van-col span="4">
+      <view class="userinfo">
+        <image src="./avater.png" style="width:128rpx;height:128rpx;border-radius:50%;" />
+      </view>
+    </van-col>
+    <van-col span="16" offset="2">
+      <view>点击此处登录</view>
+    </van-col>
+  </view>
+</van-row> -->
+<view>
+  <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
+    <block wx:for="{{imgUrls}}" wx:for-item="item">
+      <swiper-item>
+        <image class="swiper-image" src="{{item}}" mode="aspectFit" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="head">
+    <van-row>
+      <van-col span="8" offset="8">
+        <text class="head-title">服务列表</text>
+      </van-col>
+    </van-row>
+  </view>
+  <view class="divLine"></view>
+  <view class="btn-group">
+    <van-row custom-class="btn-item">
+      <van-col span="24" offset="0">
+        <van-button bind:click="onBattery" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
+          <image mode="widthFix" src="../../images/battery.jpg" class="btn-image" />
+          <text class="btnname">旧电池回收</text>
+        </van-button>
+      </van-col>
+    </van-row>
+    <van-row custom-class="btn-item">
+      <van-col span="24" offset="0">
+        <van-button bind:click="onTeaCup" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
+          <image mode="widthFix" src="../../images/teacup.jpg" class="btn-image" />
+          <text class="btnname">奶茶杯回收</text>
+        </van-button>
+      </van-col>
+    </van-row>
+    <van-row custom-class="btn-item">
+      <van-col span="24" offset="0">
+        <van-button bind:click="onMoreInfo" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
+          <image mode="widthFix" src="../../images/info.jpg" class="btn-image" />
+          <text class="btnname">更多资讯</text>
+        </van-button>
+      </van-col>
+    </van-row>
+  </view>
+  <van-transition name="fade" show="{{page_loading}}">
+    <van-loading custom-class="pageLoading" size="60rpx" bind:tap="onLoadingTap" />
+  </van-transition>
+</view>
+<template name="projectItem">
+  <view class='projectItem'>
+    <van-row>
+      <van-col span="4" offset="1">
+        <view class="projectNo">{{idx}}</view>
+      </van-col>
+      <van-col span="16">
+        <view class="projectTitle">{{title}}</view>
+        <view class="divLine"></view>
+        <view class="projectDesc">{{desc}}</view>
+      </van-col>
+      <van-col span="2">
+        <view>
+          <van-icon name="arrow" size="16" color="" />
+        </view>
+      </van-col>
+    </van-row>
+  </view>
+</template>

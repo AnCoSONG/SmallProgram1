@@ -1,16 +1,50 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/user/user",
+    "pages/battery/battery",
+    "pages/teacup/teacup",
+    "pages/moreinfo/moreinfo"
   ],
+  "tabBar": {
+    "position": "bottom",
+    "backgroundColor": "#fff",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/selectedhome.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/userSelected.png",
+        "text": "我"
+      }
+    ],
+    "borderStyle": "white",
+    "selectedColor": "#00CC00"
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "Environment Protection",
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
     "van-row": "./dist/row/index",
-    "van-col": "./dist/col/index"
+    "van-col": "./dist/col/index",
+    "van-tabbar": "./dist/tabbar/index",
+    "van-tabbar-item": "./dist/tabbar-item/index",
+    "van-icon": "./dist/icon/index",
+    "van-button": "./dist/button/index",
+    "van-loading": "./dist/loading/index",
+    "van-cell": "./dist/cell/index",
+    "van-cell-group": "./dist/cell-group/index",
+    "van-transition": "./dist/transition/index",
+    "van-collapse": "./dist/collapse/index",
+    "van-collapse-item": "./dist/collapse-item/index",
+    "van-popup": "./dist/popup/index"
   }
 }

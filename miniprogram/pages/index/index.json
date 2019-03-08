@@ -1,7 +1,7 @@
 {
-  "backgroundColor": "#fff",
+  "backgroundColor": "#ff00ff",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "Environment Protection"
-  
+  "navigationBarTitleText": "首页"
+
 }

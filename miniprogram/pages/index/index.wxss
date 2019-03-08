@@ -1,7 +1,162 @@
 /* miniprogram/pages/home/home.wxss */
 
+.btn-item {
+  margin: 20rpx 0rpx;
+}
+
 .text-center {
   text-align: center;
   vertical-align: center;
 }
 
+.btn-image {
+  vertical-align: top;
+  width: 70rpx;
+  /* height: 60%; */
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+}
+
+.btn-image-battery {
+  width: 62rpx;
+  /* height: 60%; */
+  margin-top: 15rpx;
+  margin-right: 30rpx;
+}
+
+.btn-image-tea {
+  margin-top: 14rpx;
+  /* height: 60%; */
+  width: 25rpx;
+  margin-right: 30rpx;
+
+}
+
+.btn-image-info {
+  height: 60%;
+  margin-top: 20rpx;
+  width: 30rpx;
+  margin-right: 30rpx;
+}
+
+.btnname {
+  font-weight: 500;
+  letter-spacing: 6rpx;
+}
+
+.btn-group {
+  margin-top: 50rpx;
+
+}
+
+.head {
+  margin-top: 60rpx;
+  text-align: center;
+}
+
+.head .head-title {
+  font-weight: 600;
+}
+
+.banner {
+  height: 480rpx;
+  width: 100%;
+  margin: 20rpx auto;
+}
+
+.banner .swiper-image {
+  width: 100%;
+}
+
+.title {
+  background-color: #00CC00;
+  color: white;
+  font-size: 40rpx;
+  vertical-align: middle;
+  text-align: center;
+  padding: 40rpx;
+  margin-top: 30%;
+  letter-spacing: 10rpx;
+}
+
+.hp-btn {
+  height: 100rpx;
+  width: 100%;
+  margin-top: 20rpx;
+  border-left: none;
+  border-right: none;
+}
+
+.flex-button {
+  margin-top: 60%;
+}
+
+.flex-button .item {
+  margin-top: 30rpx;
+}
+
+.flex-button .item button {
+  width: 100%;
+  font-weight: 500;
+  background-color: transparent;
+  font-size: 40rpx;
+  transition: all 200ms ease-in-out;
+}
+
+.project-list {
+  margin-top: 200rpx;
+}
+
+.projectItem {
+  margin: 20rpx;
+  padding: 20rpx;
+  border: 5rpx solid black;
+  border-radius: 20rpx;
+}
+
+.projectItem .projectNo {
+  text-align: center;
+  font-size: 120rpx;
+  margin-bottom: 10%;
+  color: #ccc;
+  margin-right: 10rpx;
+}
+
+.projectItem .projectTitle {
+  font-size: 70rpx;
+  font-weight: 300;
+}
+
+.divLine {
+  background: #E0E3DA;
+  width: 100%;
+  height: 5rpx;
+  margin: 10rpx 0rpx;
+}
+
+.pageLoading {
+  position: absolute !important;
+  top: 45%;
+  left: 45%;
+  background-color: #444;
+  padding: 20rpx;
+  border-radius: 5%;
+}
+
+@media screen and (min-width: 500px) {
+  .btn-image {
+    display: none;
+  }
+
+  .btn-item {
+    margin: 0rpx 0rpx;
+  }
+
+  .banner {
+    height: 230rpx;
+    width: 100%;
+    margin: 20rpx auto;
+    margin-top: 150rpx;
+  }
+
+}

@@ -5,7 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    page_loading: true,
+    btnsize: "large",
+    hover: true,
+    list: [{
+        title: '奶茶杯',
+        desc: '将购买的奶茶杯扔到指定的垃圾桶以兑换积分'
+      },
+      {
+        title: '废电池',
+        desc: '将废旧电池正确回收以兑换积分'
+      }
+    ],
+    imgUrls: [
+      '../../images/banner/1.jpg',
+      '../../images/banner/2.jpg',
+      '../../images/banner/3.jpg'
+    ]
   },
 
   /**
@@ -62,5 +78,58 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onTeaCup() {
+    wx.navigateTo({
+      url: '../teacup/teacup',
+      success: function (res) {
+        // success
+        console.log("success");
+      },
+      fail: function () {
+        // fail
+        console.log("fail");
+      },
+      complete: function () {
+        // complete
+        console.log("complete");
+      }
+    })
+  },
+
+  onBattery() {
+    wx.navigateTo({
+      url: '../battery/battery',
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+
+  onMoreInfo() {
+    wx.navigateTo({
+      url: '../moreinfo/moreinfo',
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+  onLoadingTap() {
+    this.setData({
+      page_loading: false
+    })
   }
 })
