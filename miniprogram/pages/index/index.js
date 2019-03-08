@@ -169,8 +169,9 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "getbatteryrule",
+      name: "batterytodollpaper",
       data: { 
+        cost_light: "5"
       },
       success: res => {
         console.log(res.result);
