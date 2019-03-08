@@ -163,12 +163,14 @@
         {
             id: "abx5c78",                           // 娃娃券id
             create_time: "2019-03-02 17:30:21",      // 创建时间
-            effect_time: "32"                        // 有效时间（单位:小时）
+            effect_time: "32",                       // 有效时间（单位:小时）
+            owner: "saxc76tf"                        // 持有者的openid
         },
         {
             id: "jx7dfcbx",                          // 娃娃券id
             create_time: "2019-04-05 12:30:33",      // 创建时间
-            effect_time: "48"                        // 有效时间（单位:小时）
+            effect_time: "48",                       // 有效时间（单位:小时）
+            owner: "saxc76tf"                        // 持有者的openid
         }
     ]                         
     }
