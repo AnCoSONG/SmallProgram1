@@ -192,7 +192,7 @@
     },
     user_data: {
         drink_number: "xoxo123456",       // 奶茶杯上编码
-        drank_pic:  {
+        drink_pic:  {
             raw_b64: "hscxjb3=="          // 拍摄图片的base64
         }
     }
