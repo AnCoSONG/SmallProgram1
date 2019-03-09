@@ -4,12 +4,14 @@
     "pages/user/user",
     "pages/battery/battery",
     "pages/teacup/teacup",
-    "pages/moreinfo/moreinfo"
+    "pages/moreinfo/moreinfo",
+    "pages/login/login"
   ],
   "tabBar": {
     "position": "bottom",
     "backgroundColor": "#fff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/selectedhome.png",
@@ -45,6 +47,10 @@
     "van-transition": "./dist/transition/index",
     "van-collapse": "./dist/collapse/index",
     "van-collapse-item": "./dist/collapse-item/index",
-    "van-popup": "./dist/popup/index"
+    "van-popup": "./dist/popup/index",
+    "van-field": "./dist/field/index",
+    "van-dialog": "./dist/dialog/index",
+    "van-stepper": "./dist/stepper/index",
+    "van-datetime-picker": "./dist/datetime-picker/index"
   }
 }

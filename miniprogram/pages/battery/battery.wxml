@@ -1,2 +1,54 @@
-<!--miniprogram/pages/battery.wxml-->
-<text>miniprogram/pages/battery.wxml</text>
+<!-- miniprogram/pages/battery.wxml -->
+<van-row>
+    <van-col span="12">
+        <text style="font-weight:600;font-size:40rpx;padding:20px 15px 15px 15px;">电池服务</text>
+    </van-col>
+</van-row>
+<view class="divLine"></view>
+<view class="picture">
+    <van-row>
+        <van-col span="12" offset="6">
+            <image src="../../images/battery.jpg" mode="widthFix" style="width:100%" />
+        </van-col>
+    </van-row>
+</view>
+<van-collapse accordion value="{{ b_activeNames }}" bind:change="onBatteryStatusChange">
+    <van-collapse-item name="has_battery" title="我有电池" label="点此填写回收信息">
+        <form wx:if="{{logged}}">
+            <view class="form-title">填写信息</view>
+            <van-cell-group>
+                <van-field error="{{field_error_phone}}" required name="contact_phone" label="联系电话" placeholder="请输入手机号" type="number" value="{{phone_number}}" bind:change="onPhoneNumberChange"></van-field>
+                <van-field error="{{field_error_place}}" required name="recycle_place" label="回收地点" placeholder="请输入回收地点信息" value="{{recycle_place}}" bind:change="onRecyclePlaceChange"></van-field>
+                <van-cell required title="电池数量" label="1个废电池兑换一个电池积分哦">
+                    <van-stepper name="countofbattery" value="{{numOfBattery}}" min="1" max="100" disable-input integer async-change bind:change="onBatteryStepperChange"></van-stepper>
+                </van-cell>
+                <van-field error="{{field_error_time}}" required name="recycle_time" title="上门时间" label="上门时间" placeholder="请输入时间" value="{{pickedTime}}" is-link bindtap="onTimePicker" bind:change="onRecycleTimeChange"></van-field>
+                <van-popup custom-class="timepicker" position="bottom" show="{{  timepicker_show }}" bind:close="onCloseTimePicker">
+                    <van-datetime-picker title="选择上门时间" type="datetime" value="{{ currentDate }}" min-hour="{{minHour}}" max-hour="{{maxHour}}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:change="onTimePickerChange" bind:confirm="onTimePickerConfirm" bind:cancel="onCloseTimePicker"></van-datetime-picker>
+                </van-popup>
+                <van-field name="battery_note" label="留言" value="{{recycle_message}}" type="textarea" autosize bind:change="onRecycleMessageChange"></van-field>
+            </van-cell-group>
+            <van-row>
+                <van-col span="6" offset="4">
+                    <van-button size="normal" custom-class="battery-form-btn" type="default" form-type="reset" bindtap="onResetButton">
+                        重置
+                    </van-button>
+                </van-col>
+                <van-col span="6" offset="4">
+                    <van-button size="normal" custom-class="battery-form-btn" type="default" form-type="submit" bindtap="onSubmitButton">
+                        提交
+                    </van-button>
+                </van-col>
+            </van-row>
+        </form>
+        <view wx:else>
+            <van-cell is-link title="请先登录" icon="warn-o" bindtap="onLogin"></van-cell>
+        </view>
+    </van-collapse-item>
+    <van-collapse-item name="no_battery" title="我没电池" label="查看一些我们提供的帮助信息">
+        <van-cell-group>
+            <van-cell icon="info-o" title="什么是废电池？" is-link></van-cell>
+            <van-cell icon="info-o" title="废旧电池的危害" is-link></van-cell>
+        </van-cell-group>
+    </van-collapse-item>
+</van-collapse>

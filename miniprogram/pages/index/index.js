@@ -32,7 +32,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
     // 登录获取openid
     wx.cloud.callFunction({
       name: 'login',
@@ -47,15 +47,12 @@ Page({
       }
 
     });
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
@@ -170,7 +167,7 @@ Page({
   onTestInterface() {
     wx.cloud.callFunction({
       name: "batterytodollpaper",
-      data: { 
+      data: {
         cost_light: "5"
       },
       success: res => {
@@ -179,9 +176,9 @@ Page({
       fail: err => {
         console.log(err);
         console.error;
-      } 
- 
-   
+      }
+
+
     });
   }
 })
