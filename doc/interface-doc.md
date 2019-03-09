@@ -104,12 +104,12 @@
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     doll_paper: [                               // 当前抓娃娃券的数目
         {
-            id: "abx5c78",                           // 娃娃券id
+            _id: "abx5c78",                           // 娃娃券id
             create_time: "2019-03-02 17:30:21",      // 创建时间
             effect_time: "32"                        // 有效时间（单位:小时）
         },
         {
-            id: "jx7dfcbx",                          // 娃娃券id
+            _id: "jx7dfcbx",                          // 娃娃券id
             create_time: "2019-04-05 12:30:33",      // 创建时间
             effect_time: "48"                        // 有效时间（单位:小时）
         }
@@ -161,13 +161,13 @@
         left_light_num: 13,                         // 剩余的电池积分数，失败返回0
         left_doll: [                                // 当前抓娃娃券具体信息,失败返回[]
         {
-            id: "abx5c78",                           // 娃娃券id
+            _id: "abx5c78",                           // 娃娃券id
             create_time: "2019-03-02 17:30:21",      // 创建时间
             effect_time: "32",                       // 有效时间（单位:小时）
             owner: "saxc76tf"                        // 持有者的openid
         },
         {
-            id: "jx7dfcbx",                          // 娃娃券id
+            _id: "jx7dfcbx",                          // 娃娃券id
             create_time: "2019-04-05 12:30:33",      // 创建时间
             effect_time: "48",                       // 有效时间（单位:小时）
             owner: "saxc76tf"                        // 持有者的openid
@@ -207,7 +207,7 @@
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     shop: {
-        id: "1001",
+        _id: "1001",
         name: "益禾堂",
         other_name: "中南大学店"
     }
@@ -235,7 +235,7 @@
             {
                 number: 20,
                 shop: {
-                    id: "1001",                      // 商家唯一id
+                    _id: "1001",                      // 商家唯一id
                     name: "益禾堂",                   // 商家名称
                     other_name: "中南大学店"           // 上架分店名称
                 }
@@ -243,7 +243,7 @@
         ],
         tickets: [                               // 奶茶券列表
             {
-                ticket_id: "21jws7dfdc",             // id
+                _id: "21jws7dfdc",             // id
                 create_time: "2018-12-30 13:30:34",  // 创建时间
                 effect_time: "48",                   // 有效时间（单位：小时）
                 shop: {
@@ -258,7 +258,7 @@
                 }
             },
             {
-                ticket_id: "dcdu33as9c",             // id
+                _id: "dcdu33as9c",             // id
                 create_time: "2019-01-30 12:20:20",  // 创建时间
                 effect_time: "24",                   // 有效时间（单位：小时）
                 shop: {
@@ -277,6 +277,26 @@
     }
 }
 ```
+
+### 商店对照表
+
++ _id: 0001, name: 益禾堂-中南大学店
++ _id: 0002, name: 益禾堂-后湖小区店
++ _id: 0003, name: 书亦烧仙草-中南大学店
++ _id: 0004, name: 蜜雪冰城-中南大学店
++ _id：0005，name: 茶颜悦色-青年路步行街店
++ _id: 0006, name: 阿里山贡茶-中南大学店
++ _id: 0007, name: 甘茗城-后湖小区店
+
+### 商品对照表
+
++ type: 0, name: \_\_any\_\_
++ type: 1, name: 四季奶青
++ type: 2, name: 牛奶烧仙草
++ type: 3, name: 小芋圆烧仙草
++ type: 4, name: 蜂蜜柚子茶
++ type: 5, name: 幽兰拿铁
++ type: 6, name: 熊猫奶盖茶
 
 ## 获取全部可用的奶茶店列表
 
