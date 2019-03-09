@@ -53,7 +53,7 @@
       <van-col span="24" offset="0">
         <van-button bind:click="onBattery" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
           <image mode="widthFix" src="../../images/battery.jpg" class="btn-image" />
-          <text class="btnname">旧电池回收</text>
+          <text class="btnname">电池回收</text>
         </van-button>
       </van-col>
     </van-row>
@@ -73,8 +73,7 @@
         </van-button>
       </van-col>
     </van-row>
-
-    <!--测试接口用start-->
+    <!-- 测试接口用start -->
     <van-row custom-class="btn-item">
       <van-col span="24" offset="0">
         <van-button bind:click="onTestInterface" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
@@ -83,7 +82,7 @@
         </van-button>
       </van-col>
     </van-row>
-    <!--测试接口用end-->
+    <!-- 测试接口用end -->
   </view>
   <van-transition name="fade" show="{{page_loading}}">
     <van-loading custom-class="pageLoading" size="60rpx" bind:tap="onLoadingTap" />
