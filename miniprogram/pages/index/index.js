@@ -166,10 +166,8 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "batterytodollpaper",
-      data: {
-        cost_light: "5"
-      },
+      name: "getdrinklightandticket",
+      data: {},
       success: res => {
         console.log(res.result);
       },
