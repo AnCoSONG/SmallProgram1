@@ -9,23 +9,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: false,
-    recycle_records: [],
     activeNames: ['1'],
-    tea_tickets: [''],
-    doll_tickets: [''],
+
 
     tickets_label: '请先登录',
     tickets_desc: '你没有一张卡券',
+    point_desc: '请先登录',
 
-    battery_point: 0,
-    tea_point: 0,
-    desc: '请先登录',
-    logged: false,
-    avatarUrl: "",
-    username: "请登录",
-    userInfo: {},
-    about_us_show: false
+    about_us_show: false,
+
+    user: {
+      battery_point: 0,
+      tea_point: 0,
+      recycle_records: [],
+      tea_tickets: ['1'],
+      doll_tickets: ['2'],
+      logged: false,
+      username: "请登录",
+      userInfo: {},
+      avatarUrl: ""
+
+    }
   },
 
   /**
@@ -39,14 +43,19 @@ Page({
           wx.getUserInfo({
             success: res => {
               this.setData({
-                  avatarUrl: res.userInfo.avatarUrl,
-                  userInfo: res.userInfo,
-                  username: res.userInfo.nickName,
-                  logged: true,
-                  desc: "继续加油哦",
+                  point_desc: "继续加油哦",
                   tickets_label: '继续加油哦',
-                  battery_point: 50,
-                  tea_point: 50
+                  user: {
+                    battery_point: 50,
+                    tea_point: 50,
+                    recycle_records: ['one'],
+                    logged: true,
+                    username: res.userInfo.nickName,
+                    avatarUrl: res.userInfo.avatarUrl,
+                    userInfo: res.userInfo,
+                    tea_tickets: ['1', '2'],
+                    doll_tickets: ['1', '2'],
+                  }
                 }),
                 app.logged = true;
               app.avaterUrl = res.userInfo.avatarUrl;
@@ -110,19 +119,28 @@ Page({
   onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo,
-        username: e.detail.userInfo.nickName,
-        battery_point: 55,
-        tea_point: 55,
-        tickets_label: '继续加油哦',
-        desc: "继续加油哦"
-      })
+          desc: "继续加油哦",
+          tickets_label: '继续加油哦',
+          user: {
+            battery_point: 50,
+            tea_point: 50,
+            recycle_records: ['one'],
+            logged: true,
+            username: e.userInfo.nickName,
+            avatarUrl: e.userInfo.avatarUrl,
+            userInfo: e.userInfo,
+            tea_tickets: ['1', '2'],
+            doll_tickets: ['1', '2'],
+          }
+        }),
+        app.logged = true;
+      app.avaterUrl = res.userInfo.avatarUrl;
+      app.username = res.userInfo.nickName;
+      app.userInfo = res.userInfo;
     }
   },
 
-  onChange_user(e) {
+  onChangeCollapse(e) {
     this.setData({
       activeNames: e.detail
     })
@@ -132,11 +150,11 @@ Page({
     console.log("Tap")
   },
 
-  onClose(e) {
-    this.setData({
-      show: false
-    })
-  },
+  // onClose(e) {
+  //   this.setData({
+  //     show: false
+  //   })
+  // },
 
   onClickAboutUs(e) {
     Dialog.alert({

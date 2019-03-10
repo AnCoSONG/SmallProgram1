@@ -2,32 +2,32 @@
 <van-row>
     <van-col span="8" offset="8">
         <view class="avater">
-            <button class="btn" loading="{{loading}}" disabled="{{disabled}}" style="background-image: url({{avatarUrl}})" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"></button>
-            <text class="username">{{username}}</text>
+            <button class="btn" loading="{{loading}}" disabled="{{disabled}}" style="background-image: url({{user.avatarUrl}})" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"></button>
+            <text class="username">{{user.username}}</text>
         </view>
     </van-col>
 </van-row>
 <view class="divLine"></view>
 <van-row>
     <van-col span="24">
-        <van-collapse accordion value="{{ activeNames }}" bind:change="onChange_user">
-            <van-collapse-item name="my_point" title="我的积分" icon="balance-o" label="{{desc}}" value="{{ '共'+(tea_point+battery_point)+'分' }}">
+        <van-collapse accordion value="{{ activeNames }}" bind:change="onChangeCollapse">
+            <van-collapse-item name="my_point" title="我的积分" icon="balance-o" label="{{point_desc}}" value="{{ '共'+(user.tea_point+user.battery_point)+'分' }}">
                 <van-cell-group>
-                    <van-cell title="奶茶积分" is-link value="{{ tea_point+'分' }}" />
-                    <van-cell title="电池积分" is-link value="{{ battery_point+'分' }}" />
+                    <van-cell title="奶茶积分" is-link value="{{ user.tea_point+'分' }}" url="../teaPoint/teaPoint" />
+                    <van-cell title="电池积分" is-link value="{{ user.battery_point+'分' }}" url="../batteryPoint/batteryPoint" />
                     <van-cell title="如何快速赚取积分?" is-link />
                 </van-cell-group>
             </van-collapse-item>
-            <van-collapse-item name="my_tickets" title="我的卡券" icon="idcard" value="{{ '共'+(tea_tickets.length + doll_tickets.length)+'张' }}" label="{{tickets_label}}">
-                <van-cell wx:if="{{logged && tickets_num != 0}}" title="我的奶茶券" value="{{ tea_tickets.length+'张' }}" is-link></van-cell>
-                <van-cell wx:if="{{logged && tickets_num != 0}}" title="我的娃娃券" value="{{ doll_tickets.length+'张' }}" is-link></van-cell>
+            <van-collapse-item name="my_tickets" title="我的卡券" icon="idcard" value="{{ '共'+(user.tea_tickets.length + user.doll_tickets.length)+'张' }}" label="{{tickets_label}}">
+                <van-cell wx:if="{{user.logged && user.tickets_num != 0}}" title="我的奶茶券" value="{{ user.tea_tickets.length+'张' }}" is-link url="../teaTickets/teaTickets"></van-cell>
+                <van-cell wx:if="{{user.logged && user.tickets_num != 0}}" title="我的娃娃券" value="{{ user.doll_tickets.length+'张' }}" is-link url="../dollTickets/dollTickets"></van-cell>
                 <!-- 写卡券展示页 is link 指向卡券展示页 -->
-                <van-cell wx:elif="{{logged}}" title="您还没有卡券" icon="info-o" value="如何兑换卡券?" is-link></van-cell>
+                <van-cell wx:elif="{{user.logged}}" title="您还没有卡券" icon="info-o" value="如何兑换卡券?" is-link bindtap="onClickHowToGainTickets"></van-cell>
                 <van-cell wx:else title="请先登录" icon="warn-o" value="点击头像登录" bindtap="onTapDebug"></van-cell>
             </van-collapse-item>
-            <van-collapse-item name="my_recycle_records" title="我的回收记录" icon="records" value="{{recycle_records}}" label="blahblahblah">
-                <van-cell wx:if="{{  logged && recycle_records.length!=0 }}" title="详细记录" value="点此查看" is-link></van-cell>
-                <van-cell wx:elif="{{ logged }}" icon="info-o" title="您没有回收记录" value="如何完成一次回收?" is-link></van-cell>
+            <van-collapse-item name="my_recycle_records" title="我的回收记录" icon="records" value="{{'共'+user.recycle_records.length+'次'}}" label="继续加油哦">
+                <van-cell wx:if="{{  user.logged &&  user.recycle_records.length!=0 }}" title="详细记录" value="点此查看" is-link url="../recycleRecords/recycleRecords"></van-cell>
+                <van-cell wx:elif="{{  user.logged }}" icon="info-o" title="您没有回收记录" value="如何完成一次回收?" is-link></van-cell>
                 <van-cell wx:else title="请先登录" icon="warn-o" value="点击头像登录" bindtap="onTapDebug"></van-cell>
             </van-collapse-item>
             <!-- 用van-cell代替 -->
