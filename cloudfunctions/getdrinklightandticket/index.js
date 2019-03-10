@@ -74,7 +74,7 @@ exports.main = async (event, context) => {
     // 根据control_id 定位shop和item
     for (let contr of res.data[0].control_list) {
       let item_result = {
-        _id: contr.control_id,
+        _id: contr._id,
         create_time: contr.create_time,
         effect_time: contr.effect_time,
         shop: {},
@@ -115,5 +115,4 @@ exports.main = async (event, context) => {
   
   return result;
   
-
 }

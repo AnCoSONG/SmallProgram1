@@ -166,8 +166,10 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "getdrinklightandticket",
-      data: {},
+      name: "completedrinkpay",
+      data: {
+        ticket_id: "ticket_0001"
+      },
       success: res => {
         console.log(res.result);
       },
