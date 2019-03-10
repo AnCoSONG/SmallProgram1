@@ -314,12 +314,12 @@
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     shops: [
         {
-            id: "1001",                      // 商家唯一id
+            _id: "1001",                      // 商家唯一id
             name: "益禾堂",                   // 商家名称
             other_name: "中南大学店"           // 上架分店名称
         },
         {
-            id: "1002",                      // 上架唯一id
+            _id: "1002",                      // 上架唯一id
             name: "书亦烧仙草",                // 商家名称
             other_name: "中南大学店"           // 上架分店名称
         },
@@ -359,27 +359,7 @@
 
 ```javascript
 {
-    openid: "asdf43fdsx",          // 用户的已鉴权id
-    ticket: {                                // 正在尝试消费的券
-        ticket_id: "dcdu33as9c",             // id
-        create_time: "2019-01-30 12:20:20",  // 创建时间
-        effect_time: "24",                   // 有效时间（单位：小时）
-        shop: {
-            id: "1002",                      // 上架唯一id
-            name: "书亦烧仙草",                // 商家名称
-            other_name: "中南大学店"           // 上架分店名称
-        },
-        item: {
-            item_type: 1,                    // 商品类型：0-一般商品，1-每月推荐商品
-            cost: "15",                      // 商品价格
-            name: "小芋圆烧仙草"               // 商品名称：__any__表示任意单品 其他为某个特定商品
-        }
-    },
-    main_shop: {
-        id: "1002",                           // 正在进行消费的商家
-        name: "书亦烧仙草",
-        other_name: "中南大学店"
-    }
+    ticket_id: "dcdu33as9c"             // 奶茶券id
 }
 ```
 
@@ -389,11 +369,6 @@
 {
     serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
-    reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
-    main_shop: {
-        id: "1002",                             // 成功返回正在进行消费的商家的id，失败返回 "0"
-        name: "书亦烧仙草",                       // 成功返回正在进行消费的商家的名称，失败返回 ""
-        other_name: "中南大学店"                  // 成功返回正在进行消费的商家的分店名，失败返回 ""
-    }
+    reason: "success"                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
 }
 ```
