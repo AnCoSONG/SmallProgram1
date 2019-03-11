@@ -5,14 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    current: 0,
+    info: [{
+      time: '未知',
+      image_url: '../../images/info_pic/1.jpg',
+      desc_text: 'quasi dolore dolorem nulla voluptates magnam porro dicta?quasi dolore dolorem nulla voluptates magnam porro dicta?',
+      title_text: 'nisi quod eligendi'
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      info: [{
+        time: '未知',
+        image_url: '../../images/info_pic/1.jpg',
+        desc_text: 'quasi dolore dolorem nulla voluptates magnam porro dicta?quasi dolore dolorem nulla voluptates magnam porro dicta?',
+        title_text: 'nisi quod eligendi'
+      }, {
+        time: '未知',
+        image_url: '../../images/info_pic/2.jpg',
+        desc_text: 'quasi dolore dolorem nulla voluptates magnam porro dicta?quasi dolore dolorem nulla voluptates magnam porro dicta?',
+        title_text: 'nisi quod eligendi'
+      }]
+    })
   },
 
   /**
@@ -62,5 +80,30 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onTapDebug(e) {
+    console.log(e.detail);
+    wx.navigateTo({
+      url: `../infoDetail/infoDetail?page=${this.data.current}`,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+        console.log("fail");
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+
+  onSwiperChange(e) {
+    this.setData({
+      current: e.detail.current
+    });
+    console.log(e.detail.current);
+    console.log(this.data.current);
   }
 })

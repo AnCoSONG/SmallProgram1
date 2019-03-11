@@ -1,2 +1,56 @@
-<!--miniprogram/pages/moreinfo/moreinfo.wxml-->
-<text>miniprogram/pages/moreinfo/moreinfo.wxml</text>
+<!-- miniprogram/pages/moreinfo/moreinfo.wxml -->
+<swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" style="height:100%;" vertical="true" bindchange="onSwiperChange">
+    <block wx:for="{{info}}" wx:for-item="item">
+        <swiper-item bindtap="onTapDebug">
+            <template is="info" data="{{...item}}"></template>
+        </swiper-item>
+    </block>
+</swiper>
+<!-- <view class="slide_holder">
+    <view class="slide_img">
+        <image src="{{info[0].image_url}}" mode="scaleToFill" style="width:100%;height:100%" />
+    </view>
+    <view class="slide_content">
+        <view class="slide_avatar">
+            <image class="img" src="{{info[0].avater_url}}" />
+        </view>
+        <view class="slide_text">
+            <view class="slide_title">
+                <text>{{info[0].title_text}}</text>
+            </view>
+            <view class="divLine"></view>
+            <view class="slide_desc">
+                <text>{{info[0].desc_text}}</text>
+            </view>
+        </view>
+    </view>
+</view> -->
+<!-- 弃用样式 -->
+<!-- <view class="divLine"></view> -->
+<!-- <view class="slide_button">
+    <button class="btn" type="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="onTap">
+        按钮文本
+    </button>
+</view> -->
+<template name="info">
+    <view class="slide_holder">
+        <view class="slide_img">
+            <image src="{{image_url}}" mode="aspectFill" style="width:100%;height:100%" />
+        </view>
+        <view class="slide_content">
+            <!-- <view class="slide_avatar">
+                <image class="img" src="{{avater_url}}" />
+            </view> -->
+            <view class="slide_text">
+                <view class="slide_title">
+                    <text>{{title_text}}</text>
+                    <view class="slide_info">发布于: {{time}}</view>
+                </view>
+                <view class="divLine"></view>
+                <view class="slide_desc">
+                    <text>{{desc_text}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

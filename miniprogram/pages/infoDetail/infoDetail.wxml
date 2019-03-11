@@ -1,0 +1,3 @@
+<!-- miniprogram/pages/infoDetail/infoDetail.wxml -->
+<text>miniprogram/pages/infoDetail/infoDetail.wxml</text>
+<text>Article: {{article_id}}</text>

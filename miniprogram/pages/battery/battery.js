@@ -204,7 +204,7 @@ Page({
       phone_number: '',
       recycle_place: '',
       numOfBattery: 1,
-      pickedTime: '请选择时间',
+      pickedTime: '',
       recycle_message: ''
     })
   },

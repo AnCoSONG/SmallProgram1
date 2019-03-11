@@ -13,7 +13,7 @@
   vertical-align: top;
   width: 70rpx;
   /* height: 60%; */
-  margin-top: 10rpx;
+  margin-top: 15rpx;
   margin-right: 20rpx;
 }
 
@@ -21,7 +21,7 @@
   width: 62rpx;
   /* height: 60%; */
   margin-top: 15rpx;
-  margin-right: 30rpx;
+  margin-right: 20rpx;
 }
 
 .btn-image-tea {

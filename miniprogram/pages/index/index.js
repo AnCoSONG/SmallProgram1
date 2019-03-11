@@ -1,5 +1,5 @@
 // miniprogram/pages/home/home.js
-
+import Toast from '../../dist/toast/toast';
 // 全局app引用
 const app = getApp()
 
@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page_loading: true,
+    page_loading: false,
     btnsize: "large",
     hover: true,
     list: [{
@@ -47,6 +47,27 @@ Page({
       }
 
     });
+    const toast = Toast.loading({
+      mask: true,
+      duration: 0, // 持续展示 toast
+      forbidClick: true, // 禁用背景点击
+      message: '倒计时 3 秒',
+      loadingType: 'spinner',
+      selector: '#van-toast'
+    });
+
+    let second = 3;
+    const timer = setInterval(() => {
+      second--;
+      if (second) {
+        toast.setData({
+          message: `倒计时 ${second} 秒`
+        });
+      } else {
+        clearInterval(timer);
+        Toast.clear();
+      }
+    }, 1000);
   },
 
   /**

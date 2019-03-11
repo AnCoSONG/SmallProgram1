@@ -10,7 +10,8 @@
     "pages/batteryPoint/batteryPoint",
     "pages/teaTickets/teaTickets",
     "pages/dollTickets/dollTickets",
-    "pages/recycleRecords/recycleRecords"
+    "pages/recycleRecords/recycleRecords",
+    "pages/infoDetail/infoDetail"
   ],
   "tabBar": {
     "position": "bottom",
@@ -56,6 +57,7 @@
     "van-field": "./dist/field/index",
     "van-dialog": "./dist/dialog/index",
     "van-stepper": "./dist/stepper/index",
-    "van-datetime-picker": "./dist/datetime-picker/index"
+    "van-datetime-picker": "./dist/datetime-picker/index",
+    "van-toast": "./dist/toast/index"
   }
 }

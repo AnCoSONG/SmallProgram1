@@ -35,38 +35,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           this.setData({
-    //               point_desc: "继续加油哦",
-    //               tickets_label: '继续加油哦',
-    //               recycle_records_label: '继续加油哦',
-    //               user: {
-    //                 battery_point: 50,
-    //                 tea_point: 50,
-    //                 recycle_records: ['one'],
-    //                 logged: true,
-    //                 username: res.userInfo.nickName,
-    //                 avatarUrl: res.userInfo.avatarUrl,
-    //                 userInfo: res.userInfo,
-    //                 tea_tickets: ['1', '2'],
-    //                 doll_tickets: ['1', '2'],
-    //               }
-    //             }),
-    //             app.logged = true;
-    //           app.avaterUrl = res.userInfo.avatarUrl;
-    //           app.username = res.userInfo.nickName;
-    //           app.userInfo = res.userInfo;
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                  point_desc: "继续加油哦",
+                  tickets_label: '继续加油哦',
+                  recycle_records_label: '继续加油哦',
+                  user: {
+                    battery_point: 50,
+                    tea_point: 50,
+                    recycle_records: ['one'],
+                    logged: true,
+                    username: res.userInfo.nickName,
+                    avatarUrl: res.userInfo.avatarUrl,
+                    userInfo: res.userInfo,
+                    tea_tickets: ['1', '2'],
+                    doll_tickets: ['1', '2'],
+                  }
+                }),
+                app.logged = true;
+              app.avaterUrl = res.userInfo.avatarUrl;
+              app.username = res.userInfo.nickName;
+              app.userInfo = res.userInfo;
 
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+            }
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -119,8 +119,9 @@ Page({
   onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
-          desc: "继续加油哦",
-          tickets_label: '继续加油哦',
+          point_desc: "继续加油哦",
+          tickets_label: '继续加油哦!',
+          recycle_records_label: '继续加油哦~',
           user: {
             battery_point: 50,
             tea_point: 50,

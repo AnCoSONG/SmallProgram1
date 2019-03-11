@@ -84,9 +84,12 @@
     </van-row>
     <!-- 测试接口用end -->
   </view>
-  <van-transition name="fade" show="{{page_loading}}">
+  <!-- 弃用van-loading -->
+  <!-- <van-transition name="fade" show="{{page_loading}}">
     <van-loading custom-class="pageLoading" size="60rpx" bind:tap="onLoadingTap" />
-  </van-transition>
+  </van-transition> -->
+  <!-- 使用van-toast loading作为loading模块 -->
+  <van-toast id="van-toast" />
 </view>
 <template name="projectItem">
   <view class='projectItem'>
