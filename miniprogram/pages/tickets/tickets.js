@@ -63,28 +63,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
     this.setData({
       type: options.type,
       item_type: 0,
-      tea_tickets: [{
-          _id: "0001",
-          item_type: 1,
-          end_time: "2018-12-30 13:30:34"
-        },
-        {
-          _id: "0007",
-          item_type: 5,
-          end_time: "2018-12-30 13:30:34"
-        },
-        {
-          _id: "0003",
-          item_type: 4,
-          end_time: "2018-12-30 13:30:34"
-        }
-      ]
+      tea_tickets: options.tea_tickets ? JSON.parse(options.tea_tickets) : [],
+
+      doll_tickets: options.doll_tickets ? JSON.parse(options.doll_tickets) : []
     });
     if (options.type === "tea") {
       let showShadow = new Array(this.data.tea_tickets.length).fill(false);
+      this.setData({
+        show_shadow: showShadow
+      });
+    } else if (options.type === 'doll') {
+      let showShadow = new Array(this.data.doll_tickets.length).fill(false);
       this.setData({
         show_shadow: showShadow
       });
@@ -183,8 +176,15 @@ Page({
       this.setData({
         tea_tickets: tickets
       });
+      console.log("updated ", this.data.tea_tickets);
+    } else if (this.data.type === "doll") {
+      let tickets = this.data.doll_tickets;
+      tickets[productIndex].x = x;
+      this.setData({
+        doll_tickets: tickets
+      });
+      console.log("updated ", this.data.doll_tickets);
     }
-    console.log("updated ", this.data.tea_tickets);
   },
 
   //处理 movable-view 滑动
@@ -228,6 +228,50 @@ Page({
       console.log("Change Hide");
 
       this.hideDeleteButton(e);
+    }
+  },
+
+  onTapUseDollTicket({
+    currentTarget: {
+      dataset: {
+        index
+      }
+    }
+  }) {
+    let productList = this.data.doll_tickets;
+
+    // 使用这张娃娃券的逻辑
+
+    //从用户列表里删掉这张娃娃券的逻辑
+    productList.splice(index, 1);
+
+    this.setData({
+      doll_tickets: productList
+    });
+    if (productList[index]) {
+      this.setXmove(index, 0);
+    }
+  },
+
+  onTapUseTeaTicket({
+    currentTarget: {
+      dataset: {
+        index
+      }
+    }
+  }) {
+    let productList = this.data.tea_tickets;
+
+    // 使用这张奶茶券的逻辑
+
+    //从用户列表里删掉这张奶茶券的逻辑
+    productList.splice(index, 1);
+
+    this.setData({
+      tea_tickets: productList
+    });
+    if (productList[index]) {
+      this.setXmove(index, 0);
     }
   }
 

@@ -1,11 +1,23 @@
 // miniprogram/pages/battery.js
 const app = getApp()
+const daytime = {
+  '周一': ['18-20时', '20-22时'],
+  '周二': ['18-20时', '20-22时'],
+  '周三': ['18-20时', '20-22时'],
+  '周四': ['18-20时', '20-22时'],
+  '周五': ['18-20时', '20-22时'],
+  '周六': ['18-20时', '20-22时'],
+  '周日': ['18-20时', '20-22时']
+};
 Page({
+
 
   /**
    * 页面的初始数据
    */
   data: {
+
+
     b_activeNames: ['has_battery'],
 
     timepicker_show: false,
@@ -14,6 +26,14 @@ Page({
     currentDate: new Date().getTime(),
     minHour: 10,
     maxHour: 23,
+
+    picker_columns: [{
+      values: Object.keys(daytime),
+      className: 'day'
+    }, {
+      values: daytime['周一'],
+      className: 'time'
+    }],
 
     // 回收信息
     numOfBattery: 1,
@@ -101,21 +121,47 @@ Page({
     console.log(e.detail);
     this.setData({
       timepicker_show: true
-    })
+    });
+    console.log(this.data.timepicker_show);
   },
 
   onCloseTimePicker(e) {
     console.log(e.detail);
+    if (this.data.pickedTime) {
+      this.setData({
+        field_error_time: false
+      })
+    }
     this.setData({
       timepicker_show: false,
 
     })
   },
+
+  //弃用
   onTimePickerChange(e) {
 
-    console.log(e.detail)
+    console.log(e.detail);
   },
 
+  onPickerChange(e) {
+    const {
+      picker,
+      value,
+      index
+    } = e.detail;
+    picker.setColumnValues(1, daytime[value[0]]);
+  },
+
+  onPickerConfirm(e) {
+    console.log(e.detail);
+    this.setData({
+      pickedTime: e.detail.value[0].toString() + " " + e.detail.value[1].toString()
+    });
+    this.onCloseTimePicker(e);
+  },
+
+  //弃用
   onTimePickerConfirm(e) {
     console.log(e.detail);
     let nowTime = new Date(e.detail);

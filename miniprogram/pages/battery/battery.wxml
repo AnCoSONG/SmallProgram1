@@ -23,9 +23,10 @@
                     <van-stepper name="countofbattery" value="{{numOfBattery}}" min="1" max="100" disable-input integer async-change bind:change="onBatteryStepperChange"></van-stepper>
                 </van-cell>
                 <van-cell title="上门时间" value="{{'每晚6-10点'}}"></van-cell>
-                <van-cell error="{{field_error_time}}" required name="recycle_time" title="上门时间" label="点击此处选择一个时间段" is-link value="{{pickedTime}}" is-link bindtap="onTimePicker" bind:change="onRecycleTimeChange"></van-cell>
+                <van-field error="{{field_error_time}}" required name="recycle_time" title="上门时间" label="上门时间" placeholder="点击此处选择一个上门时间段" disabled value="{{pickedTime}}" bindtap="onTimePicker" bind:change="onRecycleTimeChange"></van-field>
                 <van-popup custom-class="timepicker" position="bottom" show="{{  timepicker_show }}" bind:close="onCloseTimePicker">
-                    <van-datetime-picker title="选择上门时间" type="datetime" value="{{ currentDate }}" min-hour="{{minHour}}" max-hour="{{maxHour}}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:change="onTimePickerChange" bind:confirm="onTimePickerConfirm" bind:cancel="onCloseTimePicker"></van-datetime-picker>
+                    <!-- <van-datetime-picker title="选择上门时间" type="datetime" value="{{ currentDate }}" min-hour="{{minHour}}" max-hour="{{maxHour}}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:change="onTimePickerChange" bind:confirm="onTimePickerConfirm" bind:cancel="onCloseTimePicker"></van-datetime-picker> -->
+                    <van-picker show-toolbar title="选择合适上门时间" columns="{{  picker_columns }}" bind:cancel="onCloseTimePicker" bind:confirm="onPickerConfirm" bind:change="onPickerChange"></van-picker>
                 </van-popup>
                 <van-field name="battery_note" label="留言" value="{{recycle_message}}" type="textarea" autosize bind:change="onRecycleMessageChange"></van-field>
             </van-cell-group>

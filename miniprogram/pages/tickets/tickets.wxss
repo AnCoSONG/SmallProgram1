@@ -1,176 +1,185 @@
 /* miniprogram/pages/tickets/tickets.wxss */
 
-
 .title {
-    margin: 30rpx;
+  margin: 30rpx;
 }
 
 .title .pieces {
-    float: right;
-    clear: both;
-
+  float: right;
+  clear: both;
 }
 
 .divLine {
-    background: #e0e3da;
-    width: 100%;
-    height: 5rpx;
-    margin: 10rpx 0rpx;
+  background: #e0e3da;
+  width: 100%;
+  height: 5rpx;
+  margin: 10rpx 0rpx;
 }
 
 .ticket {
-    position: relative;
-    margin: 40rpx auto;
-    width: 90vw;
-    /* border: 1px solid #e0e0e0; */
-    /* box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2); */
-    z-index: 999;
-    /* box-sizing: border-box; */
+  position: relative;
+  margin: 40rpx auto;
+  width: 90vw;
+  /* border: 1px solid #e0e0e0; */
+  /* box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2); */
+  z-index: 999;
+  /* box-sizing: border-box; */
 }
 
 .ticket movable-view {
-    width: 90vw;
-    height: 200rpx;
-    box-sizing: border-box;
-    z-index: 999;
-    background: white;
-    box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2);
-
+  width: 90vw;
+  height: 200rpx;
+  box-sizing: border-box;
+  z-index: 999;
+  background: white;
+  box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2);
 }
 
 .ticket movable-area {
-    width: 80%;
-    height: 200rpx;
-    box-sizing: border-box;
-
-
-
+  width: 80%;
+  height: 200rpx;
+  box-sizing: border-box;
 }
 
 .ticket .use {
-    width: 20%;
-    height: 200rpx;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    line-height: 200rpx;
-    background: rgb(0, 255, 200);
-    text-align: center;
-    color: white;
-    z-index: 1;
-
+  width: 20%;
+  height: 200rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 200rpx;
+  background: rgb(0, 255, 200);
+  text-align: center;
+  color: white;
+  z-index: 1;
 }
 
 .ticket .use.show {
-    box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.2s;
+  box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s;
 }
 
-.ticket .wrap {
-    position: relative;
-    width: 100%;
-
+.ticket .wrap,
+.ticket .doll_wrap {
+  position: relative;
+  width: 100%;
 }
 
 .ticket .wrap .line {
-    background: #333;
-    width: 100%;
-    height: 6rpx;
-    position: absolute;
-    top: 87rpx;
+  background: #333;
+  width: 100%;
+  height: 6rpx;
+  position: absolute;
+  top: 87rpx;
+}
+
+.ticket .doll_wrap .doll_line {
+  background: #333;
+  width: 100%;
+  height: 6rpx;
+  position: absolute;
+  top: 87rpx;
 }
 
 .ticket .wrap .title {
-    position: absolute;
-    top: 10rpx;
-    background-color: white;
-    padding: 15rpx;
-    font-size: 50rpx;
-    letter-spacing: 2rpx;
-    left: 20rpx;
+  position: absolute;
+  top: 10rpx;
+  background-color: white;
+  padding: 15rpx;
+  font-size: 50rpx;
+  letter-spacing: 2rpx;
+  left: 20rpx;
+}
+
+.ticket .doll_wrap .doll_title {
+  position: absolute;
+  top: 40rpx;
+  background-color: white;
+  padding: 15rpx;
+  font-size: 50rpx;
+  letter-spacing: 2rpx;
+  right: 60rpx;
 }
 
 .ticket .wrap .shop {
-    font-size: 30rpx;
-    text-align: right;
-    margin-right: 20rpx;
-    margin-top: 10rpx;
+  font-size: 30rpx;
+  text-align: right;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
 }
 
 .ticket .wrap .end_time {
-    font-size: 24rpx;
-    text-align: center;
-
-    margin-top: 110rpx;
-    color: #555;
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 110rpx;
+  color: #555;
 }
 
-
-
-
+.ticket .doll_wrap .doll_end_time {
+  font-size: 24rpx;
+  text-align: center;
+  padding-top: 150rpx;
+  color: #555;
+}
 
 .NoTickets {
-    margin-top: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
+  margin-top: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .NoTickets .info {
-    margin-top: 10%;
+  margin-top: 10%;
 }
-
 
 /* 以下为弃用API */
 
 .card {
-    position: relative;
-    height: 200rpx;
-    margin: 40rpx auto;
-    width: 90%;
-    box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2);
-    border: 1px solid #e0e3da;
-    border-radius: 0rpx;
-
-
+  position: relative;
+  height: 200rpx;
+  margin: 40rpx auto;
+  width: 90%;
+  box-shadow: 0 0 20rpx 1rpx rgba(0, 0, 0, 0.2);
+  border: 1px solid #e0e3da;
+  border-radius: 0rpx;
 }
 
 .card.animate {
-    transition: transform 0.2s;
+  transition: transform 0.2s;
 }
 
 .line {
-    background: #333;
-    width: 100%;
-    height: 6rpx;
-    position: absolute;
-    top: 97rpx;
+  background: #333;
+  width: 100%;
+  height: 6rpx;
+  position: absolute;
+  top: 97rpx;
 }
 
 .card .title {
-    position: absolute;
-    top: 20rpx;
-    background-color: white;
-    padding: 15rpx;
-    font-size: 50rpx;
-    letter-spacing: 2rpx;
-    left: 20rpx;
+  position: absolute;
+  top: 20rpx;
+  background-color: white;
+  padding: 15rpx;
+  font-size: 50rpx;
+  letter-spacing: 2rpx;
+  left: 20rpx;
 }
 
 .card .shop {
-    font-size: 30rpx;
-    margin: 15rpx;
-    float: right;
-    clear: both;
-
+  font-size: 30rpx;
+  margin: 15rpx;
+  float: right;
+  clear: both;
 }
 
 .card .end_time {
-    font-size: 24rpx;
-    text-align: center;
-    margin-top: 150rpx;
-    color: #555;
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 150rpx;
+  color: #555;
 }

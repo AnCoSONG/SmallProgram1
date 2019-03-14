@@ -26,8 +26,7 @@ Page({
       logged: false,
       username: "请点头像登录",
       userInfo: {},
-      avatarUrl: "",
-      isRoot: false
+      avatarUrl: ""
     }
   },
 
@@ -53,9 +52,41 @@ Page({
                     username: res.userInfo.nickName,
                     avatarUrl: res.userInfo.avatarUrl,
                     userInfo: res.userInfo,
-                    tea_tickets: ['1', '2'],
-                    doll_tickets: ['1', '2'],
-                    isRoot: false
+                    tea_tickets: [{
+                        _id: "0001",
+                        item_type: 1,
+                        end_time: "2018-12-30 13:30:34"
+                      },
+                      {
+                        _id: "0007",
+                        item_type: 5,
+                        end_time: "2018-12-30 13:30:34"
+                      },
+                      {
+                        _id: "0003",
+                        item_type: 4,
+                        end_time: "2018-12-30 13:30:34"
+                      },
+                      {
+                        _id: "0006",
+                        item_type: 2,
+                        end_time: "2018-12-30 13:30:34"
+                      }
+                    ],
+
+                    doll_tickets: [{
+                        name: "娃娃券",
+                        end_time: "2018-12-30 13:30:34"
+                      },
+                      {
+                        name: "娃娃券",
+                        end_time: "2018-12-30 13:31:34"
+                      },
+                      {
+                        name: "娃娃券",
+                        end_time: "2018-12-30 13:32:34"
+                      }
+                    ]
                   }
                 }),
                 app.logged = true;
@@ -131,8 +162,45 @@ Page({
             username: e.detail.userInfo.nickName,
             avatarUrl: e.detail.userInfo.avatarUrl,
             userInfo: e.detail.userInfo,
-            tea_tickets: ['1', '2'],
-            doll_tickets: ['1', '2'],
+            tea_tickets: [{
+                _id: "0001",
+                item_type: 1,
+                end_time: "2018-12-30 13:30:34"
+              },
+              {
+                _id: "0007",
+                item_type: 5,
+                end_time: "2018-12-30 13:30:34"
+              },
+              {
+                _id: "0003",
+                item_type: 4,
+                end_time: "2018-12-30 13:30:34"
+              },
+              {
+                _id: "0006",
+                item_type: 2,
+                end_time: "2018-12-30 13:30:34"
+              },
+              {
+                _id: "0006",
+                item_type: 2,
+                end_time: "2018-12-30 13:30:34"
+              }
+            ],
+            doll_tickets: [{
+                name: "娃娃券",
+                end_time: "2018-12-30 13:30:34"
+              },
+              {
+                name: "娃娃券",
+                end_time: "2018-12-30 13:31:34"
+              },
+              {
+                name: "娃娃券",
+                end_time: "2018-12-30 13:32:34"
+              }
+            ]
           }
         }),
         app.logged = true;
@@ -166,5 +234,37 @@ Page({
       // on close
       console.log("close")
     });
+  },
+
+  onTeaTicket(e) {
+    let ticket = this.data.user.tea_tickets;
+    wx.navigateTo({
+      url: '../tickets/tickets?type=tea&tea_tickets=' + JSON.stringify(ticket),
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+
+  onDollTicket(e) {
+    let ticket = this.data.user.doll_tickets;
+    wx.navigateTo({
+      url: '../tickets/tickets?type=doll&doll_tickets=' + JSON.stringify(ticket),
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   }
 })
