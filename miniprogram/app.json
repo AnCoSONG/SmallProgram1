@@ -6,12 +6,10 @@
     "pages/teacup/teacup",
     "pages/moreinfo/moreinfo",
     "pages/login/login",
-    "pages/teaPoint/teaPoint",
-    "pages/batteryPoint/batteryPoint",
-    "pages/teaTickets/teaTickets",
-    "pages/dollTickets/dollTickets",
     "pages/recycleRecords/recycleRecords",
-    "pages/infoDetail/infoDetail"
+    "pages/infoDetail/infoDetail",
+    "pages/points/points",
+    "pages/tickets/tickets"
   ],
   "tabBar": {
     "position": "bottom",

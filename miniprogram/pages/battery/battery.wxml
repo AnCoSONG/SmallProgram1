@@ -22,7 +22,8 @@
                 <van-cell required title="电池数量" label="1个废电池兑换一个电池积分哦">
                     <van-stepper name="countofbattery" value="{{numOfBattery}}" min="1" max="100" disable-input integer async-change bind:change="onBatteryStepperChange"></van-stepper>
                 </van-cell>
-                <van-field error="{{field_error_time}}" required name="recycle_time" title="上门时间" label="上门时间" placeholder="请输入时间" value="{{pickedTime}}" is-link bindtap="onTimePicker" bind:change="onRecycleTimeChange"></van-field>
+                <van-cell title="上门时间" value="{{'每晚6-10点'}}"></van-cell>
+                <van-cell error="{{field_error_time}}" required name="recycle_time" title="上门时间" label="点击此处选择一个时间段" is-link value="{{pickedTime}}" is-link bindtap="onTimePicker" bind:change="onRecycleTimeChange"></van-cell>
                 <van-popup custom-class="timepicker" position="bottom" show="{{  timepicker_show }}" bind:close="onCloseTimePicker">
                     <van-datetime-picker title="选择上门时间" type="datetime" value="{{ currentDate }}" min-hour="{{minHour}}" max-hour="{{maxHour}}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:change="onTimePickerChange" bind:confirm="onTimePickerConfirm" bind:cancel="onCloseTimePicker"></van-datetime-picker>
                 </van-popup>

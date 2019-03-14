@@ -1,4 +1,4 @@
-// miniprogram/pages/dollTickets/dollTickets.js
+// miniprogram/pages/points.js
 Page({
 
   /**

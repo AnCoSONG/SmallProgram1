@@ -26,8 +26,8 @@ Page({
       logged: false,
       username: "请点头像登录",
       userInfo: {},
-      avatarUrl: ""
-
+      avatarUrl: "",
+      isRoot: false
     }
   },
 
@@ -55,6 +55,7 @@ Page({
                     userInfo: res.userInfo,
                     tea_tickets: ['1', '2'],
                     doll_tickets: ['1', '2'],
+                    isRoot: false
                   }
                 }),
                 app.logged = true;

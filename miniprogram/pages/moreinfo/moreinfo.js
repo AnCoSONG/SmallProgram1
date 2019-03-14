@@ -8,7 +8,7 @@ Page({
     current: 0,
     info: [{
       time: '未知',
-      image_url: '../../images/info_pic/1.jpg',
+      image_url: 'https://616e-anco001-ba193c-1258302103.tcb.qcloud.la/images/info_pic/1.jpg?sign=4a91b21fdc70a97ff80b41d78d64cfca&t=1552361423',
       desc_text: 'quasi dolore dolorem nulla voluptates magnam porro dicta?quasi dolore dolorem nulla voluptates magnam porro dicta?',
       title_text: 'nisi quod eligendi'
     }]
@@ -21,12 +21,12 @@ Page({
     this.setData({
       info: [{
         time: '未知',
-        image_url: '../../images/info_pic/1.jpg',
+        image_url: 'https://616e-anco001-ba193c-1258302103.tcb.qcloud.la/images/info_pic/1.jpg?sign=4a91b21fdc70a97ff80b41d78d64cfca&t=1552361423',
         desc_text: 'quasi dolore dolorem nulla voluptates magnam porro dicta?quasi dolore dolorem nulla voluptates magnam porro dicta?',
         title_text: 'nisi quod eligendi'
       }, {
         time: '未知',
-        image_url: '../../images/info_pic/2.jpg',
+        image_url: 'https://616e-anco001-ba193c-1258302103.tcb.qcloud.la/images/info_pic/2.jpg?sign=f80ae2bb1e0f5555148af0a3ecfb1d93&t=1552361460',
         desc_text: 'quasi dolore dolorem nulla voluptates magnam porro dicta?quasi dolore dolorem nulla voluptates magnam porro dicta?',
         title_text: 'nisi quod eligendi'
       }]

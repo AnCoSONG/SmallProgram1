@@ -32,7 +32,7 @@
     </van-col>
   </view>
 </van-row> -->
-<view>
+<view class="touch" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchcancel="touchend" bindtouchend="touchend">
   <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
     <block wx:for="{{imgUrls}}" wx:for-item="item">
       <swiper-item>
@@ -60,7 +60,7 @@
     <van-row custom-class="btn-item">
       <van-col span="24" offset="0">
         <van-button bind:click="onTeaCup" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
-          <image mode="widthFix" src="../../images/teacup.jpg" class="btn-image" />
+          <image mode="widthFix" src="../../images/teacup.jpg" class="btn-image" style="margin-right: 5rpx;" />
           <text class="btnname">奶茶杯回收</text>
         </van-button>
       </van-col>

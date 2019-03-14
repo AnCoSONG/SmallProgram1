@@ -1,0 +1,53 @@
+<!-- miniprogram/pages/tickets/tickets.wxml -->
+<view class="title">
+    我的{{ type=='tea'?'奶茶券':'娃娃券' }}
+    <text class="pieces" wx:if="{{type=='tea'}}">共{{tea_tickets.length}}张</text>
+    <text class="pieces" wx:else>共{{doll_tickets.length}}张</text>
+</view>
+<view class="divLine"></view>
+<view wx:if="{{type=='tea'&&tea_tickets.length>0}}">
+    <view>
+        <template is="tickets_movable" wx:for="{{tea_tickets}}" wx:for-item="ticket" wx:for-index="index" wx:key="{{index}}" data="{{...ticket, ...{item_title: item_title, shop: shop, index: index, show_shadow: show_shadow} }}"></template>
+    </view>
+</view>
+<view wx:elif="{{type=='tea'&& tea_tickets.length==0}}">
+    <template is="NoTickets"></template>
+</view>
+<view wx:elif="{{type=='doll'&&doll_tickets.length>0}}"></view>
+<view wx:elif="{{type=='doll'&&doll_tickets.length==0}}">
+    <template is="NoTickets"></template>
+</view>
+<!-- <view wx:if="{{type='tea'&&user.tea_tickets==0}}" >你还没有卡券</view> -->
+<!-- <template name="tickets">
+    <view class="card {{animate?'animate':''}}" data-index="{{index}}" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindtouchcancel="touchEnd" style="transform:translateX({{(transLateX[index]*2)}}rpx)">
+        <view class="line"></view>
+        <view class="title">{{item_title[item_type]}}</view>
+        <view class="shop">{{shop[_id]}}</view>
+        <view class="end_time">请在 {{end_time}} 前使用</view>
+    </view>
+</template> -->
+<template name="tickets_movable">
+    <view class="ticket">
+        <movable-area>
+            <movable-view out-of-bounds="true" direction="horizontal" x="{{x}}" inertia="true" data-productIndex="{{index}}" bindtouchstart="handleTouchStart" bindtouchend="handleTouchEnd" bindchange="handleMovableChange">
+                <view class="wrap">
+                    <view class="line"></view>
+                    <view class="title">{{item_title[item_type]}}</view>
+                    <view class="shop">{{shop[_id]}}</view>
+                    <view class="end_time">请在 {{end_time}} 前使用</view>
+                </view>
+            </movable-view>
+        </movable-area>
+        <view class="use {{show_shadow[index]? 'show':''}}" bindtap="onTapUseTicket">使用</view>
+    </view>
+</template>
+<template name="NoTickets">
+    <van-row>
+        <van-col span="12" offset="6">
+            <view class="NoTickets">
+                <van-icon name="info" size="100px" color="" />
+                <text class="info">你还没有卡券</text>
+            </view>
+        </van-col>
+    </van-row>
+</template>

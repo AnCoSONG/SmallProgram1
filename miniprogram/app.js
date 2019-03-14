@@ -1,6 +1,7 @@
 //app.js
 
 import Dialog from './dist/dialog/dialog';
+import Base64 from './utils/utils';
 App({
   onLaunch: function () {
 
