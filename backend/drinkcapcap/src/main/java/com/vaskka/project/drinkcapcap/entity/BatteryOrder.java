@@ -20,14 +20,14 @@ public class BatteryOrder {
 
     private String openid;
 
-    private Integer done;
+    private Boolean done;
 
     private Timestamp done_time;
 
     public BatteryOrder() {
     }
 
-    public BatteryOrder(Timestamp create_time, Integer battery_num, String openid, Integer done, Timestamp done_time) {
+    public BatteryOrder(Timestamp create_time, Integer battery_num, String openid, Boolean done, Timestamp done_time) {
         this.create_time = create_time;
         this.battery_num = battery_num;
         this.openid = openid;
@@ -67,11 +67,11 @@ public class BatteryOrder {
         this.openid = openid;
     }
 
-    public Integer getDone() {
+    public Boolean getDone() {
         return done;
     }
 
-    public void setDone(Integer done) {
+    public void setDone(Boolean done) {
         this.done = done;
     }
 
