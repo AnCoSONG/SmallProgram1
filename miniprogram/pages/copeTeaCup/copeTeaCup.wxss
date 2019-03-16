@@ -1,4 +1,4 @@
-/* miniprogram/pages/teacup/teacup.wxss */
+/* miniprogram/pages/copeTeaCup/copeTeaCup.wxss */
 
 .divLine {
     background: #E0E3DA;
@@ -8,13 +8,7 @@
 
 }
 
-.picture {
-    margin-top: 10%;
+.logo {
+    margin-top: 30%;
     margin-bottom: 50rpx;
-}
-
-.btn {
-    width: 100%;
-
-    margin: 20rpx 0;
 }

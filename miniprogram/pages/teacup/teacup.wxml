@@ -1,2 +1,41 @@
-<!--miniprogram/pages/teacup/teacup.wxml-->
-<text>miniprogram/pages/teacup/teacup.wxml</text>
+<!-- miniprogram/pages/teacup/teacup.wxml -->
+<van-row>
+    <van-col span="12">
+        <text style="font-weight:600;font-size:40rpx;padding:20px 15px 15px 15px;">奶茶杯服务</text>
+    </van-col>
+</van-row>
+<view class="divLine"></view>
+<view class="picture">
+    <van-row>
+        <van-col span="12" offset="6">
+            <image src="../../images/teacup.jpg" mode="widthFix" style="width:100%" />
+        </van-col>
+    </van-row>
+</view>
+<!-- <view class="divLine"></view> -->
+<van-row gutter="20">
+    <van-col span="10" offset="2">
+        <van-button custom-class="btn" type="primary" data-type="YHT" loading="{{loading}}" disabled="{{disabled}}" plain round bindtap="onTapButton">
+            <!-- <image src="https://10225702.s21i.faiusr.com/4/ABUIABAEGAAg2fXt0QUo_PmhvAQwlgE4Sw.png" mode="scaleToFill" style="display:inline-block;width:20rpx; height:20rpx;" /> -->
+            益禾堂
+        </van-button>
+        <van-button custom-class="btn" type="primary" data-type="MXBC" loading="{{loading}}" disabled="{{disabled}}" plain round bindtap="onTapButton">
+            蜜雪冰城
+        </van-button>
+        <van-button custom-class="btn" type="primary" data-type="ALSGC" loading="{{loading}}" disabled="{{disabled}}" plain round bindtap="onTapButton">
+            阿里山贡茶
+        </van-button>
+    </van-col>
+    <van-col span="10">
+        <van-button custom-class="btn" type="primary" data-type="SYSXC" loading="{{loading}}" disabled="{{disabled}}" plain round bindtap="onTapButton">
+            书亦烧仙草
+        </van-button>
+        <van-button custom-class="btn" type="primary" data-type="CYYS" loading="{{loading}}" disabled="{{disabled}}" plain round bindtap="onTapButton">
+            茶颜悦色
+        </van-button>
+        <van-button custom-class="btn" type="primary" data-type="GMC" loading="{{loading}}" disabled="{{disabled}}" plain round bindtap="onTapButton">
+            甘茗城
+        </van-button>
+    </van-col>
+    <van-col span="2"></van-col>
+</van-row>
