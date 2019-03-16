@@ -1,20 +1,25 @@
 package com.vaskka.project.drinkcapcap.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
+
+import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
+
+@Table(name = "battery_order")
 @Entity
-public class BatteryOrder {
+public class BatteryOrder extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private Timestamp create_time;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "create_time")
+    private Timestamp createTime;
 
     private Integer battery_num;
 
@@ -22,13 +27,14 @@ public class BatteryOrder {
 
     private Boolean done;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp done_time;
 
     public BatteryOrder() {
     }
 
     public BatteryOrder(Timestamp create_time, Integer battery_num, String openid, Boolean done, Timestamp done_time) {
-        this.create_time = create_time;
+        this.createTime = create_time;
         this.battery_num = battery_num;
         this.openid = openid;
         this.done = done;
@@ -43,12 +49,12 @@ public class BatteryOrder {
         this.id = id;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp create_time) {
+        this.createTime = create_time;
     }
 
     public Integer getBattery_num() {
@@ -71,7 +77,7 @@ public class BatteryOrder {
         return done;
     }
 
-    public void setDone(Boolean done) {
+    public void setDone(boolean done) {
         this.done = done;
     }
 

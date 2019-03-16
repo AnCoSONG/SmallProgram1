@@ -1,6 +1,10 @@
 package com.vaskka.project.drinkcapcap.jpa;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.vaskka.project.drinkcapcap.entity.DollPaper;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface DollPaperRepository extends JpaRepository<DollPaperRepository, Integer> {
+
+@Repository
+public interface DollPaperRepository extends CrudRepository<DollPaper, Integer> {
 }

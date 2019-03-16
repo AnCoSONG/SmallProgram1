@@ -1,7 +1,10 @@
 package com.vaskka.project.drinkcapcap.jpa;
 
 import com.vaskka.project.drinkcapcap.entity.DrinkTicket;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface DrinkTicketRepository extends JpaRepository<DrinkTicket, Integer> {
+
+@Repository
+public interface DrinkTicketRepository extends CrudRepository<DrinkTicket, Integer> {
 }

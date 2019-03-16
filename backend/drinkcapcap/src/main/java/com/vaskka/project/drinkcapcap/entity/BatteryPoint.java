@@ -1,14 +1,12 @@
 package com.vaskka.project.drinkcapcap.entity;
 
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Table(name = "battery_point")
 @Entity
-public class BatteryPoint {
+public class BatteryPoint extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

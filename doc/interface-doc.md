@@ -282,13 +282,13 @@
 
 ### 商品对照表
 
-+ type: 0, name: \_\_any\_\_
-+ type: 1, name: 四季奶青
-+ type: 2, name: 牛奶烧仙草
-+ type: 3, name: 小芋圆烧仙草
-+ type: 4, name: 蜂蜜柚子茶
-+ type: 5, name: 幽兰拿铁
-+ type: 6, name: 熊猫奶盖茶
++ id: 1, name: \_\_any\_\_
++ id: 2, name: 四季奶青
++ id: 3, name: 牛奶烧仙草
++ id: 4, name: 小芋圆烧仙草
++ id: 5, name: 蜂蜜柚子茶
++ id: 6, name: 幽兰拿铁
++ id: 7, name: 熊猫奶盖茶
 
 ## 获取全部可用的奶茶店列表
 

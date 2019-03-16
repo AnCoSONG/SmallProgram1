@@ -1,13 +1,14 @@
 package com.vaskka.project.drinkcapcap.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 
+import javax.persistence.*;
+
+
+@Table(name = "shop")
 @Entity
-public class Shop {
+public class Shop extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

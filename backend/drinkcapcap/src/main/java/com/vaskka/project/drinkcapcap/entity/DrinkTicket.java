@@ -1,14 +1,15 @@
 package com.vaskka.project.drinkcapcap.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+
+@Table(name = "drink_ticket")
 @Entity
-public class DrinkTicket {
+public class DrinkTicket extends BaseEntity {
 
 
     @Id
