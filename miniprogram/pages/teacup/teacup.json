@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "奶茶杯回收"
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "white"
 }

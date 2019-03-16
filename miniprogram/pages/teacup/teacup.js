@@ -62,5 +62,21 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onTapButton(e) {
+    let type = e.currentTarget.dataset.type;
+    wx.navigateTo({
+      url: '../copeTeaCup/copeTeaCup?type=' + type,
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   }
 })
