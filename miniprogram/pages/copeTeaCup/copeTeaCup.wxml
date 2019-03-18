@@ -1,7 +1,8 @@
 <!-- miniprogram/pages/copeTeaCup/copeTeaCup.wxml -->
 <van-row>
     <van-col span="18">
-        <text style="font-weight:600;font-size:40rpx;padding:20px 15px 15px 15px;">{{ name?name: '未指定' }}奶茶杯回收服务
+        <text style="font-weight:600;font-size:40rpx;padding:20px 15px 15px 15px;">
+            {{ name?name: '未指定' }}奶茶杯回收服务
         </text>
     </van-col>
 </van-row>
@@ -15,13 +16,18 @@
 </view>
 <view class="form-wrap">
     <!-- <text style="margin: 15rpx; font-size: 28rpx;">填写信息</text> -->
-    <van-panel title="填写信息">
-        <van-cell-group>
-            <van-field value="{{ teaCupCode }}" required label="奶茶杯编号" icon="question-o" placeholder="请输入你的编号" bind:click-icon="onClickQuestionIcon"></van-field>
-            <van-cell is-link title="上传图片" label="拍下奶茶杯编号位置的图片在这儿上传~" value="{{ imgUpLoadType?'上传好啦':'未上传'}}"></van-cell>
-        </van-cell-group>
+    <van-panel title="填写信息" use-footer-slot>
+        <view>
+            <van-cell-group>
+                <van-field value="{{ teaCupCode }}" required label="奶茶杯编号" icon="question-o" placeholder="请输入你的编号" bind:click-icon="onClickQuestionIcon" bind:change="updateTeaCupCode"></van-field>
+                <van-cell is-link title="上传图片" label="拍下奶茶杯编号位置的图片在这儿上传~" value="{{ imgUpLoadType }}" bindtap="onClickUploadImage"></van-cell>
+            </van-cell-group>
+        </view>
+        <view slot="footer" style="text-align: right">
+            <van-button size="small" style="margin-right:25rpx;" bindtap="onReset">重置</van-button>
+            <van-button size="small" type="primary" bindtap="onSubmit">提交</van-button>
+        </view>
     </van-panel>
-    
     <!-- 给panel加个header和footer即可 -->
     <!-- <van-row>
         <van-col span="12" offset="6">
@@ -33,4 +39,6 @@
             </view>
         </van-col>
     </van-row> -->
+    <van-toast id="submit-toast"></van-toast>
+    <van-toast id="code-info"></van-toast>
 </view>

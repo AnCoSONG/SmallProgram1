@@ -5,15 +5,22 @@
     </van-col>
 </van-row>
 <view class="divLine"></view>
-<view class="picture">
+<!-- <view class="picture">
     <van-row>
         <van-col span="12" offset="6">
             <image src="../../images/teacup.jpg" mode="widthFix" style="width:100%" />
         </van-col>
     </van-row>
-</view>
+</view> -->
 <!-- <view class="divLine"></view> -->
-<van-row gutter="20">
+<van-row wx:if="{{logged}}" gutter="20">
+    <view class="picture">
+        <van-row>
+            <van-col span="12" offset="6">
+                <image src="../../images/teacup.jpg" mode="widthFix" style="width:100%" />
+            </van-col>
+        </van-row>
+    </view>
     <van-col span="10" offset="2">
         <van-button custom-class="btn" type="primary" data-type="YHT" loading="{{loading}}" disabled="{{disabled}}" plain round bindtap="onTapButton">
             <!-- <image src="https://10225702.s21i.faiusr.com/4/ABUIABAEGAAg2fXt0QUo_PmhvAQwlgE4Sw.png" mode="scaleToFill" style="display:inline-block;width:20rpx; height:20rpx;" /> -->
@@ -38,4 +45,12 @@
         </van-button>
     </van-col>
     <van-col span="2"></van-col>
+</van-row>
+<van-row wx:else>
+    <van-col span="12" offset="6">
+        <view class="unlogged-wrap">
+            <van-icon name="warn-o" size="100px" color="" />
+            <text class="info">请先登录</text>
+        </view>
+    </van-col>
 </van-row>
