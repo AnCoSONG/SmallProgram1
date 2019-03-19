@@ -1,1 +1,83 @@
 <!-- miniprogram/pages/points.wxml -->
+<view class="title">
+    <text class="line">我的{{type=='tea'?"奶茶积分":"电池积分"}}</text>
+    <text class="count" wx:if="{{type=='tea'}}">共 {{tea_point}} 分</text>
+    <text class="count" wx:else>共 {{battery_point}} 分</text>
+</view>
+<view class="divLine"></view>
+<van-cell-group>
+    <view wx:if="{{type=='tea'}}">
+        <van-panel data-id="0001" title="奶茶券 - 任意单品" desc="适用于: 益禾堂 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0001" title="奶茶券 - 四季奶青" desc="适用于: 益禾堂 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0002" title="奶茶券 - 任意单品" desc="适用于: 益禾堂 - 后湖小区店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0002" title="奶茶券 - 牛奶烧仙草" desc="适用于: 益禾堂 - 后湖小区店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0003" title="奶茶券 - 任意单品" desc="适用于: 书亦烧仙草 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0003" title="奶茶券 - 小芋圆烧仙草" desc="适用于: 书亦烧仙草 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0004" title="奶茶券 - 任意单品" desc="适用于: 蜜雪冰城 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0004" title="奶茶券 - 蜂蜜柚子茶" desc="适用于: 蜜雪冰城 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0005" title="奶茶券 - 任意单品" desc="适用于: 茶颜悦色 - 青年路步行街店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0005" title="奶茶券 - 幽兰拿铁" desc="适用于: 茶颜悦色 - 青年路步行街店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0006" title="奶茶券 - 任意单品" desc="适用于: 阿里山贡茶 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0006" title="奶茶券 - 熊猫奶盖茶" desc="适用于: 阿里山贡茶 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+        <van-panel data-id="0007" title="奶茶券 - 任意单品" desc="适用于: 甘茗城 - 后湖小区店" status="{{ 8 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+    </view>
+    <view wx:else>
+        <van-panel title="娃娃券" desc="适用于: XXX - 后湖小区店" status="{{ 3 }}分" use-footer-slot>
+            <view slot="footer" style="text-align: right;">
+                <van-button size="small" type="primary" plain>兑换</van-button>
+            </view>
+        </van-panel>
+    </view>
+</van-cell-group>

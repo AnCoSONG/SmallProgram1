@@ -101,10 +101,18 @@ Page({
           selector: '#submit-toast'
         })
       } else {
-        console.log("没图")
+        Toast.fail({
+          duration:2000,
+          message:'未选择图片',
+          selector:'#no-img'
+        })
       }
     } else {
-      console.log("没号")
+      Toast.fail({
+        duration: 2000,
+        message:'未填写编号',
+        selector:'#no-code'
+      })
     }
   },
 
