@@ -1,5 +1,7 @@
 package com.vaskka.project.drinkcapcap.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import com.vaskka.project.drinkcapcap.entity.DollPaper;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
@@ -29,6 +31,7 @@ public class DollPaperService implements BaseService {
 
         DollPaper paper = (DollPaper) entity;
         paper.setValid(true);
+        paper.setCreate_time(new Timestamp(new Date().getTime()));
         repository.save((DollPaper) entity);
     }
 

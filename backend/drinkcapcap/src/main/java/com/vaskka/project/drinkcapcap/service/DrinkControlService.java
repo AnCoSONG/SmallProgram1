@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DrinkControlService extends CanGetAllService {
@@ -18,7 +19,21 @@ public class DrinkControlService extends CanGetAllService {
 
     @Override
     public void create(BaseEntity entity) {
-        repository.save((DrinkControl) entity);
+
+        DrinkControl control = (DrinkControl) entity;
+
+        Optional<DrinkControl> res = repository.findByShopIdAndItemId(control.getShop_id(), control.getItem_id());
+
+        // 保证同一item_id和shop_id返回唯一结果
+        if (res.isPresent()) {
+            DrinkControl controlInner = res.get();
+            controlInner.setNumber(control.getNumber());
+            repository.save(controlInner);
+        }
+        else {
+            repository.save(control);
+        }
+
     }
 
     @Override

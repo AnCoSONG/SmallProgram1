@@ -1,5 +1,6 @@
 package com.vaskka.project.drinkcapcap.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 
 import javax.persistence.*;
@@ -77,6 +78,7 @@ public class DollPaper extends BaseEntity {
 
     private Integer doll_paper_val;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp create_time;
 
     private Integer effect_time;

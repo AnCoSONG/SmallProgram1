@@ -3,6 +3,8 @@ package com.vaskka.project.drinkcapcap.controller;
 import java.util.List;
 import com.vaskka.project.drinkcapcap.entity.DollPaper;
 import com.vaskka.project.drinkcapcap.service.DollPaperService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,7 @@ import java.util.Map;
  **/
 
 
+@Api(description = "娃娃券接口")
 @Controller
 public class DollPaperController {
 
@@ -25,6 +28,7 @@ public class DollPaperController {
     DollPaperService service;
 
 
+    @ApiOperation(value = "创建娃娃券" ,  notes="插入一条新娃娃券记录")
     @ResponseBody
     @RequestMapping(value = "/dollpaper/create", method = RequestMethod.POST)
     public Map<String, Object> create(@RequestBody DollPaper entity) {
@@ -37,8 +41,9 @@ public class DollPaperController {
     }
 
 
+    @ApiOperation(value = "获取某个openid的全部娃娃券" ,  notes="根据openid筛选全部娃娃券")
     @ResponseBody
-    @RequestMapping(value = "dollpaper/get/{openid}")
+    @RequestMapping(value = "/dollpaper/get/{openid}", method = RequestMethod.GET)
     public Map<String, Object> getByOpenid(@PathVariable String openid) {
 
         List<DollPaper> list = service.getDollPaperByOpenid(openid);
@@ -51,8 +56,10 @@ public class DollPaperController {
         return map;
     }
 
+
+    @ApiOperation(value = "获取某个id的娃娃券" ,  notes="根据id筛选娃娃券")
     @ResponseBody
-    @RequestMapping(value = "dollpaper/get/id/{id}")
+    @RequestMapping(value = "/dollpaper/{id}", method = RequestMethod.GET)
     public Map<String, Object> getById(@PathVariable Integer id) {
         Map<String , Object> map = new HashMap<>();
 

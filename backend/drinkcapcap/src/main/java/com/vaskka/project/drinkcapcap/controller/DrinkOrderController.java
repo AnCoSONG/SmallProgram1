@@ -4,6 +4,8 @@ package com.vaskka.project.drinkcapcap.controller;
 import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
 import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import com.vaskka.project.drinkcapcap.service.DrinkOrderService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +24,14 @@ import java.util.List;
  **/
 
 
+@Api(description = "奶茶订单接口")
 @Controller
 public class DrinkOrderController {
 
     @Autowired
     DrinkOrderService service;
 
+    @ApiOperation(value = "创建一条奶茶订单" ,  notes="插入一条新奶茶订单记录")
     @ResponseBody
     @RequestMapping(value = "/drinkorder/create", method = RequestMethod.POST)
     public Map<String, Object> create(@RequestBody DrinkOrder drinkOrder) {
@@ -40,6 +44,7 @@ public class DrinkOrderController {
     }
 
 
+    @ApiOperation(value = "获取指定id的订单记录" ,  notes="根据id筛选订单信息")
     @ResponseBody
     @RequestMapping(value = "/drinkorder/get/id/{id}", method = RequestMethod.GET)
     public Map<String, Object> getById(@PathVariable Integer id) {
@@ -53,6 +58,7 @@ public class DrinkOrderController {
     }
 
 
+    @ApiOperation(value = "获取指定的openid的订单记录集合" ,  notes="根据openid筛选订单信息")
     @ResponseBody
     @RequestMapping(value = "/drinkorder/get/{openid}", method = RequestMethod.GET)
     public Map<String, Object> getByOpenid(@PathVariable String openid) {
@@ -65,6 +71,7 @@ public class DrinkOrderController {
         return map;
     }
 
+    @ApiOperation(value = "获取指定openid和指定完成度的记录集合" ,  notes="根据openid和完成度筛选订单信息集合")
     @ResponseBody
     @RequestMapping(value = "/drinkorder/get/done/{openid}/{done}", method = RequestMethod.GET)
     public Map<String, Object> getByOpenidAndDone(@PathVariable String openid, @PathVariable Boolean done) {
@@ -77,6 +84,7 @@ public class DrinkOrderController {
         return map;
     }
 
+    @ApiOperation(value = "获取今天的奶茶订单" ,  notes="获取今日全部订单信息")
     @ResponseBody
     @RequestMapping(value = "/drinkorder/get/today", method = RequestMethod.GET)
     public Map<String, Object> getTodayOrder() {
@@ -96,6 +104,7 @@ public class DrinkOrderController {
         return map;
     }
 
+    @ApiOperation(value = "更改某id订单的完成情况" ,  notes="更改订单为完成")
     @RequestMapping(value = "/drinkorder/change/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public Map<String, Object> changeToComplete(@PathVariable Integer id) {

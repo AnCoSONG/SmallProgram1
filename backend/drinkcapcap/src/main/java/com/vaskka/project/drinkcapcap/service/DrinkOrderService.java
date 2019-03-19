@@ -30,6 +30,8 @@ public class DrinkOrderService implements BaseService {
 
     @Override
     public void create(BaseEntity entity) {
+        ((DrinkOrder) entity).setDone(false);
+        ((DrinkOrder) entity).setCreate_time(new Timestamp(new Date().getTime()));
         repository.save((DrinkOrder) entity);
     }
 
@@ -40,7 +42,7 @@ public class DrinkOrderService implements BaseService {
 
     @Override
     public void change(BaseEntity entity) {
-        this.create(entity);
+        repository.save((DrinkOrder) entity);
     }
 
 

@@ -97,7 +97,6 @@ public class DrinkOrder extends BaseEntity {
     private String openid;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @Column(name = "create_time")
     private Timestamp createTime;
 
     private String img_url;

@@ -1,8 +1,11 @@
 package com.vaskka.project.drinkcapcap.service;
 
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import com.vaskka.project.drinkcapcap.entity.DrinkControl;
+import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import com.vaskka.project.drinkcapcap.entity.DrinkTicket;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.exceptions.ItemShopCombineNotExistException;
@@ -41,6 +44,7 @@ public class DrinkTicketService implements BaseService {
         DrinkTicket ticket = (DrinkTicket) entity;
         Optional<DrinkControl> control = controlRepository.findByShopIdAndItemId(ticket.getShop_id(), ticket.getItem_id());
 
+        // 检查奶茶券数量情况
         if (control.isPresent()) {
             DrinkControl controlInner = control.get();
             if (controlInner.getNumber() <= 0) {
@@ -58,7 +62,9 @@ public class DrinkTicketService implements BaseService {
             throw new ItemShopCombineNotExistException("商品与商家不匹配", ticket.getShop_id(), ticket.getItem_id());
         }
 
-        repository.save((DrinkTicket) entity);
+        ticket.setDone(false);
+        ticket.setCreate_time(new Timestamp(new Date().getTime()));
+        repository.save(ticket);
     }
 
     @Override
