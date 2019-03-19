@@ -15,8 +15,7 @@
   "tabBar": {
     "position": "bottom",
     "backgroundColor": "#fff",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/selectedhome.png",
@@ -59,6 +58,8 @@
     "van-datetime-picker": "./dist/datetime-picker/index",
     "van-toast": "./dist/toast/index",
     "van-picker": "./dist/picker/index",
-    "van-panel": "./dist/panel/index"
+    "van-panel": "./dist/panel/index",
+    "van-swipe-cell": "./dist/swipe-cell/index",
+    "van-steps": "./dist/steps/index"
   }
 }

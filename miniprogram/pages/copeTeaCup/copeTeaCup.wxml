@@ -1,8 +1,7 @@
 <!-- miniprogram/pages/copeTeaCup/copeTeaCup.wxml -->
 <van-row>
     <van-col span="18">
-        <text style="font-weight:600;font-size:40rpx;padding:20px 15px 15px 15px;">
-            {{ name?name: '未指定' }}奶茶杯回收服务
+        <text style="font-weight:600;font-size:40rpx;padding:20px 15px 15px 15px;">{{ name?name: '未指定' }}奶茶杯回收服务
         </text>
     </van-col>
 </van-row>
@@ -41,4 +40,6 @@
     </van-row> -->
     <van-toast id="submit-toast"></van-toast>
     <van-toast id="code-info"></van-toast>
+    <van-toast id="no-code"></van-toast>
+    <van-toast id="no-img"></van-toast>
 </view>

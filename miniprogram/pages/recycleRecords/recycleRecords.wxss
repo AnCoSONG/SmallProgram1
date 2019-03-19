@@ -1,1 +1,13 @@
 /* miniprogram/pages/recycleRecords/recycleRecords.wxss */
+
+.header {
+    text-align: center;
+    font-size: 20rpx;
+    color: #444;
+    margin-bottom: 10rpx;
+}
+
+.pending .head {
+    font-size: 32rpx;
+    margin: 10rpx 20rpx;
+}

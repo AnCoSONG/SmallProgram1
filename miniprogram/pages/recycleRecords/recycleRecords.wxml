@@ -1,2 +1,21 @@
-<!--miniprogram/pages/recycleRecords/recycleRecords.wxml-->
-<text>miniprogram/pages/recycleRecords/recycleRecords.wxml</text>
+<!-- miniprogram/pages/recycleRecords/recycleRecords.wxml -->
+<view class="header">
+    <text>共{{pending.length+compolish.length}}条记录,{{compolish.length}}条已完成,{{pending.length}}条待处理</text>
+</view>
+
+<view class="pending">
+    <text class="head">待处理</text>
+    <view class="main">
+
+        <van-panel class="" title="电池回收" status="PENDING" desc="描述信息" use-footer-slot>
+            <view>
+                <van-steps steps="{{batterySteps}}" active="{{ nowStep }}"></van-steps>
+            </view>
+            <view slot="footer" style="text-align:right">
+                <van-button type="primary" size="small">按钮</van-button>
+            </view>
+
+        </van-panel>
+
+    </view>
+</view>

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    type: '',
 
   },
 
@@ -12,7 +13,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.type == 'tea') {
+      this.setData({
+        type: options.type,
+        tea_point: options.tea_point
+      })
 
+    } else if (options.type == 'battery') {
+      this.setData({
+        type: options.type,
+        battery_point: options.battery_point
+      })
+    }
   },
 
   /**
@@ -62,5 +74,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
 })
