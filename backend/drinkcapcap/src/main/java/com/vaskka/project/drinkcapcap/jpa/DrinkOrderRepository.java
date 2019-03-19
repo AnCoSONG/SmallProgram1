@@ -1,23 +1,22 @@
 package com.vaskka.project.drinkcapcap.jpa;
 
-import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
-import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
+import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
+
 @Repository
-public interface BatteryOrderRepository extends CrudRepository<BatteryOrder, Integer> {
+public interface DrinkOrderRepository extends CrudRepository<DrinkOrder, Integer> {
 
     /**
      * 根据openid筛选
      * @param openid openid
      * @return 实体引用
      */
-    List<BatteryOrder> findByOpenid(String openid);
+    List<DrinkOrder> findByOpenid(String openid);
 
 
     /**
@@ -26,7 +25,7 @@ public interface BatteryOrderRepository extends CrudRepository<BatteryOrder, Int
      * @param done 是否完成
      * @return BaseEntity
      */
-    List<BatteryOrder> findByOpenidAndDone(String openid, Boolean done);
+    List<DrinkOrder> findByOpenidAndDone(String openid, Boolean done);
 
     /**
      * 筛选指定创建日期的订单
@@ -34,5 +33,6 @@ public interface BatteryOrderRepository extends CrudRepository<BatteryOrder, Int
      * @param end 结束时间
      * @return list
      */
-    List<BatteryOrder> findByCreateTimeBetween(Timestamp start, Timestamp end);
+    List<DrinkOrder> findByCreateTimeBetween(Timestamp start, Timestamp end);
+
 }

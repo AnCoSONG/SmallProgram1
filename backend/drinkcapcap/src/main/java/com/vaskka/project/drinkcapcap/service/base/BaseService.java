@@ -1,6 +1,7 @@
 package com.vaskka.project.drinkcapcap.service.base;
 
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
+import com.vaskka.project.drinkcapcap.exceptions.DrinkCapcapBaseException;
 
 public interface BaseService {
 
@@ -8,7 +9,7 @@ public interface BaseService {
      * 创建record
      * @param entity 实体对象
      */
-    void create(BaseEntity entity);
+    void create(BaseEntity entity) throws DrinkCapcapBaseException;
 
 
     /**

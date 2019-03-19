@@ -13,9 +13,11 @@ public class DrinkControl extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private Integer shop_id;
+    @Column(name = "shop_id")
+    private Integer shopId;
 
-    private Integer item_id;
+    @Column(name = "item_id")
+    private Integer itemId;
 
     private Integer number;
 
@@ -27,8 +29,8 @@ public class DrinkControl extends BaseEntity {
     }
 
     public DrinkControl(Integer shop_id, Integer item_id, Integer number) {
-        this.shop_id = shop_id;
-        this.item_id = item_id;
+        this.shopId = shop_id;
+        this.itemId = item_id;
         this.number = number;
     }
 
@@ -37,19 +39,19 @@ public class DrinkControl extends BaseEntity {
     }
 
     public Integer getShop_id() {
-        return shop_id;
+        return shopId;
     }
 
     public void setShop_id(Integer shop_id) {
-        this.shop_id = shop_id;
+        this.shopId = shop_id;
     }
 
     public Integer getItem_id() {
-        return item_id;
+        return itemId;
     }
 
     public void setItem_id(Integer item_id) {
-        this.item_id = item_id;
+        this.itemId = item_id;
     }
 
     public Integer getNumber() {

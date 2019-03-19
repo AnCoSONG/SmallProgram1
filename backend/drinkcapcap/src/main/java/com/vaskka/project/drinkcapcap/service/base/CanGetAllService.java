@@ -1,6 +1,7 @@
 package com.vaskka.project.drinkcapcap.service.base;
 
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
+import com.vaskka.project.drinkcapcap.exceptions.DrinkCapcapBaseException;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;

@@ -21,9 +21,6 @@ public class ItemController extends CanGetAllController {
     public Map<String , Object> create(@RequestBody Item item) {
         Map<String, Object> map = new HashMap<>();
 
-//        System.out.println(item.getItem_name());
-//        System.out.println(item.getShop_id());
-
         service.create(item);
         map.put("code", 0);
 

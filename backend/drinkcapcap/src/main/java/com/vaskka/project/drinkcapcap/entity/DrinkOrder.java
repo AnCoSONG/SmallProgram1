@@ -1,6 +1,7 @@
 package com.vaskka.project.drinkcapcap.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class DrinkOrder extends BaseEntity {
     public DrinkOrder(Integer cup_id, String openid, Timestamp create_time, String img_url, Integer shop_id, Boolean done, Timestamp done_time) {
         this.cup_id = cup_id;
         this.openid = openid;
-        this.create_time = create_time;
+        this.createTime = create_time;
         this.img_url = img_url;
         this.shop_id = shop_id;
         this.done = done;
@@ -54,11 +55,11 @@ public class DrinkOrder extends BaseEntity {
     }
 
     public Timestamp getCreate_time() {
-        return create_time;
+        return createTime;
     }
 
     public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+        this.createTime = create_time;
     }
 
     public String getImg_url() {
@@ -95,7 +96,9 @@ public class DrinkOrder extends BaseEntity {
 
     private String openid;
 
-    private Timestamp create_time;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "create_time")
+    private Timestamp createTime;
 
     private String img_url;
 
@@ -103,5 +106,6 @@ public class DrinkOrder extends BaseEntity {
 
     private Boolean done;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp done_time;
 }

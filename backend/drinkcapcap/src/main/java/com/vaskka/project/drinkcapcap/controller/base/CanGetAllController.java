@@ -9,8 +9,6 @@ import java.util.Map;
 
 public class CanGetAllController {
 
-
-
     /**
      * 获取全部Item
      * @return HashMap => json
