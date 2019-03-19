@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.12, for macos10.13 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
 --
 -- Host: localhost    Database: drinkcapcap
 -- ------------------------------------------------------
--- Server version	8.0.12
+-- Server version	8.0.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `battery_order` (
   `done` tinyint(1) NOT NULL,
   `done_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `battery_order` (
 
 LOCK TABLES `battery_order` WRITE;
 /*!40000 ALTER TABLE `battery_order` DISABLE KEYS */;
+INSERT INTO `battery_order` VALUES (1,'2019-03-16 00:00:00',13,'test_openid_1',1,'2019-03-16 17:50:35'),(2,'2019-03-16 00:00:00',3,'test_openid_2',1,'2019-03-16 00:00:00'),(3,'2019-03-16 00:00:00',20,'test_openid_2',0,NULL),(4,'2019-03-16 00:00:00',50,'test_openid_4',1,'2019-03-16 00:00:00'),(5,'2019-03-16 00:00:00',50,'test_openid_5',1,'2019-03-16 00:00:00'),(6,'2019-03-16 00:00:00',56,'test_openid_6',1,'2019-03-16 00:00:00'),(7,'2019-03-16 17:08:21',9,'test_openid_7',1,'2019-03-16 17:49:43');
 /*!40000 ALTER TABLE `battery_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +55,7 @@ CREATE TABLE `battery_point` (
   `openid` varchar(255) NOT NULL,
   `battery_val` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +64,7 @@ CREATE TABLE `battery_point` (
 
 LOCK TABLES `battery_point` WRITE;
 /*!40000 ALTER TABLE `battery_point` DISABLE KEYS */;
+INSERT INTO `battery_point` VALUES (1,'test_openid_1',12),(2,'test_openid_2',2),(3,'test_openid_3',0),(6,'test_openid_4',0);
 /*!40000 ALTER TABLE `battery_point` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +135,7 @@ CREATE TABLE `drink_control` (
   `item_id` int(11) DEFAULT NULL,
   `number` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,6 +144,7 @@ CREATE TABLE `drink_control` (
 
 LOCK TABLES `drink_control` WRITE;
 /*!40000 ALTER TABLE `drink_control` DISABLE KEYS */;
+INSERT INTO `drink_control` VALUES (1,1,1,20),(2,1,1,20),(3,1,2,10),(4,2,3,15),(5,2,4,8),(6,3,5,20),(7,3,6,15),(8,4,7,15),(9,4,8,15),(10,5,9,10),(11,5,10,5),(12,6,11,10),(13,6,12,5),(14,7,13,15);
 /*!40000 ALTER TABLE `drink_control` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +218,7 @@ CREATE TABLE `item` (
   `item_name` varchar(255) DEFAULT NULL,
   `shop_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +227,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (1,'__any__',1),(2,'四季奶青',1),(3,'__any__',2),(4,'牛奶烧仙草',2),(5,'__any__',3),(6,'小芋圆烧仙草',3),(7,'__any__',4),(8,'蜂蜜柚子茶',4),(9,'__any__',5),(10,'幽兰拿铁',5),(11,'__any__',6),(12,'熊猫奶盖茶',6),(13,'__any__',7);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-13 23:14:29
+-- Dump completed on 2019-03-19 22:40:36
