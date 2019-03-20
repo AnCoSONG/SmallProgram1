@@ -35,4 +35,6 @@ public interface BatteryOrderRepository extends CrudRepository<BatteryOrder, Int
      * @return list
      */
     List<BatteryOrder> findByCreateTimeBetween(Timestamp start, Timestamp end);
+
+
 }

@@ -21,6 +21,54 @@ public class BatteryOrder extends BaseEntity {
     @Column(name = "create_time")
     private Timestamp createTime;
 
+    //@Column(name = "create_time")
+    private String freeTime;
+
+    //@Column(name = "userLocation")
+    private String userLocation;
+
+    //@Column(name = "realLocation")
+    private  String realLocation;
+
+    public String getFreeTime() {
+        return freeTime;
+    }
+
+    public void setFreeTime(String freeTime) {
+        this.freeTime = freeTime;
+    }
+
+    public String getUserLocation() {
+        return userLocation;
+    }
+
+    public void setUserLocation(String userLocation) {
+        this.userLocation = userLocation;
+    }
+
+    public String getRealLocation() {
+        return realLocation;
+    }
+
+    public void setRealLocation(String realLocation) {
+        this.realLocation = realLocation;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
+
+    public BatteryOrder(Timestamp createTime, String freeTime, String userLocation, String realLocation, Integer battery_num, String openid, Boolean done, Timestamp done_time) {
+        this.createTime = createTime;
+        this.freeTime = freeTime;
+        this.userLocation = userLocation;
+        this.realLocation = realLocation;
+        this.battery_num = battery_num;
+        this.openid = openid;
+        this.done = done;
+        this.done_time = done_time;
+    }
+
     private Integer battery_num;
 
     private String openid;
@@ -31,14 +79,6 @@ public class BatteryOrder extends BaseEntity {
     private Timestamp done_time;
 
     public BatteryOrder() {
-    }
-
-    public BatteryOrder(Timestamp create_time, Integer battery_num, String openid, Boolean done, Timestamp done_time) {
-        this.createTime = create_time;
-        this.battery_num = battery_num;
-        this.openid = openid;
-        this.done = done;
-        this.done_time = done_time;
     }
 
     public Integer getId() {
