@@ -1,6 +1,6 @@
 /**
  * 提交废电池订单
- * 
+ * over
  */
 
 // wx
@@ -20,17 +20,29 @@ exports.main = async (event, context) => {
 
   const wxContext = cloud.getWXContext();
 
+  // 电池个数
   let num = event.battery.num;
   let result = {};
   result.battery = {};
+  result.battery.num = num;
+  result.serv_time = moment().format("YYYY-MM-DD HH:mm:SS");
 
-  await request.get('http://localhost:8080/shop/all',await function (error, response, body) {
-     result.error = error;
-     result.response = response;
-     result.body = body;
+  let resp = await got('http://129.204.216.249:8080/batteryorder/create', {
+    method: 'POST',
+    headers: {
+      accept: "*/*" 
+    },
+    json: true,
+    body: {
+      battery_num: num,
+      create_time: result.serv_time,
+      done: false,
+      openid: wxContext.OPENID
+    }
+
   });
 
-  result.serv_time = moment().format("YYYY-MM-DD HH:mm:SS");
+  // result.battery = JSON.parse(resp.body);
   return result;
 
 }
