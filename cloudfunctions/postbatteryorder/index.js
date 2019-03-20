@@ -4,7 +4,7 @@
  */
 
 // wx
-const request = require("request")
+const got = require('got');
 
 // 时间库
 const moment = require('moment');
