@@ -25,42 +25,42 @@ Page({
     currentDate: new Date().getTime(),
     minHour: 10,
     maxHour: 23,
-    time: moment().format(),
+    today: moment().month() + "月" + moment().date() + "日",
 
     picker_columns: [{
         values: [{
-            text: "周一",
+            text: (moment().month() + 1) + "月" + moment().date() + "日",
             disabled: false
           },
           {
-            text: "周二",
+            text: (moment().add(1, 'd').month() + 1) + "月" + moment().add(1, 'd').date() + "日",
             disabled: false
           },
           {
-            text: "周三",
+            text: (moment().add(2, 'd').month() + 1) + "月" + moment().add(2, 'd').date() + "日",
             disabled: false
           },
           {
-            text: "周四",
+            text: (moment().add(3, 'd').month() + 1) + "月" + moment().add(3, 'd').date() + "日",
             disabled: false
           },
           {
-            text: "周五",
+            text: (moment().add(4, 'd').month() + 1) + "月" + moment().add(4, 'd').date() + "日",
             disabled: false
           },
           {
-            text: "周六",
+            text: (moment().add(5, 'd').month() + 1) + "月" + moment().add(5, 'd').date() + "日",
             disabled: false
           },
           {
-            text: "周日",
+            text: (moment().add(6, 'd').month() + 1) + "月" + moment().add(6, 'd').date() + "日",
             disabled: false
           }
         ],
         className: "day"
       },
       {
-        values: daytime["周一"],
+        values: ["18-20时", "20-22时"],
         className: "time"
       }
     ],
@@ -135,16 +135,15 @@ Page({
   },
 
   onTimePicker(e) {
-    console.log(e.detail);
-    var nowDay = new Date().getDay();
-    var columns = this.data.picker_columns;
-    console.log(columns);
-    for (var i = 0; i < nowDay; i++) {
-      columns[0].values[i].disabled = true;
-    }
+    // console.log(e.detail);
+    // var nowDay = new Date().getDay();
+    // var columns = this.data.picker_columns;
+    // console.log(columns);
+    // for (var i = 0; i < nowDay; i++) {
+    //   columns[0].values[i].disabled = true;
+    // }
     this.setData({
-      timepicker_show: true,
-      picker_columns: columns
+      timepicker_show: true
     });
     console.log(this.data.timepicker_show);
   },
@@ -175,12 +174,12 @@ Page({
 
   onPickerChange(e) {
     console.log(e);
-    const {
-      picker,
-      value,
-      index
-    } = e.detail;
-    picker.setColumnValues(1, daytime[value[0].text]);
+    // const {
+    //   picker,
+    //   value,
+    //   index
+    // } = e.detail;
+    // picker.setColumnValues(1, daytime[value[0].text]);
   },
 
   onPickerConfirm(e) {

@@ -47,7 +47,16 @@ Page({
                   user: {
                     battery_point: 50,
                     tea_point: 50,
-                    recycle_records: ['one'],
+                    recycle_records: [{
+                      type: 'teacup',
+                      dataset: {
+                        id: '201911111',
+                        submitTime: '2019-03-20 15:20',
+                        shopId: 1,
+                        cupId: '212313131',
+                        status: true
+                      }
+                    }],
                     logged: true,
                     username: res.userInfo.nickName,
                     avatarUrl: res.userInfo.avatarUrl,
@@ -157,7 +166,31 @@ Page({
           user: {
             battery_point: 50,
             tea_point: 50,
-            recycle_records: ['one'],
+            recycle_records: [{
+                type: 'battery',
+                dataset: {
+                  id: "2019123123",
+                  batterNum: 3,
+                  status: false,
+                  submitTime: '2019-03-20 15:30:11',
+                  contactNumber: '18512855406',
+                  pickedPlace: '15栋731',
+                  pickedTime: "2019-03-27 18-20时",
+                  note: 'Sed non soluta.Eum qui in voluptas. Sed aperiam aut quae ea aliquam veniam. Tempora harum aut eos ducimus cumque corporis alias cupiditate voluptate.'
+                }
+
+              },
+              {
+                type: 'teacup',
+                dataset: {
+                  id: '201911111',
+                  submitTime: '2019-03-20 15:20',
+                  shopId: 1,
+                  cupId: '212313131',
+                  status: true
+                }
+              }
+            ],
             logged: true,
             username: e.detail.userInfo.nickName,
             avatarUrl: e.detail.userInfo.avatarUrl,
@@ -256,6 +289,21 @@ Page({
     let ticket = this.data.user.doll_tickets;
     wx.navigateTo({
       url: '../tickets/tickets?type=doll&doll_tickets=' + JSON.stringify(ticket),
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+  onRecord(e) {
+    let records = this.data.user.recycle_records;
+    wx.navigateTo({
+      url: '../recycleRecords/recycleRecords?records=' + JSON.stringify(records),
       success: function (res) {
         // success
       },

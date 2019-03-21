@@ -1,21 +1,98 @@
 <!-- miniprogram/pages/recycleRecords/recycleRecords.wxml -->
 <view class="header">
-    <text>共{{pending.length+compolish.length}}条记录,{{compolish.length}}条已完成,{{pending.length}}条待处理</text>
+    <text>共{{pending+compolish}}条记录,{{compolish}}条已完成,{{pending}}条待处理</text>
 </view>
-
-<view class="pending">
+<template is="record" wx:for="{{records}}" wx:key="{{index}}" data="{{...item ,...{shop: shop} }}"></template>
+<!-- <template wx:for="{{batteryRecord}}" is="batteryRecord" data="{{...batteryRecord}}"></template>
+<template is="teacupRecord"></template> -->
+<!-- <view class="pending">
     <text class="head">待处理</text>
     <view class="main">
 
         <van-panel class="" title="电池回收" status="PENDING" desc="描述信息" use-footer-slot>
             <view>
-                <van-steps steps="{{batterySteps}}" active="{{ nowStep }}"></van-steps>
+                <!-- 内容 
+                <view >订单编号: {{idCode}}</view>
+                <view >发起时间: {{startTime}}</view>
+                <view >上门时间: {{pickTime}}</view>
             </view>
             <view slot="footer" style="text-align:right">
-                <van-button type="primary" size="small">按钮</van-button>
+                <van-button type="primary" size="small" plain>按钮</van-button>
             </view>
 
         </van-panel>
 
     </view>
-</view>
+</view> -->
+<template name="record">
+    <template is="{{ type=='battery'?'batteryRecord':'teacupRecord' }}" data="{{...dataset,...{shop: shop} }}"></template>
+    <!-- <template wx:if="{{type=='battery'}}" is="batteryRecord" data="{{...dataset}}"></template>
+    <template wx:else is="teacupRecord" data="{{...dataset, ...{shop:shop} }}"></template> -->
+</template>
+<template name="batteryRecord">
+    <van-row>
+        <van-col span="18" offset="3">
+            <view class="record-info">
+                <view class="head">
+                    <view class="title">电池回收记录</view>
+                    <view class="status">
+                        <van-icon wx:if="{{status}}" name="passed" color="#00CC00" size="20px"></van-icon>
+                        <van-icon wx:else name="clock-o" size="20px"></van-icon>
+                    </view>
+                </view>
+                <view class="line"></view>
+                <view class="main-wrap">
+                    <view class="id">订单编号: {{id}}</view>
+                    <view class="contactNumber">联系方式: {{contactNumber}}</view>
+                    <view class="submitTime">提交时间: {{submitTime}}</view>
+                    <view class="submitTime">回收地点: {{pickedPlace}}</view>
+                    <view class="batteryNum">电池数量: {{batterNum}}</view>
+                    <view class="pickTime">上门时间: {{  pickedTime }}</view>
+                    <view class="status">当前状态: {{status?"已完成":"待处理"}}</view>
+                    <view class="status">您的留言: {{note}}</view>
+                </view>
+                <view class="line"></view>
+                <view class="oper">
+                    <van-button data-id="{{id}}" data-type="battery" custom-class="feedback" size="mini" plain type="primary" bindtap="onFeedBack">
+                        反馈
+                    </van-button>
+                    <van-button data-id="{{id}}" data-type="battery" custom-class="question" size="mini" plain type="danger" bindtap="onQuestion">
+                        有疑问?
+                    </van-button>
+                </view>
+            </view>
+        </van-col>
+    </van-row>
+</template>
+<template name="teacupRecord">
+    <van-row>
+        <van-col span="18" offset="3">
+            <view class="record-info">
+                <view class="head">
+                    <view class="title">奶茶杯回收记录</view>
+                    <view class="status">
+                        <van-icon wx:if="{{status}}" name="passed" color="#00CC00" size="20px"></van-icon>
+                        <van-icon wx:else name="clock-o" size="20px"></van-icon>
+                    </view>
+                </view>
+                <view class="line"></view>
+                <view class="main-wrap">
+                    <view class="id">订单编号: {{id}}</view>
+                    <view class="submitTime">提交时间: {{submitTime}}</view>
+                    <view class="shopName">奶茶店: {{ shop[0] }}</view>
+                    <view class="cupId">奶茶杯编号: {{cupId}}</view>
+                    <view class="status">当前状态: {{status?"已完成":"待处理"}}</view>
+                </view>
+                <view class="line"></view>
+                <view class="oper">
+                    <van-button data-id="{{id}}" data-type="teacup" custom-class="feedback" size="mini" plain type="primary" bindtap="onFeedBack">
+                        反馈
+                    </van-button>
+                    <van-button data-id="{{id}}" data-type="teacup" custom-class="question" size="mini" plain type="danger" bindtap="onQuestion">
+                        有疑问?
+                    </van-button>
+                </view>
+            </view>
+        </van-col>
+    </van-row>
+</template>
