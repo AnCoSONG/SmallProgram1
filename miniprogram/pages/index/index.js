@@ -242,21 +242,16 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "postbatteryorder",
+      name: "batterytodollpaper",
       data: {
-        battery: {
-          num: 13                       // 电池个数
-        }
+        cost_light: "6"
       },
       success: res => {
         console.log(res.result);
       },
       fail: err => {
         console.log(err);
-        console.error;
       }
-
-
     });
   }
 })
