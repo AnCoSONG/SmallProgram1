@@ -107,6 +107,27 @@ public class BatteryOrderController {
             map.put("info", e.getStackTrace());
         }
 
+        return map;
+    }
+
+
+    @ApiOperation(value = "根据id查找order" ,  notes="根据订单定位order")
+    @RequestMapping(value = "/batteryorder/get/id/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getById(@PathVariable Integer id) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            BatteryOrder batteryOrder = (BatteryOrder) service.getById(id);
+
+            map.put("code", 0);
+            map.put("data", batteryOrder);
+
+        } catch (NullPointerException e) {
+            map.put("code", 1);
+            map.put("info", e.getStackTrace());
+        }
 
         return map;
     }
