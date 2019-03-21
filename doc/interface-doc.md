@@ -190,15 +190,11 @@
 
 ```javascript
 {
-    shop_id: "1001"                             // 该奶茶的商家id
-    raw_location: {                             // 由gps设备得到的地理信息，用于鉴别用户输入真实性 
-        longitude: "235.4234",                  // 由微信地理定位组件生成的经度数据
-        latitude: "998.5234"                    // 由微信地理定位组件生成的纬度数据
-    },
+    shop_id: 1,                                 // 该奶茶的商家id(改为Number类型)
     user_data: {
-        drink_number: "xoxo123456",       // 奶茶杯上编码
+        drink_number: 123456,                   // 奶茶杯上编码 (改为Number类型)
         drink_pic:  {
-            raw_b64: "hscxjb3=="          // 拍摄图片的base64
+            fileID: "hscxjb3"                   // 拍摄图片的唯一ID（需要提前上传图片拿到id）
         }
     }
 }
