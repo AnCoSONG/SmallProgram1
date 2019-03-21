@@ -17,9 +17,9 @@ public class ItemService extends CanGetAllService {
     private ItemRepository repository;
 
     @Override
-    public void create(BaseEntity entity) {
+    public BaseEntity create(BaseEntity entity) {
 
-        repository.save((Item) entity);
+        return repository.save((Item) entity);
 
     }
 

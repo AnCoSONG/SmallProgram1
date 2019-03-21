@@ -16,8 +16,8 @@ public class BatteryPointService implements  BaseService {
     private BatteryPointRepository repository;
 
     @Override
-    public void create(BaseEntity entity) {
-        repository.save((BatteryPoint) entity);
+    public BaseEntity create(BaseEntity entity) {
+        return repository.save((BatteryPoint) entity);
     }
 
     @Override

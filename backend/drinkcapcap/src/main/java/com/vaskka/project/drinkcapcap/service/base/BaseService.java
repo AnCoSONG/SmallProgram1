@@ -9,7 +9,7 @@ public interface BaseService {
      * 创建record
      * @param entity 实体对象
      */
-    void create(BaseEntity entity) throws DrinkCapcapBaseException;
+    BaseEntity create(BaseEntity entity) throws DrinkCapcapBaseException;
 
 
     /**

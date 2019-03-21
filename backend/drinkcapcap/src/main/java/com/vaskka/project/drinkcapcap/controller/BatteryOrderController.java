@@ -27,12 +27,12 @@ public class BatteryOrderController {
     @ResponseBody
     public Map<String, Object> create(@RequestBody BatteryOrder order) {
 
-        service.create(order);
+        BatteryOrder orderCreated = service.create(order);
 
         Map<String, Object> map = new HashMap<>();
 
         map.put("code", 0);
-
+        map.put("data", orderCreated);
         return map;
     }
 

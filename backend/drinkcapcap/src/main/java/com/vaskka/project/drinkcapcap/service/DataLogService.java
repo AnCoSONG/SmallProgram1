@@ -31,8 +31,8 @@ public class DataLogService extends CanGetAllService implements BaseService {
     }
 
     @Override
-    public void create(BaseEntity entity) {
-        repository.save((DataLog) entity);
+    public BaseEntity create(BaseEntity entity) {
+        return repository.save((DataLog) entity);
     }
 
     @Override

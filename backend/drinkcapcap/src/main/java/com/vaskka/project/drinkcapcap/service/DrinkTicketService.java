@@ -39,7 +39,7 @@ public class DrinkTicketService implements BaseService {
     DrinkControlRepository controlRepository;
 
     @Override
-    public void create(BaseEntity entity) throws TicketNumberNotEnoughException, ItemShopCombineNotExistException {
+    public BaseEntity create(BaseEntity entity) throws TicketNumberNotEnoughException, ItemShopCombineNotExistException {
 
         DrinkTicket ticket = (DrinkTicket) entity;
         Optional<DrinkControl> control = controlRepository.findByShopIdAndItemId(ticket.getShop_id(), ticket.getItem_id());
@@ -64,7 +64,7 @@ public class DrinkTicketService implements BaseService {
 
         ticket.setDone(false);
         ticket.setCreate_time(new Timestamp(new Date().getTime()));
-        repository.save(ticket);
+        return repository.save(ticket);
     }
 
     @Override

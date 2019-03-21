@@ -23,9 +23,29 @@ public class BatteryOrder extends BaseEntity {
 
     private String free_time;
 
+    private String tel;
+
     private String user_location;
 
     private  String real_location;
+
+    public BatteryOrder(Timestamp createTime, String free_time, String tel, String user_location, String real_location, String note, Integer battery_num, String openid, Boolean done, Timestamp done_time) {
+        this.createTime = createTime;
+        this.free_time = free_time;
+        this.tel = tel;
+        this.user_location = user_location;
+        this.real_location = real_location;
+        this.note = note;
+        this.battery_num = battery_num;
+        this.openid = openid;
+        this.done = done;
+        this.done_time = done_time;
+    }
+
+
+    @Lob
+    @Column(columnDefinition = "text")
+    private String note;
 
     public String getFreeTime() {
         return free_time;
@@ -55,15 +75,45 @@ public class BatteryOrder extends BaseEntity {
         this.done = done;
     }
 
-    public BatteryOrder(Timestamp createTime, String freeTime, String userLocation, String realLocation, Integer battery_num, String openid, Boolean done, Timestamp done_time) {
-        this.createTime = createTime;
-        this.free_time = freeTime;
-        this.user_location = userLocation;
-        this.real_location = realLocation;
-        this.battery_num = battery_num;
-        this.openid = openid;
-        this.done = done;
-        this.done_time = done_time;
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+
+    public String getFree_time() {
+        return free_time;
+    }
+
+    public void setFree_time(String free_time) {
+        this.free_time = free_time;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getUser_location() {
+        return user_location;
+    }
+
+    public void setUser_location(String user_location) {
+        this.user_location = user_location;
+    }
+
+    public String getReal_location() {
+        return real_location;
+    }
+
+    public void setReal_location(String real_location) {
+        this.real_location = real_location;
     }
 
     private Integer battery_num;

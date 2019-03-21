@@ -27,12 +27,12 @@ public class DollPaperService implements BaseService {
 
 
     @Override
-    public void create(BaseEntity entity) {
+    public BaseEntity create(BaseEntity entity) {
 
         DollPaper paper = (DollPaper) entity;
         paper.setValid(true);
         paper.setCreate_time(new Timestamp(new Date().getTime()));
-        repository.save((DollPaper) entity);
+        return repository.save((DollPaper) entity);
     }
 
     @Override

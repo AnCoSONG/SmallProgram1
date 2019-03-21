@@ -31,10 +31,12 @@
 
 ```javascript
 {
+    note："留言信息",                  // 用户留言
+    tel: "15100000000",               // 用户联系方式
     user_location: {                  // 用户输入地理位置
         school: "Default",            // 固定参数，用于后期扩展功能
         building: 7,                  // 楼栋数，Number类型
-        room: "201"                 // 具体寝室号，String类型
+        room: "201"                   // 具体寝室号，String类型
     },
     rest_time: "2019-02-04 16-18",
     battery: {
@@ -52,6 +54,7 @@
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     battery: {
+        order_id: 123,                          // 订单id
         num: 13                                 // 提交成功的电池个数，失败返回0
     }
 }

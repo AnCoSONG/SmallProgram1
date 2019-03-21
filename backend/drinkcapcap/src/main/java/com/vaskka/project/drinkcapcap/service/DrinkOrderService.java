@@ -29,10 +29,10 @@ public class DrinkOrderService implements BaseService {
     DrinkOrderRepository repository;
 
     @Override
-    public void create(BaseEntity entity) {
+    public BaseEntity create(BaseEntity entity) {
         ((DrinkOrder) entity).setDone(false);
         ((DrinkOrder) entity).setCreate_time(new Timestamp(new Date().getTime()));
-        repository.save((DrinkOrder) entity);
+        return repository.save((DrinkOrder) entity);
     }
 
     @Override

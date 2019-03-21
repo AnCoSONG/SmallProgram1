@@ -18,9 +18,9 @@ public class ShopService extends CanGetAllService {
 
 
     @Override
-    public void create(BaseEntity entity) {
+    public BaseEntity create(BaseEntity entity) {
 
-        repository.save((Shop) entity);
+        return repository.save((Shop) entity);
 
     }
 

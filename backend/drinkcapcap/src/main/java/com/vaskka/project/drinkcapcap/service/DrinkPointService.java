@@ -18,7 +18,8 @@ public class DrinkPointService extends CanGetAllService {
 
     @Deprecated
     @Override
-    public void create(BaseEntity entity) {
+    public BaseEntity create(BaseEntity entity) {
+        return null;
     }
 
     @Override

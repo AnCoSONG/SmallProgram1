@@ -37,14 +37,19 @@ exports.main = async (event, context) => {
     json: true,
     body: {
       battery_num: 0,
-      createTime: result.serv_time,
-      freeTime: event.rest_time,
+      free_time: event.rest_time,
       openid: wxContext.OPENID,
       realLocation: "",
-      userLocation: lo
+      userLocation: lo,
+      note: event.note,
+      tel: event.tel
     }
 
   });
+
+  let resp_obj = JSON.parse(resp.body);
+
+  result.battery.order_id = resp_obj.data.id;
 
   return result;
 

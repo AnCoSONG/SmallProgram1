@@ -18,7 +18,7 @@ public class DrinkControlService extends CanGetAllService {
 
 
     @Override
-    public void create(BaseEntity entity) {
+    public BaseEntity create(BaseEntity entity) {
 
         DrinkControl control = (DrinkControl) entity;
 
@@ -28,10 +28,10 @@ public class DrinkControlService extends CanGetAllService {
         if (res.isPresent()) {
             DrinkControl controlInner = res.get();
             controlInner.setNumber(control.getNumber());
-            repository.save(controlInner);
+            return repository.save(controlInner);
         }
         else {
-            repository.save(control);
+            return repository.save(control);
         }
 
     }

@@ -23,10 +23,12 @@ public class BatteryOrderService implements BaseService {
 
 
     @Override
-    public void create(BaseEntity entity) {
+    public BatteryOrder create(BaseEntity entity) {
         ((BatteryOrder) entity).setDone(false);
         ((BatteryOrder) entity).setCreateTime(new Timestamp(new Date().getTime()));
-        repository.save((BatteryOrder) entity);
+        return repository.save((BatteryOrder) entity);
+
+
     }
 
     @Override

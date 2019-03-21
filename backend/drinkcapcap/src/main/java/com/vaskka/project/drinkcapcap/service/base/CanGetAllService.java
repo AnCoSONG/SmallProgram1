@@ -13,8 +13,8 @@ public abstract class CanGetAllService implements BaseService {
     public abstract List<BaseEntity> getAll();
 
     @Override
-    public void create(BaseEntity entity) {
-
+    public BaseEntity create(BaseEntity entity) {
+        return null;
     }
 
     @Override
