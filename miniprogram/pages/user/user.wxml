@@ -27,7 +27,7 @@
                 <van-cell wx:else title="请先登录" icon="warn-o" value="点击头像登录" bindtap="onTapDebug"></van-cell>
             </van-collapse-item>
             <van-collapse-item name="my_recycle_records" title="我的回收记录" icon="records" value="{{'共'+user.recycle_records.length+'次'}}" label="{{ recycle_records_label}}">
-                <van-cell wx:if="{{  user.logged &&  user.recycle_records.length!=0 }}" title="详细记录" value="点此查看" is-link url="../recycleRecords/recycleRecords"></van-cell>
+                <van-cell wx:if="{{  user.logged &&  user.recycle_records.length!=0 }}" title="详细记录" value="点此查看" is-link bindtap="onRecord"></van-cell>
                 <van-cell wx:elif="{{  user.logged }}" icon="info-o" title="您没有回收记录" value="如何完成一次回收?" is-link></van-cell>
                 <van-cell wx:else title="请先登录" icon="warn-o" value="点击头像登录" bindtap="onTapDebug"></van-cell>
             </van-collapse-item>

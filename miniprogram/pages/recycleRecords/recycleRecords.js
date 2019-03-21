@@ -5,6 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    shop: [
+      "益禾堂 - 中南大学店",
+      "益禾堂 - 后湖小区店",
+      "书亦烧仙草 - 中南大学店",
+      "蜜雪冰城 - 中南大学店",
+      "茶颜悦色 - 青年路步行街店",
+      "阿里山贡茶 - 中南大学店",
+      "甘茗城 - 后湖小区店"
+    ],
+    pending: 0,
+    compolish: 0
 
   },
 
@@ -12,10 +23,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let records = JSON.parse(options.records)
     this.setData({
-      pending: [{}, {}],
-      compolish: [{}, {}]
-    })
+      records: records
+    });
+    this.setPendingCompolish(this.data.records)
   },
 
   /**
@@ -65,5 +77,21 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  setPendingCompolish(list) {
+    var compolish = this.data.compolish
+    var pending = this.data.pending
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].dataset.status) {
+        compolish++
+      } else {
+        pending++
+      }
+    }
+    this.setData({
+      compolish: compolish,
+      pending: pending
+    })
   }
 })
