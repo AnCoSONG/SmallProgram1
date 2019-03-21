@@ -239,19 +239,19 @@
             {
                 number: 20,
                 shop: {
-                    _id: "0001",                      // 商家唯一id
+                    id: "0001",                      // 商家唯一id
                     name: "益禾堂",                   // 商家名称
                     other_name: "中南大学店"           // 上架分店名称
                 }
             }
         ],
-        tickets: [                               // 奶茶券列表
+        tickets: [                                   // 奶茶券列表
             {
-                _id: "21jws7dfdc",             // id
+                id: "21jws7dfdc",                   // id
                 create_time: "2018-12-30 13:30:34",  // 创建时间
                 effect_time: "48",                   // 有效时间（单位：小时）
                 shop: {
-                    _id: "0001",                      // 商家唯一id
+                    id: "0001",                      // 商家唯一id
                     name: "益禾堂",                   // 商家名称
                     other_name: "中南大学店"           // 上架分店名称
                 },
@@ -261,11 +261,11 @@
                 }
             },
             {
-                _id: "dcdu33as9c",             // id
+                id: "dcdu33as9c",             // id
                 create_time: "2019-01-30 12:20:20",  // 创建时间
                 effect_time: "24",                   // 有效时间（单位：小时）
                 shop: {
-                    _id: "0001",                      // 上架唯一id
+                    id: "0001",                      // 上架唯一id
                     name: "书亦烧仙草",                // 商家名称
                     other_name: "中南大学店"           // 上架分店名称
                 },
