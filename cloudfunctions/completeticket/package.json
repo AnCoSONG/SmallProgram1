@@ -1,5 +1,5 @@
 {
-  "name": "completedrinkpay",
+  "name": "completeticket",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "got": "^9.6.0",
     "moment": "^2.24.0",
     "wx-server-sdk": "latest"
   }

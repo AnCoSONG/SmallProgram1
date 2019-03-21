@@ -180,7 +180,7 @@
             effect_time: "48",                       // 有效时间（单位:小时）
             owner: "saxc76tf"                        // 持有者的openid
         }
-    ]                         
+    ]
     }
 }
 ```
@@ -258,7 +258,9 @@
                 item: {
                     item_type: 0,                    // 商品类型
                     name: "__any__"                  // 商品名称：__any__表示任意商品 其他为某个特定商品
-                }
+                },
+                done: false,                         // 是否已经使用 true-已经使用 false-未尝使用
+                valid: true                          // 是否有效 true-仍然有效 false-无效
             },
             {
                 id: "dcdu33as9c",             // id
@@ -272,7 +274,9 @@
                 item: {
                     item_type: 1,                    // 商品类型
                     name: "小芋圆烧仙草"               // 商品名称：__any__表示任意单品 其他为某个特定商品
-                }
+                },
+                done: false,                         // 是否已经使用 true-已经使用 false-未尝使用
+                valid: true                          // 是否有效 true-仍然有效 false-无效
             },
             ...
         ]
@@ -348,10 +352,19 @@
     serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
-    roles: {
-        single: "8:1",                          // 一般商品
-        recommand: "6:1"                        // 每月推荐单品
-    }
+    roles: [
+        {
+            type: "normal",
+            cost: 8,
+            get: 1
+        },
+        {
+            type: "month",
+            cost: 6,
+            get: 1
+        }
+
+    ]
 }
 ```
 

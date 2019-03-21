@@ -242,15 +242,9 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "postdrinkorder",
+      name: "completeticket",
       data: {
-        shop_id: 1,                                 // 该奶茶的商家id(改为Number类型)
-        user_data: {
-          drink_number: 123456,                     // 奶茶杯上编码 (改为Number类型)
-          drink_pic: {
-            fileID: "hscxjb3"                       // 拍摄图片的唯一ID（需要提前上传图片拿到id）
-          }
-        }
+        ticket_id: "1"
       },
       success: res => {
         console.log(res.result);
