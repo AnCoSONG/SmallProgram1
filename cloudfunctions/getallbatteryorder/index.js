@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
 
   let result = {
     serv_time: moment().format("YYYY-MM-DD HH:mm:SS"),
-    data : null
+    orders : null
   }
 
   await got('http://129.204.216.249:8080/batteryorder/get/' + wxContext.OPENID, {
@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
   }).then(function (resolve) {
     let list = JSON.parse(resolve.body).data;
 
-    result.data = list;
+    result.orders = list;
   });
 
   return result;

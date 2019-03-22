@@ -41,15 +41,17 @@ exports.main = async (event, context) => {
       openid: wxContext.OPENID,
       realLocation: "",
       userLocation: lo,
-      note: event.note,
+      note: event.note == null ? "" : event.note,
       tel: event.tel
     }
 
   });
 
-  let resp_obj = JSON.parse(resp.body);
+  // console.log(resp.body.data);
 
-  result.battery.order_id = resp_obj.data.id;
+  // let resp_obj = JSON.parse(resp.body);
+
+  result.battery.order_id = resp.body.data.id;
 
   return result;
 
