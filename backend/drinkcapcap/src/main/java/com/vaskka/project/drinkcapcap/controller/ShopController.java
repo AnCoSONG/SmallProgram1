@@ -38,6 +38,7 @@ public class ShopController extends CanGetAllController {
         return res;
     }
 
+    @Override
     @ApiOperation(value = "获取全部商家记录" ,  notes="获取全部商家信息")
     @RequestMapping(value = "/shop/all", method = RequestMethod.GET)
     @ResponseBody

@@ -1,5 +1,6 @@
 package com.vaskka.project.drinkcapcap.controller;
 
+import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.service.BatteryOrderService;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 @Api(description = "电池订单接口")
 @Controller
-public class BatteryOrderController {
+public class BatteryOrderController extends CanGetAllController {
 
     @Autowired
     private BatteryOrderService service;
@@ -130,5 +131,13 @@ public class BatteryOrderController {
         }
 
         return map;
+    }
+
+    @Override
+    @ApiOperation(value = "查找全部order" ,  notes="查找全部")
+    @RequestMapping(value = "/batteryorder/get/all", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getAll() {
+        return this.innerGetAll(service);
     }
 }

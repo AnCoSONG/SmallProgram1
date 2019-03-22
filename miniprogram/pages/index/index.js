@@ -242,7 +242,7 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "completeticket",
+      name: "getallbatteryorder",
       data: {
         ticket_id: "1"
       },

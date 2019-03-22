@@ -5,6 +5,7 @@ import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.jpa.DrinkOrderRepository;
 import com.vaskka.project.drinkcapcap.service.base.BaseService;
+import com.vaskka.project.drinkcapcap.service.base.CanGetAllService;
 import com.vaskka.project.drinkcapcap.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,15 @@ import java.util.List;
  **/
 
 @Service
-public class DrinkOrderService implements BaseService {
+public class DrinkOrderService extends CanGetAllService implements BaseService {
 
     @Autowired
     DrinkOrderRepository repository;
+
+    @Override
+    public List<BaseEntity> getAll() {
+        return this.innerGetAll(repository);
+    }
 
     @Override
     public BaseEntity create(BaseEntity entity) {

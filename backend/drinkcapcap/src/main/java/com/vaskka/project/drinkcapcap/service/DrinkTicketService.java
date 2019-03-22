@@ -14,6 +14,7 @@ import com.vaskka.project.drinkcapcap.exceptions.TicketNumberNotEnoughException;
 import com.vaskka.project.drinkcapcap.jpa.DrinkControlRepository;
 import com.vaskka.project.drinkcapcap.jpa.DrinkTicketRepository;
 import com.vaskka.project.drinkcapcap.service.base.BaseService;
+import com.vaskka.project.drinkcapcap.service.base.CanGetAllService;
 import com.vaskka.project.drinkcapcap.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ import java.util.Optional;
 
 
 @Service
-public class DrinkTicketService implements BaseService {
+public class DrinkTicketService extends CanGetAllService implements BaseService {
 
     @Autowired
     DrinkTicketRepository repository;
@@ -37,6 +38,11 @@ public class DrinkTicketService implements BaseService {
 
     @Autowired
     DrinkControlRepository controlRepository;
+
+    @Override
+    public List<BaseEntity> getAll() {
+        return this.innerGetAll(repository);
+    }
 
     @Override
     public BaseEntity create(BaseEntity entity) throws TicketNumberNotEnoughException, ItemShopCombineNotExistException {

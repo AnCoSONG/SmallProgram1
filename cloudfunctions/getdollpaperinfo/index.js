@@ -37,8 +37,5 @@ exports.main = async (event, context) => {
   else {
     result.doll_paper = resp_obj.data;
   }
-
-
-
   return result;
 }
