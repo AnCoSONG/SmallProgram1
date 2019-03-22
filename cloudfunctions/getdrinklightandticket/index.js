@@ -56,7 +56,7 @@ exports.main = async (event, context) => {
 
   }).then(function (res) {
 
-    console.log(res.body);
+    // console.log(res.body);
 
     let data = JSON.parse(res.body);
 
@@ -64,8 +64,8 @@ exports.main = async (event, context) => {
       let _shop_id = obj.shop_id;
 
       let model_shop = null;
-      for (let _shop of shop_list) {
-        if (_shop.shop_id == _shop_id) {
+      for (let _shop of all_shops) {
+        if (_shop.id == _shop_id) {
           model_shop = _shop;
           break;
         }
@@ -97,6 +97,9 @@ exports.main = async (event, context) => {
       let shopid = obj.shop_id;
       let itemid = obj.item_id;
 
+      console.log(shopid);
+      console.log(itemid);
+
       let _shop_model = null;
       let _item_model = null;
 
@@ -113,6 +116,10 @@ exports.main = async (event, context) => {
           break;
         }
       }
+
+      console.log(_shop_model);
+      console.log(_item_model);
+
       ticket_list.push({
         id: obj.id,
         create_time: obj.createTime,
@@ -132,7 +139,7 @@ exports.main = async (event, context) => {
   await Promise.all(all);
   
   result.drink.lights = light_list;
-  result.drink.tickets = light_list;
+  result.drink.tickets = ticket_list;
   result.status = "SUCCESS";
   reason = "success";
 

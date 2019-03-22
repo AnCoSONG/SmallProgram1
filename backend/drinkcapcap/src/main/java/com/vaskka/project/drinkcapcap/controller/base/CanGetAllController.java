@@ -7,7 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CanGetAllController {
+public abstract class CanGetAllController {
+
+    /**
+     * 获取全部接口
+     * @return HashMap
+     */
+    public abstract Map<String, Object> getAll();
 
     /**
      * 获取全部Item

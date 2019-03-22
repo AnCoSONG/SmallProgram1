@@ -98,12 +98,12 @@
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     doll_paper: [                               // 当前抓娃娃券的数目
         {
-            _id: "abx5c78",                           // 娃娃券id
+            id: "abx5c78",                           // 娃娃券id
             create_time: "2019-03-02 17:30:21",      // 创建时间
             effect_time: "32"                        // 有效时间（单位:小时）
         },
         {
-            _id: "jx7dfcbx",                          // 娃娃券id
+            id: "jx7dfcbx",                          // 娃娃券id
             create_time: "2019-04-05 12:30:33",      // 创建时间
             effect_time: "48"                        // 有效时间（单位:小时）
         }
@@ -387,5 +387,98 @@
     serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
     reason: "success"                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+}
+```
+
+## 获取全部的奶茶订单
+
+### 传入参数
+
+```javascript
+```
+
+### 返回参数
+
+```javascript
+{
+    serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
+    status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
+    reason: "success",                         // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+    orders: [
+        {
+            "id": 2,
+            "cup_id": 1999,
+            "openid": "test1",
+            "createTime": "2019-03-21 13:49:08",
+            "img_url": "string",
+            "shop_id": 1,
+            "done": false,
+            "done_time": null,
+        },
+        {
+            "id": 3,
+            "cup_id": 1989,
+            "openid": "test1",
+            "createTime": "2019-03-21 13:49:08",
+            "img_url": "string",
+            "shop_id": 1,
+            "done": false,
+            "done_time": null,
+        }
+    ]
+
+}
+```
+
+
+## 获取全部的电池回收订单
+
+### 传入参数
+
+```javascript
+```
+
+### 返回参数
+
+```javascript
+{
+    serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
+    status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
+    reason: "success",                         // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+    orders: [
+        {
+            "id": 10,
+            "createTime": "2019-03-21 08:35:00",
+            "free_time": "2019-03-04 18-19",
+            "tel": "15145050156",
+            "user_location": "7-201",
+            "real_location": "17,18",
+            "note": "something",
+            "battery_num": 12,
+            "openid": "oid2",
+            "done": false,
+            "done_time": null,
+            "freeTime": "2019-03-04 18-19",
+            "userLocation": "7-201",
+            "realLocation": "17,18"
+        },
+        {
+            "id": 9,
+            "createTime": "2019-03-21 08:33:54",
+            "free_time": "2019-03-04 18-19",
+            "tel": "15145050156",
+            "user_location": "7-201",
+            "real_location": "17,18",
+            "note": "something",
+            "battery_num": 13,
+            "openid": "oid1",
+            "done": false,
+            "done_time": null,
+            "freeTime": "2019-03-04 18-19",
+            "userLocation": "7-201",
+            "realLocation": "17,18"
+        }
+    ]
+
 }
 ```

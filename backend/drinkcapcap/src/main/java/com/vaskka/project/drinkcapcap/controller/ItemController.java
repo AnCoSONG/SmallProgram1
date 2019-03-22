@@ -37,6 +37,7 @@ public class ItemController extends CanGetAllController {
      * 获取全部Item
      * @return HashMap => json
      */
+    @Override
     @ApiOperation(value = "获取全部商品记录" ,  notes="获取全部商品信息")
     @RequestMapping(value = "/item/all", method = RequestMethod.GET)
     @ResponseBody

@@ -1,0 +1,16 @@
+{
+  "name": "getallbatteryorder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "got": "^9.6.0",
+    "moment": "^2.24.0",
+    "wx-server-sdk": "^0.2.1"
+  },
+  "description": ""
+}

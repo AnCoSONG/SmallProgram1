@@ -4,6 +4,7 @@ import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.jpa.BatteryOrderRepository;
 import com.vaskka.project.drinkcapcap.service.base.BaseService;
+import com.vaskka.project.drinkcapcap.service.base.CanGetAllService;
 import com.vaskka.project.drinkcapcap.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,15 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class BatteryOrderService implements BaseService {
+public class BatteryOrderService extends CanGetAllService implements BaseService {
     @Autowired
     private BatteryOrderRepository repository;
 
+
+    @Override
+    public List<BaseEntity> getAll() {
+        return this.innerGetAll(repository);
+    }
 
     @Override
     public BatteryOrder create(BaseEntity entity) {

@@ -7,6 +7,7 @@ import com.vaskka.project.drinkcapcap.entity.DollPaper;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.jpa.DollPaperRepository;
 import com.vaskka.project.drinkcapcap.service.base.BaseService;
+import com.vaskka.project.drinkcapcap.service.base.CanGetAllService;
 import com.vaskka.project.drinkcapcap.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,11 +21,16 @@ import org.springframework.stereotype.Service;
  **/
 
 @Service
-public class DollPaperService implements BaseService {
+public class DollPaperService extends CanGetAllService implements BaseService {
 
     @Autowired
     DollPaperRepository repository;
 
+
+    @Override
+    public List<BaseEntity> getAll() {
+        return this.innerGetAll(repository);
+    }
 
     @Override
     public BaseEntity create(BaseEntity entity) {

@@ -1,6 +1,7 @@
 package com.vaskka.project.drinkcapcap.controller;
 
 
+import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.BatteryPoint;
 import com.vaskka.project.drinkcapcap.service.BatteryPointService;
 import io.swagger.annotations.Api;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 @Api(description = "电池积分接口")
 @Controller
-public class BatteryPointController {
+public class BatteryPointController extends CanGetAllController {
 
     @Autowired
     private BatteryPointService service;
@@ -56,4 +57,11 @@ public class BatteryPointController {
         return map;
     }
 
+    @Override
+    @ApiOperation(value = "查找全部积分记录" ,  notes="查找全部积分记录")
+    @RequestMapping(value = "/batterypoint/get/all", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getAll() {
+        return this.innerGetAll(service);
+    }
 }
