@@ -5,7 +5,14 @@
     <text class="count" wx:else>共 {{battery_point}} 分</text>
 </view>
 <view class="divLine"></view>
-<van-cell-group>
+<view wx:if="{{type=='tea'}}">
+    <template wx:for="{{shop_list}}" is="teacupTicket" data="{{ ...item,...{index: index, tea_point_list:tea_point_list} }}"></template>
+</view>
+<view wx:else>
+    <template is="batteryTicket" data="{{ ...{bp: battery_point} }}"></template>
+</view>
+<!-- <template wx:elif="{{type=='battery'}}" is="batteryTicket" data="{{ ,...{ bp: battery_point } }}"></template> -->
+<!-- <van-cell-group>
     <view wx:if="{{type=='tea'}}">
         <van-panel data-id="0001" title="奶茶券 - 任意单品" desc="适用于: 益禾堂 - 中南大学店" status="{{ 8 }}分" use-footer-slot>
             <view slot="footer" style="text-align: right;">
@@ -80,4 +87,52 @@
             </view>
         </van-panel>
     </view>
-</van-cell-group>
+</van-cell-group> -->
+<template name="teacupTicket">
+    <van-row>
+        <van-col span="20" offset="2">
+            <view class="card">
+                <view class="head">
+                    <view class="shopName">{{name}}</view>
+                    <view class="points">{{tea_point_list[index]}}</view>
+                </view>
+                <view class="line"></view>
+                <view class="context" wx:for="{{tick}}" wx:for-index="id">
+                    <view class="eachTicket">
+                        <view class="desc">{{item.name+"券"}}</view>
+                        <view class="point">{{"需" + item.point + "分"}}</view>
+                        <view class="oper">
+                            <van-button size="small" data-exchangeID="{{index+' '+id}}" bindtap="onExchangeTeacup" type="primary" plain custom-class="custombtn" disabled="{{tea_point_list[index]<item.point}}">
+                                兑换
+                            </van-button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-col>
+    </van-row>
+</template>
+<template name="batteryTicket">
+    <van-row>
+        <van-col span="20" offset="2">
+            <view class="card">
+                <view class="head">
+                    <view class="shopName">指定店铺</view>
+                    <view class="points">{{bp}}</view>
+                </view>
+                <view class="line"></view>
+                <view class="context">
+                    <view class="eachTicket">
+                        <view class="desc">娃娃券</view>
+                        <view class="point">需8分</view>
+                        <view class="oper">
+                            <van-button size="small" type="primary" bindtap="onExchangeBattery" plain custom-class="custombtn" disabled="{{battery_point < 8}}">
+                                兑换
+                            </van-button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-col>
+    </van-row>
+</template>

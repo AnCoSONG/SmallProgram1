@@ -79,7 +79,7 @@
                 <view class="main-wrap">
                     <view class="id">订单编号: {{id}}</view>
                     <view class="submitTime">提交时间: {{submitTime}}</view>
-                    <view class="shopName">奶茶店: {{ shop[0] }}</view>
+                    <view class="shopName">奶茶店: {{ shop[shopId] }}</view>
                     <view class="cupId">奶茶杯编号: {{cupId}}</view>
                     <view class="status">当前状态: {{status?"已完成":"待处理"}}</view>
                 </view>

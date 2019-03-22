@@ -16,3 +16,93 @@
     margin: 10rpx 0rpx;
     margin-bottom: 0rpx;
 }
+
+.card {
+    width: 100%;
+    background-color: transparent;
+
+    margin: 30rpx 0;
+
+}
+
+.card .head {
+    padding: 20rpx 10rpx;
+    background-color: white;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    z-index: 10;
+
+}
+
+.card .head .shopName {
+    color: #333;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 36rpx;
+    letter-spacing: 1.5rpx;
+    margin: 20rpx 15rpx;
+}
+
+.card .head .points {
+    float: right;
+    clear: both;
+    font-size: 30rpx;
+    margin: 22rpx 15rpx;
+}
+
+.card .context {
+    font-size: 28rpx;
+    padding: 20rpx;
+    /* z-index: 8; */
+    width: 90%;
+    margin: 0 auto;
+    background-color: white;
+
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+}
+
+.card .context:nth-child(odd) {
+    z-index: 9;
+}
+
+.card .context:nth-child(even) {
+    z-index: 8;
+}
+
+.card .context:last-child {
+    border-bottom-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+}
+
+.card .context .eachTicket .desc,
+.card .context .eachTicket .oper,
+.card .context .eachTicket .point {
+    display: inline-block;
+}
+
+.card .context .eachTicket .oper {
+    float: right;
+    clear: both;
+}
+
+.card .context .eachTicket .point {
+    color: #444;
+    font-size: 24rpx;
+    vertical-align: middle;
+    margin-left: 20rpx;
+}
+
+.card .line {
+    background-color: #eee;
+    width: 100%;
+    margin-top: 10rpx;
+}
+
+.card .context .eachTicket .oper .custombtn {
+    height: 23px;
+    vertical-align: top;
+    line-height: 20px;
+    letter-spacing: 2.5px;
+}

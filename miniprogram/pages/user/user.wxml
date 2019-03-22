@@ -13,8 +13,8 @@
         <van-collapse accordion value="{{ activeNames }}" bind:change="onChangeCollapse">
             <van-collapse-item name="my_point" title="我的积分" icon="balance-o" label="{{point_desc}}" value="{{ '共'+(user.tea_point+user.battery_point)+'分' }}">
                 <van-cell-group wx:if="{{user.logged}}">
-                    <van-cell title="奶茶积分" is-link value="{{ user.tea_point+'分' }}" url="../points/points?type=tea&tea_point={{user.tea_point}}" />
-                    <van-cell title="电池积分" is-link value="{{ user.battery_point+'分' }}" url="../points/points?type=battery&battery_point={{user.battery_point}}" />
+                    <van-cell title="奶茶积分" is-link value="{{ user.tea_point+'分' }}" bindtap="onTeaCupPoint" />
+                    <van-cell title="电池积分" is-link value="{{ user.battery_point+'分' }}" bindtap="onBatteryPoint" url="../points/points?type=battery&battery_point={{user.battery_point}}" />
                     <van-cell title="如何快速赚取积分?" is-link />
                 </van-cell-group>
                 <van-cell wx:else title="请先登录" icon="warn-o" value="点击头像登录" bindtap="onTapDebug"></van-cell>
@@ -43,6 +43,8 @@
         </view> -->
     </van-col>
 </van-row>
+<van-toast id="loading"></van-toast>
+<van-toast id="error"></van-toast>
 <template name="item">
     <view class="btn-item">
         <van-button custom-class="me_btn" type="default" size="large">{{ name }}</van-button>

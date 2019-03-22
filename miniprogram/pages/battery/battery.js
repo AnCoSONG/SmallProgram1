@@ -29,10 +29,6 @@ Page({
 
     picker_columns: [{
         values: [{
-            text: (moment().month() + 1) + "月" + moment().date() + "日",
-            disabled: false
-          },
-          {
             text: (moment().add(1, 'd').month() + 1) + "月" + moment().add(1, 'd').date() + "日",
             disabled: false
           },
@@ -54,6 +50,10 @@ Page({
           },
           {
             text: (moment().add(6, 'd').month() + 1) + "月" + moment().add(6, 'd').date() + "日",
+            disabled: false
+          },
+          {
+            text: (moment().add(7, 'd').month() + 1) + "月" + moment().add(7, 'd').date() + "日",
             disabled: false
           }
         ],
@@ -184,8 +184,9 @@ Page({
 
   onPickerConfirm(e) {
     console.log(e.detail);
+    let prefix = moment().add(e.detail.index[0] + 1, 'd').format("YYYY-MM-DD");
     this.setData({
-      pickedTime: e.detail.value[0]["text"] + " " + e.detail.value[1]
+      pickedTime: prefix + " " + e.detail.value[1]
     });
     this.onCloseTimePicker(e);
   },
