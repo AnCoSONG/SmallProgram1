@@ -32,7 +32,7 @@
     </van-col>
   </view>
 </van-row> -->
-<view class="touch" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchcancel="touchend" bindtouchend="touchend">
+<view class="touch">
   <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
     <block wx:for="{{imgUrls}}" wx:for-item="item">
       <swiper-item>

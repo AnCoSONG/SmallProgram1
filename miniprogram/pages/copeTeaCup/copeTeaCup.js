@@ -99,19 +99,28 @@ Page({
           forbidClick: true, // 禁用背景点击
           message: '正在上传',
           selector: '#submit-toast'
+        });
+
+        var p = new Promise((resolve, reject) => {
+
+
+        }).then(function (res) {
+
+        }).catch(function (error) {
+
         })
       } else {
         Toast.fail({
-          duration:2000,
-          message:'未选择图片',
-          selector:'#no-img'
+          duration: 2000,
+          message: '未选择图片',
+          selector: '#no-img'
         })
       }
     } else {
       Toast.fail({
         duration: 2000,
-        message:'未填写编号',
-        selector:'#no-code'
+        message: '未填写编号',
+        selector: '#no-code'
       })
     }
   },
@@ -145,7 +154,7 @@ Page({
   chooseWxImage(type) {
     let that = this
     wx.chooseImage({
-      count: 9, // 最多可以选择的图片张数，默认9
+      count: 1, // 最多可以选择的图片张数，默认9
       sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
       sourceType: [type], // album 从相册选图，camera 使用相机，默认二者都有
       success: function (res) {

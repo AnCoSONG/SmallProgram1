@@ -1,4 +1,5 @@
 // miniprogram/pages/points.js
+
 Page({
 
   /**
@@ -6,7 +7,73 @@ Page({
    */
   data: {
     type: '',
+    tea_point_list: new Array(7).fill(0),
+    shop_list: [{
+      name: '益禾堂 — 中南大学店',
+      tick: [{
+        name: '任意单品',
+        point: 8
+      }, {
+        name: '四季奶青',
+        point: 6
+      }]
+    }, {
+      name: '益禾堂 — 后湖小区店',
+      tick: [{
+        name: '任意单品',
+        point: 8
+      }, {
+        name: '牛奶烧仙草',
+        point: 6
+      }]
+    }, {
+      name: '书亦烧仙草 — 中南大学店',
+      tick: [{
+        name: '任意单品',
+        point: 8
+      }, {
+        name: '小芋圆烧仙草',
+        point: 6
+      }]
 
+    }, {
+      name: '蜜雪冰城 — 中南大学店',
+      tick: [{
+        name: '任意单品',
+        point: 8
+      }, {
+        name: '蜂蜜柚子茶',
+        point: 6
+      }]
+
+    }, {
+      name: '茶颜悦色 — 青年路步行街店',
+      tick: [{
+        name: '任意单品',
+        point: 8
+      }, {
+        name: '幽兰拿铁',
+        point: 6
+      }]
+
+    }, {
+      name: '阿里山贡茶 — 中南大学店',
+      tick: [{
+        name: '任意单品',
+        point: 8
+      }, {
+        name: '熊猫奶盖茶',
+        point: 6
+      }]
+
+    }, {
+      name: '甘茗城 — 后湖小区店',
+      tick: [{
+        name: '任意单品',
+        point: 8
+      }]
+
+    }]
   },
 
   /**
@@ -16,7 +83,8 @@ Page({
     if (options.type == 'tea') {
       this.setData({
         type: options.type,
-        tea_point: options.tea_point
+        tea_point: options.tea_point,
+        tea_point_list: JSON.parse(options.tea_point_list)
       })
 
     } else if (options.type == 'battery') {
@@ -75,5 +143,13 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+  onExchangeTeacup(e) {
+    console.log(e)
+  },
+
+  onExchangeBattery(e) {
+    console.log(e)
+  }
 
 })
