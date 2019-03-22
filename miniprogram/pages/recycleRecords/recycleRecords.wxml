@@ -46,7 +46,7 @@
                     <view class="contactNumber">联系方式: {{contactNumber}}</view>
                     <view class="submitTime">提交时间: {{submitTime}}</view>
                     <view class="submitTime">回收地点: {{pickedPlace}}</view>
-                    <view class="batteryNum">电池数量: {{batterNum}}</view>
+                    <view class="batteryNum">电池数量: {{batteryNum}}</view>
                     <view class="pickTime">上门时间: {{  pickedTime }}</view>
                     <view class="status">当前状态: {{status?"已完成":"待处理"}}</view>
                     <view class="status">您的留言: {{note}}</view>

@@ -40,14 +40,14 @@
       </swiper-item>
     </block>
   </swiper>
-  <view class="head">
+  <!-- <view class="head">
     <van-row>
       <van-col span="8" offset="8">
         <text class="head-title">服务列表</text>
       </van-col>
     </van-row>
   </view>
-  <view class="divLine"></view>
+  <view class="divLine"></view> -->
   <view class="btn-group">
     <van-row custom-class="btn-item">
       <van-col span="24" offset="0">

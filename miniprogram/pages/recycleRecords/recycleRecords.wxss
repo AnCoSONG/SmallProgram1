@@ -16,7 +16,7 @@
     background-color: white;
     border-radius: 10rpx;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    margin-top: 30rpx;
+    margin: 30rpx 0;
 }
 
 .record-info .line {
