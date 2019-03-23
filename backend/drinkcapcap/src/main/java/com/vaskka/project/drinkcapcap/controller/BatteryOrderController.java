@@ -2,8 +2,10 @@ package com.vaskka.project.drinkcapcap.controller;
 
 import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
+import com.vaskka.project.drinkcapcap.entity.BatteryPoint;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.service.BatteryOrderService;
+import com.vaskka.project.drinkcapcap.service.BatteryPointService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class BatteryOrderController extends CanGetAllController {
 
     @Autowired
     private BatteryOrderService service;
+
+    @Autowired
+    private BatteryPointService pointService;
 
     @ApiOperation(value = "新增电池订单" ,  notes="插入新电池订单")
     @RequestMapping(value = "/batteryorder/create", method = RequestMethod.POST)
@@ -101,7 +106,10 @@ public class BatteryOrderController extends CanGetAllController {
 
         try {
             service.changeOrderToComplete(id);
-
+            BatteryOrder  order = (BatteryOrder) service.getById(id);
+            BatteryPoint point = (BatteryPoint) pointService.findByOpenid(order.getOpenid());
+            point.setBattery_val(point.getBattery_val() + 1);
+            pointService.change(point);
             map.put("code", 0);
         }catch (NullPointerException | ParseException e) {
             map.put("code", 1);

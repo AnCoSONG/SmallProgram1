@@ -5,6 +5,7 @@ import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
 import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import com.vaskka.project.drinkcapcap.service.DrinkOrderService;
+import com.vaskka.project.drinkcapcap.service.DrinkPointService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ import java.util.List;
 @Api(description = "奶茶订单接口")
 @Controller
 public class DrinkOrderController extends CanGetAllController {
+
+    @Autowired
+    private DrinkPointService pointService;
 
     @Autowired
     DrinkOrderService service;
@@ -115,6 +119,8 @@ public class DrinkOrderController extends CanGetAllController {
         try {
             service.changeOrderToComplete(id);
 
+            DrinkOrder order = (DrinkOrder) service.getById(id);
+            pointService.addShopPointWithOpenid(order.getOpenid(), order.getShop_id());
             map.put("code", 0);
         }catch (NullPointerException | ParseException e) {
             map.put("code", 1);

@@ -55,7 +55,7 @@ public class DrinkPointService extends CanGetAllService {
             repository.save(res.get());
         }
         else {
-            repository.save(new DrinkPoint(openid, shop_id, 0));
+            repository.save(new DrinkPoint(openid, shop_id, 1));
         }
     }
 
