@@ -2,6 +2,15 @@
 
 import Toast from "../../dist/toast/toast";
 
+const id = {
+  YHT: 1,
+  SYSXC: '书亦烧仙草',
+  MXBC: '蜜雪冰城',
+  CYYS: '茶颜悦色',
+  ALSGC: '阿里山贡茶',
+  GMC: '甘茗城'
+};
+
 const rules = {
   YHT: '益禾堂',
   SYSXC: '书亦烧仙草',
@@ -37,7 +46,13 @@ Page({
       type: options.type,
       name: rules[options.type],
       logoUrl: imageUrl[options.type]
-    })
+    });
+    if (this.data.type == 'YHT') {
+      this.setData({
+        showBranchPicker: false,
+        branchInfo: '未选择'
+      })
+    }
   },
 
   /**
@@ -90,25 +105,67 @@ Page({
   },
 
   onSubmit(e) {
+    var that = this;
     if (this.data.teaCupCode) {
       if (this.data.imgUpLoadType != '未选择') {
         //提交
-        Toast.loading({
+        const toast = Toast.loading({
           mask: true,
-          duration: 3000, // 持续展示 toast
+          duration: 0, // 持续展示 toast
           forbidClick: true, // 禁用背景点击
-          message: '正在上传',
+          message: '正在上传...',
           selector: '#submit-toast'
         });
 
-        var p = new Promise((resolve, reject) => {
+        var fileid = '';
+        wx.cloud.uploadFile({
+          cloudPath: 'tea/' + this.data.type + (this.data.branchInfo ? '-' + this.data.branchInfo : '') + '-' + this.data.teaCupCode + '-' + '.png',
+          filePath: that.data.fileTempPath,
+          success: res => {
+            console.log(res);
+            fileid = res.fileID;
+
+            toast.setData({
+              message: '正在提交...'
+            })
+            console.log(that.data)
+            wx.cloud.callFunction({
+              name: 'postdrinkorder',
+              data: {
+                shop_id: that.getShopId(that.data.type, that.data.branchInfo ? that.data.branchInfo : null),
+                user_data: {
+                  drink_number: that.data.teaCupCode,
+                  drink_pic: {
+                    fileID: fileid
+                  }
+                }
+              }
+            }).then(res => {
+              Toast.clear();
+              wx.showModal({
+                title: '提交成功！',
+                content: '您已完成订单,点击确认将回到主页',
+                showCancel: false,
+                success: res => {
+                  wx.navigateBack({
+                    delta: 2, // 回退前 delta(默认为1) 页面
+                    success: function (res) {
+                      // success
+                    },
+                    fail: function () {
+                      // fail
+                    },
+                    complete: function () {
+                      // complete
+                    }
+                  })
+                }
+              })
+            })
+          }
+        });
 
 
-        }).then(function (res) {
-
-        }).catch(function (error) {
-
-        })
       } else {
         Toast.fail({
           duration: 2000,
@@ -153,6 +210,7 @@ Page({
 
   chooseWxImage(type) {
     let that = this
+
     wx.chooseImage({
       count: 1, // 最多可以选择的图片张数，默认9
       sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
@@ -160,10 +218,13 @@ Page({
       success: function (res) {
         // success
         console.log(res)
-
         that.setData({
-          imgUpLoadType: '假装已上传'
-        })
+          fileTempPath: res.tempFilePaths[0],
+          imgUpLoadType: '已选取'
+        });
+
+
+
       },
       fail: function () {
         // fail
@@ -181,6 +242,58 @@ Page({
       message: '奶茶杯内杯壁上贴有编号',
       selector: '#code-info'
     })
+  },
+
+  onClickYHTBranch(e) {
+    this.setData({
+      showBranchPicker: true
+    })
+  },
+
+  onClosePicker(e) {
+    this.setData({
+      showBranchPicker: false
+    })
+  },
+
+  onConfirmBranch(e) {
+    console.log(e);
+    this.setData({
+      branchInfo: e.detail.value
+    });
+    this.onClosePicker(e);
+  },
+
+  getShopId(type, branchInfo) {
+    switch (type) {
+      case 'YHT':
+        if (branchInfo) {
+          if (branchInfo == '中南大学店') {
+            return 1
+          } else if (branchInfo == '后湖小区店') {
+            return 2
+          }
+        } else {
+          return 1
+        }
+        break;
+      case 'SYSXC':
+        return 3
+        break;
+      case 'MXBC':
+        return 4
+        break;
+      case 'CYYS':
+        return 5
+        break;
+      case 'ALSGC':
+        return 6
+        break;
+      case 'GMC':
+        return 7
+        break;
+
+    }
   },
 
 

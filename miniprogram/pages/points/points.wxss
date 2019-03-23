@@ -78,8 +78,15 @@
 
 .card .context .eachTicket .desc,
 .card .context .eachTicket .oper,
+.card .context .eachTicket .tip,
 .card .context .eachTicket .point {
     display: inline-block;
+}
+
+.card .context .eachTicket .tip {
+    vertical-align: middle;
+    margin-left: 15rpx;
+    color: #6666ff;
 }
 
 .card .context .eachTicket .oper {

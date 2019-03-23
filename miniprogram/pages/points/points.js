@@ -1,4 +1,5 @@
 // miniprogram/pages/points.js
+import Toast from "../../dist/toast/toast";
 
 Page({
 
@@ -146,10 +147,62 @@ Page({
 
   onExchangeTeacup(e) {
     console.log(e)
+    const toast = Toast.loading({
+      duration: 3000,
+      mask: true,
+      forbidClick: true,
+      message: '正在兑换...',
+      selector: '#toast'
+    })
+
+    //调函数
   },
 
   onExchangeBattery(e) {
     console.log(e)
+    const toast = Toast.loading({
+      duration: 0,
+      mask: true,
+      forbidClick: true,
+      message: '正在兑换...',
+      selector: '#toast'
+    })
+    wx.cloud.callFunction({
+      name: 'batterytodollpaper',
+      data: {
+        cost_light: 1
+      }
+    }).then(res => {
+      Toast.clear();
+      wx.showModal({
+        title: '兑换成功！',
+        content: '剩余积分:' + res.result.result.left_light_num,
+        showCancel: false,
+        success: res => {
+          wx.navigateBack({
+            delta: 1, // 回退前 delta(默认为1) 页面
+            success: function (res) {
+              // success
+            },
+            fail: function () {
+              // fail
+            },
+            complete: function () {
+              // complete
+            }
+          })
+        }
+      })
+
+    })
+  },
+
+  onQuestionExchangeBattery(e) {
+    Toast({
+      duration: 3000,
+      message: '1个积分兑换2个娃娃券',
+      selector: '#toast'
+    })
   }
 
 })
