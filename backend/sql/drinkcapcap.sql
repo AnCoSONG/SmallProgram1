@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.12, for macos10.13 (x86_64)
 --
 -- Host: localhost    Database: drinkcapcap
 -- ------------------------------------------------------
--- Server version	8.0.15
+-- Server version	8.0.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,7 @@ CREATE TABLE `battery_order` (
   `tel` varchar(255) DEFAULT NULL,
   `note` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `battery_order` (
 
 LOCK TABLES `battery_order` WRITE;
 /*!40000 ALTER TABLE `battery_order` DISABLE KEYS */;
-INSERT INTO `battery_order` VALUES (1,'2019-03-16 00:00:00',13,'test_openid_1',1,'2019-03-16 17:50:35',NULL,NULL,NULL,NULL,NULL),(2,'2019-03-16 00:00:00',3,'test_openid_2',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(3,'2019-03-16 00:00:00',20,'test_openid_2',0,NULL,NULL,NULL,NULL,NULL,NULL),(4,'2019-03-16 00:00:00',50,'test_openid_4',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(5,'2019-03-16 00:00:00',50,'test_openid_5',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(6,'2019-03-16 00:00:00',56,'test_openid_6',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(7,'2019-03-16 17:08:21',9,'test_openid_7',1,'2019-03-16 17:49:43',NULL,NULL,NULL,NULL,NULL),(8,'2019-03-21 08:42:45',12,'oi-1',0,'2019-04-04 20:33:33',NULL,NULL,NULL,NULL,NULL),(9,'2019-03-21 16:33:54',12,'oid2',0,NULL,'2019-03-04 18-19','7-201','17,18','15145050156','something'),(10,'2019-03-21 16:35:00',12,'oid2',0,NULL,'2019-03-04 18-19','7-201','17,18','15145050156','something');
+INSERT INTO `battery_order` VALUES (1,'2019-03-16 00:00:00',13,'test_openid_1',1,'2019-03-16 17:50:35',NULL,NULL,NULL,NULL,NULL),(2,'2019-03-16 00:00:00',3,'test_openid_2',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(3,'2019-03-16 00:00:00',20,'test_openid_2',0,NULL,NULL,NULL,NULL,NULL,NULL),(4,'2019-03-16 00:00:00',50,'test_openid_4',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(5,'2019-03-16 00:00:00',50,'test_openid_5',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(6,'2019-03-16 00:00:00',56,'test_openid_6',1,'2019-03-16 00:00:00',NULL,NULL,NULL,NULL,NULL),(7,'2019-03-16 17:08:21',9,'test_openid_7',1,'2019-03-16 17:49:43',NULL,NULL,NULL,NULL,NULL),(8,'2019-03-21 08:42:45',12,'oi-1',0,'2019-04-04 20:33:33',NULL,NULL,NULL,NULL,NULL),(9,'2019-03-21 16:33:54',12,'oid2',0,NULL,'2019-03-04 18-19','7-201','17,18','15145050156','something'),(10,'2019-03-21 16:35:00',12,'oid2',1,'2019-03-23 19:31:01','2019-03-04 18-19','7-201','17,18','15145050156','something'),(11,'2019-03-23 21:01:49',12,'string',0,NULL,'string','string','string','string','string'),(12,'2019-03-23 21:04:16',12,'string',0,NULL,'string','string','string','string','string'),(13,'2019-03-23 21:09:04',12,'string',0,NULL,'string','string','string','string','string'),(14,NULL,12,'string',0,NULL,'string','string','string','string','string'),(15,'2019-04-03 20:30:40',12,'string',0,NULL,'string','string','string','string','string');
 /*!40000 ALTER TABLE `battery_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ CREATE TABLE `battery_point` (
   `openid` varchar(255) NOT NULL,
   `battery_val` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `battery_point` (
 
 LOCK TABLES `battery_point` WRITE;
 /*!40000 ALTER TABLE `battery_point` DISABLE KEYS */;
-INSERT INTO `battery_point` VALUES (1,'test_openid_1',12),(2,'test_openid_2',2),(3,'test_openid_3',0),(6,'test_openid_4',0);
+INSERT INTO `battery_point` VALUES (1,'test_openid_1',12),(2,'test_openid_2',2),(3,'test_openid_3',0),(6,'test_openid_4',0),(7,'oid2',1);
 /*!40000 ALTER TABLE `battery_point` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,6 +114,7 @@ CREATE TABLE `doll_paper` (
   `create_time` datetime DEFAULT NULL,
   `effect_time` int(11) DEFAULT NULL,
   `valid` tinyint(1) DEFAULT '1',
+  `done` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -179,7 +180,7 @@ CREATE TABLE `drink_order` (
 
 LOCK TABLES `drink_order` WRITE;
 /*!40000 ALTER TABLE `drink_order` DISABLE KEYS */;
-INSERT INTO `drink_order` VALUES (1,123,'oid-1','2019-03-20 11:50:53','https://pixboost.art/img/id/1.jpg',1,0,NULL);
+INSERT INTO `drink_order` VALUES (1,123,'oid-1','2019-03-20 11:50:53','https://pixboost.art/img/id/1.jpg',1,1,'2019-03-23 19:39:25');
 /*!40000 ALTER TABLE `drink_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +197,7 @@ CREATE TABLE `drink_point` (
   `shop_id` int(11) NOT NULL,
   `point` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +206,7 @@ CREATE TABLE `drink_point` (
 
 LOCK TABLES `drink_point` WRITE;
 /*!40000 ALTER TABLE `drink_point` DISABLE KEYS */;
-INSERT INTO `drink_point` VALUES (1,'oid1',1,7),(2,'oid2',2,2),(3,'oid2',1,3);
+INSERT INTO `drink_point` VALUES (1,'oid1',1,7),(2,'oid2',2,2),(3,'oid2',1,3),(4,'oid-1',1,1);
 /*!40000 ALTER TABLE `drink_point` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,4 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-21 18:51:48
+-- Dump completed on 2019-03-24  1:51:21
