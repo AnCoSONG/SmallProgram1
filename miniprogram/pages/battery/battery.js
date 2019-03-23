@@ -236,41 +236,124 @@ Page({
   },
 
   onSubmitButton(e) {
-    if (this.data.phone_number) {
-      console.log(this.data.phone_number);
-    } else {
-      console.log("未输入电话");
-      this.setData({
-        field_error_phone: true
-      });
-    }
-    if (this.data.recycle_place) {
-      console.log(this.data.recycle_place);
-    } else {
-      console.log("未输入地点");
-      this.setData({
-        field_error_place: true
-      });
-    }
-    if (this.data.pickedTime) {
-      console.log(this.data.pickedTime);
-    } else {
-      console.log("未输入时间");
-      this.setData({
-        field_error_time: true
-      });
-    }
-    if (this.data.numOfBattery) {
-      console.log(this.data.numOfBattery);
-    } else {
-      console.log("未输入数量");
-    }
+    const toast = Toast.loading({
+      duration: 0,
+      mask: true,
+      forbidClick: true,
+      selector: '#toast',
+      message: '验证...'
+    });
+    var that = this;
+    let _1 = new Promise((resolve, reject) => {
+      let t = true;
+      if (this.data.phone_number) {
+        console.log(this.data.phone_number);
+      } else {
+        console.log("未输入电话");
+        this.setData({
+          field_error_phone: true
+        });
+        t = false
+        reject('001')
+      }
+      if (this.data.recycle_place) {
+        console.log(this.data.recycle_place);
+      } else {
+        console.log("未输入地点");
+        this.setData({
+          field_error_place: true
+        });
+        t = false
+        reject('002')
+      }
+      if (this.data.pickedTime) {
+        console.log(this.data.pickedTime);
+      } else {
+        console.log("未输入时间");
+        this.setData({
+          field_error_time: true
+        });
+        t = false
+        reject('003')
+      }
+      if (this.data.numOfBattery) {
+        console.log(this.data.numOfBattery);
+      } else {
+        console.log("未输入数量");
+        t = false
+        reject('004')
+      }
 
-    if (this.data.recycle_message) {
-      console.log(this.data.recycle_message);
-    } else {
-      console.log("未输入留言");
-    }
+      if (this.data.recycle_message) {
+        console.log(this.data.recycle_message);
+      } else {
+        console.log("未输入留言");
+      }
+
+      if (t) {
+        resolve('pass')
+
+      }
+    }).then(res => {
+      toast.setData({
+        message: '上传中...'
+      });
+      wx.cloud.callFunction({
+        name: 'postbatteryorder',
+        data: {
+          note: this.data.recycle_message,
+          tel: this.data.phone_number,
+          user_location: {
+            school: "Default",
+            building: 0,
+            room: this.data.recycle_place
+          },
+          rest_time: this.data.pickedTime.replace('时', ''),
+          battery: {
+            num: this.data.numOfBattery
+          }
+
+
+        }
+      }).then(res => {
+        console.log(res);
+        Toast.clear();
+        wx.showModal({
+          title: '订单编号:' + res.result.battery.order_id,
+          content: '请将订单编号标记在电池上以方便工作人员核对查验',
+          showCancel: false,
+          confirmColor: '#00CC00',
+          success: res => {
+            if (res.confirm) {
+              wx.navigateBack({
+                delta: 1, // 回退前 delta(默认为1) 页面
+                success: function (res) {
+                  // success
+                },
+                fail: function () {
+                  // fail
+                },
+                complete: function () {
+                  // complete
+                }
+              })
+            }
+          }
+        })
+      })
+    }, rej => {
+      Toast.clear();
+      Toast.fail({
+        duration: 2000,
+        message: '错误:' + rej,
+        selector: '#toast'
+      })
+    })
+
+
+
+
+
   },
 
   onResetButton() {

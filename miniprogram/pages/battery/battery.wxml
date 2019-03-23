@@ -18,7 +18,7 @@
             <view class="form-title">填写信息</view>
             <van-cell-group>
                 <van-field error="{{field_error_phone}}" clearable required name="contact_phone" label="联系电话" placeholder="请输入手机号" type="number" value="{{phone_number}}" bind:change="onPhoneNumberChange"></van-field>
-                <van-field error="{{field_error_place}}" required name="recycle_place" label="回收地点" placeholder="请输入回收地点信息" value="{{recycle_place}}" bind:change="onRecyclePlaceChange"></van-field>
+                <van-field error="{{field_error_place}}" clearable required name="recycle_place" label="回收地点" placeholder="请输入回收地点信息" value="{{recycle_place}}" bind:change="onRecyclePlaceChange"></van-field>
                 <van-cell required title="电池数量" label="1个废电池兑换一个电池积分哦">
                     <van-stepper name="countofbattery" value="{{numOfBattery}}" min="1" max="100" disable-input integer async-change bind:change="onBatteryStepperChange"></van-stepper>
                 </van-cell>
@@ -55,3 +55,4 @@
     </van-collapse-item>
 </van-collapse>
 <van-toast id="question-time" />
+<van-toast id="toast"></van-toast>

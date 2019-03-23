@@ -1,4 +1,4 @@
-const got = require("got");
+          const got = require("got");
 const moment = require("moment");
 
 // 云函数入口文件

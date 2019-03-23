@@ -27,7 +27,7 @@ exports.main = async (event, context) => {
   result.battery.num = num;
   result.serv_time = moment().format("YYYY-MM-DD HH:mm:SS");
 
-  let lo = event.user_location.school + "-" + event.user_location.building + "-" + event.user_location.room;
+  let lo = event.user_location.school + "-" + event.user_location.room;
 
   let resp = await got('http://129.204.216.249:8080/batteryorder/create', {
     method: 'POST',
@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
     },
     json: true,
     body: {
-      battery_num: 0,
+      battery_num: num,
       free_time: event.rest_time,
       openid: wxContext.OPENID,
       realLocation: "",
@@ -46,10 +46,6 @@ exports.main = async (event, context) => {
     }
 
   });
-
-  // console.log(resp.body.data);
-
-  // let resp_obj = JSON.parse(resp.body);
 
   result.battery.order_id = resp.body.data.id;
 

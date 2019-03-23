@@ -45,7 +45,7 @@
 }
 
 .btn-group {
-  margin-top: 50rpx;
+  margin-top: 100rpx;
 
 }
 
