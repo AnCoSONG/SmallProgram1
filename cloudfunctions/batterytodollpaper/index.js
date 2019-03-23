@@ -10,7 +10,7 @@ const DOLLPAPER_EFFECT = "48";
 const got = require('got');
 
 // moment
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
@@ -25,7 +25,7 @@ const coll = db.collection("battery_rule");
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  let result = {serv_time: moment().format("YYYY-MM-DD HH:mm:ss")};
+  let result = { serv_time: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS")};
 
   // 花费的积分
   let cost_light = parseInt(event.cost_light);
@@ -112,6 +112,7 @@ exports.main = async (event, context) => {
       },
       json: true,
       body: {
+        createTime: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
         effect_time: DOLLPAPER_EFFECT,
         openid: wxContext.OPENID
       }

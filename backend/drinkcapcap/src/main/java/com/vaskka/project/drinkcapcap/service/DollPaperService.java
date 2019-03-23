@@ -37,7 +37,7 @@ public class DollPaperService extends CanGetAllService implements BaseService {
 
         DollPaper paper = (DollPaper) entity;
         paper.setValid(true);
-        paper.setCreate_time(new Timestamp(new Date().getTime()));
+        paper.setDone(false);
         return repository.save((DollPaper) entity);
     }
 
@@ -46,6 +46,10 @@ public class DollPaperService extends CanGetAllService implements BaseService {
 
 
         DollPaper paper =  repository.findById(id).orElse(null);
+        if (paper == null) {
+            return null;
+        }
+
         paper.setValid(Util.checkIfValid(paper.getCreate_time(), paper.getEffect_time()));
 
         return paper;
@@ -53,7 +57,8 @@ public class DollPaperService extends CanGetAllService implements BaseService {
 
     @Override
     public void change(BaseEntity entity) {
-        this.create(entity);
+
+        repository.save((DollPaper) entity);
     }
 
 

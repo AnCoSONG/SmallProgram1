@@ -69,5 +69,10 @@ public class DrinkPointService extends CanGetAllService {
         return repository.findByOpenid(openid);
     }
 
+    public DrinkPoint getByOpenidAndShopid(String openid, int shop_id) {
+
+        return  repository.findByOpenidAndShopId(openid, shop_id).orElse(null);
+
+    }
 
 }

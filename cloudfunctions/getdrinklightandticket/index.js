@@ -7,19 +7,22 @@
 const got = require("got");
 
 // moment
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
 cloud.init()
 
+const mapping = [0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0];
+
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   let result = {
-    serv_time: moment().format("YYYY-MM-DD HH:mm:SS"),
+    serv_time: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
     drink: {},
   };
 
@@ -120,7 +123,9 @@ exports.main = async (event, context) => {
       console.log(_shop_model);
       console.log(_item_model);
 
-      ticket_list.push({
+      // _item_model.id = getFrontItemIdFromZero(_item_model.id);
+
+      let finalobj = {
         id: obj.id,
         create_time: obj.createTime,
         effect_time: obj.effect_time,
@@ -128,7 +133,13 @@ exports.main = async (event, context) => {
         shop: _shop_model,
         done: obj.done,
         valid: obj.valid
-      });
+      };
+
+    //  if (finalobj.item != null) {
+    //    finalobj.item.id = mapping[finalobj.item.id - 1];
+    //  }
+
+      ticket_list.push(finalobj);
 
     }
 
@@ -142,6 +153,20 @@ exports.main = async (event, context) => {
   result.drink.tickets = ticket_list;
   result.status = "SUCCESS";
   reason = "success";
+
+  let s = JSON.stringify(result);
+
+  let _real = JSON.parse(s);
+
+  for (let t of _real.drink.tickets) {
+    console.log(t.item.id);
+    if (t.item.id % 2 == 0) {
+      t.item.id /= 2;
+    }
+    else {
+      t.item.id = 0;
+    }
+  }
 
   return result;
   

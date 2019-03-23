@@ -69,7 +69,6 @@ public class DrinkTicketService extends CanGetAllService implements BaseService 
         }
 
         ticket.setDone(false);
-        ticket.setCreate_time(new Timestamp(new Date().getTime()));
         return repository.save(ticket);
     }
 

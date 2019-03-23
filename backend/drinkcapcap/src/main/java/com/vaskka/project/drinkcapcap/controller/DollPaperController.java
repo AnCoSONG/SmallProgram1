@@ -80,4 +80,30 @@ public class DollPaperController extends CanGetAllController {
     public Map<String, Object> getAll() {
         return this.innerGetAll(service);
     }
+
+
+    @ApiOperation(value = "使用一个娃娃券" ,  notes="使用一个娃娃券")
+    @ResponseBody
+    @RequestMapping(value = "/dollpaper/change/{id}", method = RequestMethod.PUT)
+    public Map<String, Object> complete(@PathVariable Integer id) {
+        Map<String , Object> map = new HashMap<>();
+
+        DollPaper paper = (DollPaper) service.getById(id);
+        if (paper == null) {
+            map.put("code", 1);
+            map.put("date", null);
+            return map;
+        }
+
+        paper.setDone(true);
+
+        service.change(paper);
+
+        map.put("code", 0);
+        map.put("date", paper);
+
+        return map;
+    }
+
+
 }

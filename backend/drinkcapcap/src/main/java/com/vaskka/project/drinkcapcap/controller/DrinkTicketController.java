@@ -41,6 +41,7 @@ public class DrinkTicketController extends CanGetAllController {
 
         map.put("code", 0);
 
+        map.put("data", entity);
         return map;
     }
 

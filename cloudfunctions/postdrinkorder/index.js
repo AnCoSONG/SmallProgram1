@@ -6,7 +6,7 @@
 const got = require("got");
 
 // moment
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
 
   let result = {
     shop: {},
-    serv_time: moment().format("YYYY-MM-DD HH:mm:SS")
+    serv_time: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS")
   };
 
   // 检查shop_id的合法性
@@ -63,6 +63,7 @@ exports.main = async (event, context) => {
     },
     json: true,
     body: {
+      createTime: moment().tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
       cup_id: event.user_data.drink_number,
       img_url: event.user_data.drink_pic.fileID,
       openid: wxContext.OPENID,
