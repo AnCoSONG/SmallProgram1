@@ -169,13 +169,13 @@
         left_light_num: 13,                         // 剩余的电池积分数，失败返回0
         left_doll: [                                // 当前抓娃娃券具体信息,失败返回[]
         {
-            _id: "abx5c78",                           // 娃娃券id
+            id: "abx5c78",                           // 娃娃券id
             create_time: "2019-03-02 17:30:21",      // 创建时间
             effect_time: "32",                       // 有效时间（单位:小时）
             owner: "saxc76tf"                        // 持有者的openid
         },
         {
-            _id: "jx7dfcbx",                          // 娃娃券id
+            id: "jx7dfcbx",                          // 娃娃券id
             create_time: "2019-04-05 12:30:33",      // 创建时间
             effect_time: "48",                       // 有效时间（单位:小时）
             owner: "saxc76tf"                        // 持有者的openid
