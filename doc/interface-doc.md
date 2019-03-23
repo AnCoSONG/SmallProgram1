@@ -169,13 +169,13 @@
         left_light_num: 13,                         // 剩余的电池积分数，失败返回0
         left_doll: [                                // 当前抓娃娃券具体信息,失败返回[]
         {
-            _id: "abx5c78",                           // 娃娃券id
+            id: "abx5c78",                           // 娃娃券id
             create_time: "2019-03-02 17:30:21",      // 创建时间
             effect_time: "32",                       // 有效时间（单位:小时）
             owner: "saxc76tf"                        // 持有者的openid
         },
         {
-            _id: "jx7dfcbx",                          // 娃娃券id
+            id: "jx7dfcbx",                          // 娃娃券id
             create_time: "2019-04-05 12:30:33",      // 创建时间
             effect_time: "48",                       // 有效时间（单位:小时）
             owner: "saxc76tf"                        // 持有者的openid
@@ -211,7 +211,7 @@
     status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
     reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
     shop: {
-        _id: "1001",
+        id: 1,
         name: "益禾堂",
         other_name: "中南大学店"
     }
@@ -249,7 +249,7 @@
             {
                 id: "21jws7dfdc",                   // id
                 create_time: "2018-12-30 13:30:34",  // 创建时间
-                effect_time: "48",                   // 有效时间（单位：小时）
+                effect_time: 48,                   // 有效时间（单位：小时）
                 shop: {
                     id: "0001",                      // 商家唯一id
                     name: "益禾堂",                   // 商家名称
@@ -265,7 +265,7 @@
             {
                 id: "dcdu33as9c",             // id
                 create_time: "2019-01-30 12:20:20",  // 创建时间
-                effect_time: "24",                   // 有效时间（单位：小时）
+                effect_time: 24,                   // 有效时间（单位：小时）
                 shop: {
                     id: "0001",                      // 上架唯一id
                     name: "书亦烧仙草",                // 商家名称
@@ -286,13 +286,13 @@
 
 ### 商店对照表
 
-+ _id: 0001, name: 益禾堂-中南大学店
-+ _id: 0002, name: 益禾堂-后湖小区店
-+ _id: 0003, name: 书亦烧仙草-中南大学店
-+ _id: 0004, name: 蜜雪冰城-中南大学店
-+ _id：0005，name: 茶颜悦色-青年路步行街店
-+ _id: 0006, name: 阿里山贡茶-中南大学店
-+ _id: 0007, name: 甘茗城-后湖小区店
++ id: 1, name: 益禾堂-中南大学店
++ id: 2, name: 益禾堂-后湖小区店
++ id: 3, name: 书亦烧仙草-中南大学店
++ id: 4, name: 蜜雪冰城-中南大学店
++ id: 5, name: 茶颜悦色-青年路步行街店
++ id: 6, name: 阿里山贡茶-中南大学店
++ id: 7, name: 甘茗城-后湖小区店
 
 ### 商品对照表
 
@@ -482,3 +482,4 @@
 
 }
 ```
+

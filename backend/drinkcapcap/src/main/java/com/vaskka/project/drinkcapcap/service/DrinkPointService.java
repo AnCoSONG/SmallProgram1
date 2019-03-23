@@ -27,9 +27,10 @@ public class DrinkPointService extends CanGetAllService {
         return repository.findById(id).orElse(null);
     }
 
-    @Deprecated
     @Override
     public void change(BaseEntity entity) {
+
+        repository.save((DrinkPoint) entity);
     }
 
     /**
@@ -55,7 +56,7 @@ public class DrinkPointService extends CanGetAllService {
             repository.save(res.get());
         }
         else {
-            repository.save(new DrinkPoint(openid, shop_id, 0));
+            repository.save(new DrinkPoint(openid, shop_id, 1));
         }
     }
 
