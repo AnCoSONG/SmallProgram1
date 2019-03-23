@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
 
   let result = { serv_time: moment().format("YYYY-MM-DD HH:mm:ss") };
 
-  let tid = event.ticket_id;
+  let tid = parseInt(event.ticket_id);
 
   await got('http://129.204.216.249:8080/drinkticket/change/' + tid + "/" + "true", {
     method: 'PUT',

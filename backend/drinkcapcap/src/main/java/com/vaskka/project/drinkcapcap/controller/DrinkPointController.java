@@ -1,6 +1,7 @@
 package com.vaskka.project.drinkcapcap.controller;
 
 import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
+import com.vaskka.project.drinkcapcap.entity.BatteryPoint;
 import com.vaskka.project.drinkcapcap.entity.DrinkPoint;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.service.DrinkPointService;
@@ -65,5 +66,24 @@ public class DrinkPointController extends CanGetAllController {
     @RequestMapping(value = "/drinkpoint/all", method = RequestMethod.GET)
     public Map<String, Object> getAll() {
         return this.innerGetAll(service);
+    }
+
+
+    @ApiOperation(value = "更改积分" ,  notes="更改积分数值")
+    @RequestMapping(value = "/drinkpoint/change/{openid}/{number}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Map<String, Object> changeNumber(@PathVariable String openid, @PathVariable Integer number) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("code", 0);
+
+        DrinkPoint point = (DrinkPoint) service.getByOpenid(openid);
+
+        point.setPoint(number);
+
+        service.change(point);
+
+        return map;
     }
 }

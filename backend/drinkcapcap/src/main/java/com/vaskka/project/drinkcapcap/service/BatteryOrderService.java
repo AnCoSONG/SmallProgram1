@@ -13,9 +13,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BatteryOrderService extends CanGetAllService implements BaseService {
@@ -30,8 +28,8 @@ public class BatteryOrderService extends CanGetAllService implements BaseService
 
     @Override
     public BatteryOrder create(BaseEntity entity) {
+
         ((BatteryOrder) entity).setDone(false);
-        ((BatteryOrder) entity).setCreateTime(new Timestamp(new Date().getTime()));
         return repository.save((BatteryOrder) entity);
 
 
