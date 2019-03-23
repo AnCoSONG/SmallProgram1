@@ -17,7 +17,10 @@ App({
       logged: false,
       avatarUrl: "",
       username: "请登录",
-      userInfo: {}
+      userInfo: {},
+
+
+      userDataChanged: false
     }
   }
 })

@@ -306,7 +306,7 @@ Page({
         avatarUrl: ""
       };
       thatUser.logged = true;
-      thatUser.username = e.detail.nickName;
+      thatUser.username = e.detail.userInfo.nickName;
       thatUser.avatarUrl = e.detail.userInfo.avatarUrl;
       thatUser.userInfo = e.detail.userInfo;
       var pList = [];
