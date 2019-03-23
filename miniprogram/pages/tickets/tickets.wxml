@@ -36,13 +36,14 @@
             <movable-view out-of-bounds="true" direction="horizontal" x="{{x}}" inertia="true" data-productIndex="{{index}}" bindtouchstart="handleTouchStart" bindtouchend="handleTouchEnd" bindchange="handleMovableChange">
                 <view class="wrap">
                     <view class="line"></view>
+                    <view class="id">券码:{{id}}</view>
                     <view class="title">{{item_title[item_type]}}</view>
                     <view class="shop">{{shop[_id]}}</view>
                     <view class="end_time">请在 {{end_time}} 前使用</view>
                 </view>
             </movable-view>
         </movable-area>
-        <view class="use {{show_shadow[index]? 'show':''}}" data-index="{{index}}" bindtap="onTapUseTeaTicket">
+        <view class="use {{show_shadow[index]? 'show':''}}" data-id="{{id}}" data-index="{{index}}" bindtap="onTapUseTeaTicket">
             使用
         </view>
     </view>
@@ -74,3 +75,4 @@
         </van-col>
     </van-row>
 </template>
+<van-toast id="toast"></van-toast>

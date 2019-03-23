@@ -92,6 +92,13 @@
   left: 20rpx;
 }
 
+.ticket .wrap .id {
+  float: left;
+  clear: both;
+  font-size: 24rpx;
+  padding: 10rpx;
+}
+
 .ticket .doll_wrap .doll_title {
   position: absolute;
   top: 40rpx;

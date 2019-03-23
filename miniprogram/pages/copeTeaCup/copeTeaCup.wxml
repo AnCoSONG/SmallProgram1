@@ -18,6 +18,10 @@
     <van-panel title="填写信息" use-footer-slot>
         <view>
             <van-cell-group>
+                <van-cell wx:if="{{type=='YHT'}}" title="选择分店" value="{{branchInfo}}" is-link bindtap="onClickYHTBranch"></van-cell>
+                <van-popup show="{{showBranchPicker}}" bind:close="onClosePicker" position="bottom">
+                    <van-picker show-toolbar wx:if="{{type=='YHT'}}" columns="{{ ['中南大学店','后湖小区店'] }}" bind:confirm="onConfirmBranch" bind:cancel="onClosePicker"></van-picker>
+                </van-popup>
                 <van-field value="{{ teaCupCode }}" required label="奶茶杯编号" icon="question-o" placeholder="请输入你的编号" bind:click-icon="onClickQuestionIcon" bind:change="updateTeaCupCode"></van-field>
                 <van-cell is-link title="上传图片" label="拍下奶茶杯编号位置的图片在这儿上传~" value="{{ imgUpLoadType }}" bindtap="onClickUploadImage"></van-cell>
             </van-cell-group>

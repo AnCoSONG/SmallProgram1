@@ -94,11 +94,16 @@ Page({
                   for (let i of res.result.drink.tickets) {
                     let _id = "000" + String(i.shop.id);
                     let item_type = i.item.id;
-                    let end_time = i.create_time;
+                    let end_time = i.valid ? moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
+                      .add(i.effect_time, "h")
+                      .format("YYYY-MM-DD HH:mm:SS") : "过期"
                     thatUser.tea_tickets.push({
+                      id: i.id,
                       _id: _id,
                       item_type: item_type,
-                      end_time: end_time
+                      end_time: end_time,
+                      done: i.done,
+                      valid: i.valid
                     });
                   }
                   // console.log(thatUser);
@@ -127,6 +132,8 @@ Page({
                     thatUser.doll_tickets.push({
                       name: "娃娃券",
                       id: i.id,
+                      done: i.done,
+                      valid: i.valid,
                       end_time: i.valid ?
                         moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
                         .add(i.effect_time, "h")
@@ -254,9 +261,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.userDataChanged) {
-      this.refreshAllData();
-    }
+    this.refreshAllData();
   },
 
   /**
@@ -275,8 +280,7 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     this.refreshAllData();
-    wx.stopPullDownRefresh();
-    wx.hideNavigationBarLoading();
+
 
   },
 
@@ -357,11 +361,16 @@ Page({
           for (let i of res.result.drink.tickets) {
             let _id = "000" + String(i.shop.id);
             let item_type = i.item.id;
-            let end_time = i.create_time;
+            let end_time = i.valid ? moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
+              .add(i.effect_time, "h")
+              .format("YYYY-MM-DD HH:mm:SS") : "过期"
             thatUser.tea_tickets.push({
+              id: i.id,
               _id: _id,
               item_type: item_type,
-              end_time: end_time
+              end_time: end_time,
+              done: i.done,
+              valid: i.valid
             });
           }
           // console.log(thatUser);
@@ -390,6 +399,8 @@ Page({
             thatUser.doll_tickets.push({
               name: "娃娃券",
               id: i.id,
+              done: i.done,
+              valid: i.valid,
               end_time: i.valid ?
                 moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
                 .add(i.effect_time, "h")
@@ -753,11 +764,16 @@ Page({
         for (let i of res.result.drink.tickets) {
           let _id = "000" + String(i.shop.id);
           let item_type = i.item.id;
-          let end_time = i.create_time;
+          let end_time = i.valid ? moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
+            .add(i.effect_time, "h")
+            .format("YYYY-MM-DD HH:mm:SS") : "过期"
           thatUser.tea_tickets.push({
+            id: i.id,
             _id: _id,
             item_type: item_type,
-            end_time: end_time
+            end_time: end_time,
+            done: i.done,
+            valid: i.valid
           });
         }
         // console.log(thatUser);
@@ -786,6 +802,8 @@ Page({
           thatUser.doll_tickets.push({
             name: "娃娃券",
             id: i.id,
+            done: i.done,
+            valid: i.valid,
             end_time: i.valid ?
               moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
               .add(i.effect_time, "h")
@@ -893,6 +911,8 @@ Page({
       app.avaterUrl = thatUser.avatarUrl;
       app.username = thatUser.username;
       app.userInfo = thatUser.userInfo;
+      wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();
     });
 
   }

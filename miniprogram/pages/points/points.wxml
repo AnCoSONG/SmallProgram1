@@ -102,7 +102,7 @@
                         <view class="desc">{{item.name+"券"}}</view>
                         <view class="point">{{"需" + item.point + "分"}}</view>
                         <view class="oper">
-                            <van-button size="small" data-exchangeID="{{index+' '+id}}" bindtap="onExchangeTeacup" type="primary" plain custom-class="custombtn" disabled="{{tea_point_list[index]<item.point}}">
+                            <van-button size="small" data-exchangeID="{{index+' '+id}}" bind:click="onExchangeTeacup" type="primary" plain custom-class="custombtn" disabled="{{tea_point_list[index]<item.point}}">
                                 兑换
                             </van-button>
                         </view>
@@ -124,9 +124,12 @@
                 <view class="context">
                     <view class="eachTicket">
                         <view class="desc">娃娃券</view>
-                        <view class="point">需8分</view>
+                        <view class="point">需1分</view>
+                        <view class="tip">
+                            <van-icon name="question-o" size="16px" bindtap="onQuestionExchangeBattery"></van-icon>
+                        </view>
                         <view class="oper">
-                            <van-button size="small" type="primary" bindtap="onExchangeBattery" plain custom-class="custombtn" disabled="{{battery_point < 8}}">
+                            <van-button size="small" type="primary" bind:click="onExchangeBattery" plain custom-class="custombtn" disabled="{{bp < 1}}">
                                 兑换
                             </van-button>
                         </view>
@@ -136,3 +139,4 @@
         </van-col>
     </van-row>
 </template>
+<van-toast id="toast"></van-toast>

@@ -1,3 +1,5 @@
+import Toast from "../../dist/toast/toast";
+
 // miniprogram/pages/tickets/tickets.js
 
 var touchStartX = 0;
@@ -256,23 +258,68 @@ Page({
   onTapUseTeaTicket({
     currentTarget: {
       dataset: {
+        id,
         index
       }
     }
   }) {
-    let productList = this.data.tea_tickets;
+    var productList = this.data.tea_tickets;
 
     // 使用这张奶茶券的逻辑
 
-    //从用户列表里删掉这张奶茶券的逻辑
-    productList.splice(index, 1);
+    wx.showModal({
+      title: '券ID:' + id,
+      content: '请向商家出示本界面，确认无误后再点击确认！',
+      showCancel: true,
+      success: res => {
+        if (res.cancel) {
+          Toast.fail({
+            duration: 3000,
+            message: '您已取消使用',
+            selector: '#toast'
+          })
+        } else if (res.confirm) {
+          const toast = Toast.loading({
+            duration: 0,
+            mask: true,
+            forbidClick: true,
+            message: '正在为您处理...',
+            selector: '#toast'
+          })
+          wx.cloud.callFunction({
+            name: 'completeticket',
+            data: {
+              ticket_id: id
+            }
+          }).then(res => {
+            Toast.clear();
+            Toast.success({
+              duration: 2000,
+              message: '祝您用饮愉快',
+              selector: '#toast'
+            })
+            //从用户列表里删掉这张奶茶券的逻辑
+            productList.splice(index, 1);
 
-    this.setData({
-      tea_tickets: productList
-    });
-    if (productList[index]) {
-      this.setXmove(index, 0);
-    }
+            this.setData({
+              tea_tickets: productList
+            });
+            if (productList[index]) {
+              this.setXmove(index, 0);
+            }
+          }).catch(error => {
+            Toast.clear();
+            console.log(error);
+            Toast.fail({
+              duration: 3000,
+              message: '错误' + error,
+              select: '#toast'
+            })
+          })
+        }
+      }
+    })
+
   }
 
   // 弃用API

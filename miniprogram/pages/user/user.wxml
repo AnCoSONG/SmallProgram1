@@ -15,15 +15,17 @@
                 <van-cell-group wx:if="{{user.logged}}">
                     <van-cell title="奶茶积分" is-link value="{{ user.tea_point+'分' }}" bindtap="onTeaCupPoint" />
                     <van-cell title="电池积分" is-link value="{{ user.battery_point+'分' }}" bindtap="onBatteryPoint" url="../points/points?type=battery&battery_point={{user.battery_point}}" />
-                    <van-cell title="如何快速赚取积分?" is-link />
+                    <!-- <van-cell title="如何快速赚取积分?" is-link /> -->
                 </van-cell-group>
                 <van-cell wx:else title="请先登录" icon="warn-o" value="点击头像登录" bindtap="onTapDebug"></van-cell>
             </van-collapse-item>
             <van-collapse-item name="my_tickets" title="我的卡券" icon="idcard" value="{{ '共'+(user.tea_tickets.length + user.doll_tickets.length)+'张' }}" label="{{tickets_label}}">
-                <van-cell wx:if="{{user.logged && user.tea_tickets.length != 0}}" title="我的奶茶券" value="{{ user.tea_tickets.length+'张' }}" bindtap="onTeaTicket" is-link></van-cell>
-                <van-cell wx:if="{{user.logged && user.doll_tickets.length != 0}}" title="我的娃娃券" value="{{ user.doll_tickets.length+'张' }}" bindtap="onDollTicket" is-link></van-cell>
-                <!-- 写卡券展示页 is link 指向卡券展示页 -->
-                <van-cell wx:elif="{{user.logged}}" title="您还没有卡券" icon="info-o" value="如何兑换卡券?" is-link bindtap="onClickHowToGainTickets"></van-cell>
+                <view class="wrpa" wx:if="{{user.logged}}">
+                    <van-cell title="我的奶茶券" value="{{ user.tea_tickets.length+'张' }}" bindtap="onTeaTicket" is-link></van-cell>
+                    <!-- <van-cell wx:elif="{{user.logged}}" title="您还没有卡券" icon="info-o" value="如何兑换卡券?" is-link bindtap="onClickHowToGainTickets"></van-cell> -->
+                    <van-cell title="我的娃娃券" value="{{ user.doll_tickets.length+'张' }}" bindtap="onDollTicket" is-link></van-cell>
+                    <!-- 写卡券展示页 is link 指向卡券展示页 -->
+                </view>
                 <van-cell wx:else title="请先登录" icon="warn-o" value="点击头像登录" bindtap="onTapDebug"></van-cell>
             </van-collapse-item>
             <van-collapse-item name="my_recycle_records" title="我的回收记录" icon="records" value="{{'共'+user.recycle_records.length+'次'}}" label="{{ recycle_records_label}}">
