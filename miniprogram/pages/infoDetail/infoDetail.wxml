@@ -1,3 +1,10 @@
 <!-- miniprogram/pages/infoDetail/infoDetail.wxml -->
-<text>miniprogram/pages/infoDetail/infoDetail.wxml</text>
 <text>Article: {{article_id}}</text>
+<van-row>
+    <van-col span="18" offset="3">
+        <view class="wrap">
+            <van-icon name="clear" size="100px"></van-icon>
+            <text>暂不可使用</text>
+        </view>
+    </van-col>
+</van-row>

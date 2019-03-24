@@ -69,7 +69,7 @@ Page({
               //     Toast.clear();
               //     Toast.fail({
               //       duration: 2000,
-              //       message: "获取失败" + error.message,
+              //       message: "获取失败" + error.errCode,
               //       selector: "#error"
               //     });
               //     console.log(error);
@@ -115,7 +115,7 @@ Page({
               //     Toast.clear();
               //     Toast.fail({
               //       duration: 2000,
-              //       message: "获取失败" + error.message,
+              //       message: "获取失败" + error.errCode,
               //       selector: "#error"
               //     });
               //     console.log(error);
@@ -147,7 +147,7 @@ Page({
               //     Toast.clear();
               //     Toast.fail({
               //       duration: 2000,
-              //       message: "获取失败" + error.message,
+              //       message: "获取失败" + error.errCode,
               //       selector: "#error"
               //     });
               //     console.log(error);
@@ -179,7 +179,7 @@ Page({
               //     Toast.clear();
               //     Toast.fail({
               //       duration: 2000,
-              //       message: "获取失败" + error.message,
+              //       message: "获取失败" + error.errCode,
               //       selector: "#error"
               //     });
               //     console.log(error);
@@ -210,7 +210,7 @@ Page({
               //   Toast.clear();
               //   Toast.fail({
               //     duration: 2000,
-              //     message: "获取失败" + error.message,
+              //     message: "获取失败" + error.errCode,
               //     selector: "#error"
               //   });
               //   console.log(error);
@@ -337,7 +337,7 @@ Page({
           Toast.clear();
           Toast.fail({
             duration: 2000,
-            message: "获取失败" + error.message,
+            message: "获取失败" + error.errCode,
             selector: "#error"
           });
           console.log(error);
@@ -382,7 +382,7 @@ Page({
           Toast.clear();
           Toast.fail({
             duration: 2000,
-            message: "获取失败" + error.message,
+            message: "获取失败" + error.errCode,
             selector: "#error"
           });
           console.log(error);
@@ -414,7 +414,7 @@ Page({
           Toast.clear();
           Toast.fail({
             duration: 2000,
-            message: "获取失败" + error.message,
+            message: "获取失败" + error.errCode,
             selector: "#error"
           });
           console.log(error);
@@ -446,7 +446,7 @@ Page({
           Toast.clear();
           Toast.fail({
             duration: 2000,
-            message: "获取失败" + error.message,
+            message: "获取失败" + error.errCode,
             selector: "#error"
           });
           console.log(error);
@@ -477,7 +477,7 @@ Page({
         Toast.clear();
         Toast.fail({
           duration: 2000,
-          message: "获取失败" + error.message,
+          message: "获取失败" + error.errCode,
           selector: "#error"
         });
         console.log(error);
@@ -743,7 +743,7 @@ Page({
         Toast.clear();
         Toast.fail({
           duration: 2000,
-          message: "获取失败" + error.message,
+          message: "获取失败" + error.errCode,
           selector: "#error"
         });
         console.log(error);
@@ -788,7 +788,7 @@ Page({
         Toast.clear();
         Toast.fail({
           duration: 2000,
-          message: "获取失败" + error.message,
+          message: "获取失败" + error.errCode,
           selector: "#error"
         });
         console.log(error);
@@ -820,7 +820,7 @@ Page({
         Toast.clear();
         Toast.fail({
           duration: 2000,
-          message: "获取失败" + error.message,
+          message: "获取失败" + error.errCode,
           selector: "#error"
         });
         console.log(error);
@@ -852,7 +852,7 @@ Page({
         Toast.clear();
         Toast.fail({
           duration: 2000,
-          message: "获取失败" + error.message,
+          message: "获取失败" + error.errCode,
           selector: "#error"
         });
         console.log(error);
@@ -883,7 +883,7 @@ Page({
       Toast.clear();
       Toast.fail({
         duration: 2000,
-        message: "获取失败" + error.message,
+        message: "获取失败" + error.errCode,
         selector: "#error"
       });
       console.log(error);
