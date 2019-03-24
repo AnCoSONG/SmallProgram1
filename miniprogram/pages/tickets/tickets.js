@@ -234,6 +234,8 @@ Page({
   onTapUseDollTicket({
     currentTarget: {
       dataset: {
+        done,
+        valid,
         id,
         index
       }
@@ -241,57 +243,82 @@ Page({
   }) {
     let productList = this.data.doll_tickets;
 
-    // 使用这张娃娃券的逻辑
-    wx.showModal({
-      title: '券码: ' + id,
-      content: '确定使用这张娃娃券?',
-      showCancel: true,
-      success: res => {
-        if (res.cancel) {
-          Toast.fail({
-            duration: 2000,
-            message: '您已取消',
-            selector: '#toast'
-          })
-        } else if (res.confirm) {
-          Toast.loading({
-            duration: 0,
-            mask: true,
-            forbidClick: true,
-            message: '正在使用...',
-            selector: '#toast'
-          });
-          wx.cloud.callFunction({
-            name: 'completedoll',
-            data: {
-              doll_id: id
-            }
-          }).then(res => {
-            wx.showModal({
-              title: '使用成功！',
-              content: '点击确认返回主页',
-              showCancel: false,
-              success: res => {
-                wx.navigateBack({
-                  delta: 1, // 回退前 delta(默认为1) 页面
-                  success: function (res) {
-                    // success
-                  },
-                  fail: function () {
-                    // fail
-                  },
-                  complete: function () {
-                    // complete
-                  }
-                })
-              }
+    if (!done && valid) {
+
+      // 使用这张娃娃券的逻辑
+      wx.showModal({
+        title: '券码: ' + id,
+        content: '确定使用这张娃娃券?',
+        showCancel: true,
+        success: res => {
+          if (res.cancel) {
+            Toast.fail({
+              duration: 2000,
+              message: '您已取消',
+              selector: '#toast'
             })
-          })
+          } else if (res.confirm) {
+            Toast.loading({
+              duration: 0,
+              mask: true,
+              forbidClick: true,
+              message: '正在使用...',
+              selector: '#toast'
+            });
+            wx.cloud.callFunction({
+              name: 'completedoll',
+              data: {
+                doll_id: id
+              }
+            }).then(res => {
+              wx.showModal({
+                title: '使用成功！',
+                content: '点击确认返回主页',
+                showCancel: false,
+                success: res => {
+                  wx.navigateBack({
+                    delta: 1, // 回退前 delta(默认为1) 页面
+                    success: function (res) {
+                      // success
+                    },
+                    fail: function () {
+                      // fail
+                    },
+                    complete: function () {
+                      // complete
+                    }
+                  })
+                }
+              })
+            }).catch(error => {
+              console.log(error);
+              Toast.fail({
+                duration: 3000,
+                message: '失败:' + error.errCode,
+                selector: '#toast'
+              })
+            })
 
 
+          }
         }
-      }
-    })
+      })
+    } else if (done) {
+      Toast.fail({
+        duration: 2000,
+        message: '您已经使用过了~',
+        selector: '#toast'
+      })
+
+      this.hideUseButton(index);
+    } else if (!valid) {
+      Toast.fail({
+        duration: 2000,
+        message: '已经过期啦~',
+        selector: '#toast'
+      })
+      this.hideUseButton(index);
+    }
 
 
     // //从用户列表里删掉这张娃娃券的逻辑

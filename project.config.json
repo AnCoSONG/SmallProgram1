@@ -9,7 +9,7 @@
 		"newFeature": true,
 		"nodeModules": false,
 		"autoAudits": false,
-		"uglifyFileName": true
+		"uglifyFileName": false
 	},
 	"appid": "wxaba5d6e63ef19f45",
 	"projectname": "SmallProgram",

@@ -87,7 +87,7 @@
                 </view>
             </movable-view>
         </movable-area>
-        <view class="use {{show_shadow[index]? 'show':''}}" data-id="{{id}}" data-index="{{index}}" bindtap="onTapUseDollTicket">
+        <view class="use {{show_shadow[index]? 'show':''}}" data-done="{{done}}" data-valid="{{valid}}" data-id="{{id}}" data-index="{{index}}" bindtap="onTapUseDollTicket">
             使用
         </view>
     </view>
