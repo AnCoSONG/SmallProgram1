@@ -44,207 +44,207 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              var thatUser = this.data.user;
-              var pList = [];
-              const toast = Toast.loading({
-                duration: 0,
-                mask: true,
-                forbidClick: true,
-                selector: "#loading",
-                message: "正在拉取电池积分..."
-              });
-              let _1 = wx.cloud
-                .callFunction({
-                  name: "getbatterylight",
-                  data: {}
-                })
-                .then(function (res) {
-                  // console.log(res);
-                  thatUser.battery_point = res.result.battery_light;
-                  toast.setData({
-                    message: "正在拉取奶茶积分..."
-                  });
-                })
-                .catch(function (error) {
-                  Toast.clear();
-                  Toast.fail({
-                    duration: 2000,
-                    message: "获取失败" + error.message,
-                    selector: "#error"
-                  });
-                  console.log(error);
-                });
+              // var thatUser = this.data.user;
+              // var pList = [];
+              // const toast = Toast.loading({
+              //   duration: 0,
+              //   mask: true,
+              //   forbidClick: true,
+              //   selector: "#loading",
+              //   message: "正在拉取电池积分..."
+              // });
+              // let _1 = wx.cloud
+              //   .callFunction({
+              //     name: "getbatterylight",
+              //     data: {}
+              //   })
+              //   .then(function (res) {
+              //     // console.log(res);
+              //     thatUser.battery_point = res.result.battery_light;
+              //     toast.setData({
+              //       message: "正在拉取奶茶积分..."
+              //     });
+              //   })
+              //   .catch(function (error) {
+              //     Toast.clear();
+              //     Toast.fail({
+              //       duration: 2000,
+              //       message: "获取失败" + error.message,
+              //       selector: "#error"
+              //     });
+              //     console.log(error);
+              //   });
 
-              let _2 = wx.cloud
-                .callFunction({
-                  name: "getdrinklightandticket",
-                  data: {}
-                })
-                .then(res => {
-                  // console.log(res);
-                  // console.log(res.result.drink.tickets);
+              // let _2 = wx.cloud
+              //   .callFunction({
+              //     name: "getdrinklightandticket",
+              //     data: {}
+              //   })
+              //   .then(res => {
+              //     // console.log(res);
+              //     // console.log(res.result.drink.tickets);
 
-                  for (let i of res.result.drink.lights) {
+              //     for (let i of res.result.drink.lights) {
 
-                    thatUser.tea_point_dict[i.shop.id] = i.number; //字典不如直接列表方便
-                    thatUser.tea_point_list[i.shop.id - 1] = i.number;
-                    thatUser.tea_point += i.number
-                  }
+              //       // thatUser.tea_point_dict[i.shop.id] = i.number; //字典不如直接列表方便
+              //       thatUser.tea_point_list[i.shop.id - 1] = i.number;
+              //       thatUser.tea_point += i.number
+              //     }
 
-                  for (let i of res.result.drink.tickets) {
-                    let _id = "000" + String(i.shop.id);
-                    let item_type = i.item.id;
-                    let end_time = i.valid ? moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
-                      .add(i.effect_time, "h")
-                      .format("YYYY-MM-DD HH:mm:SS") : "过期"
-                    thatUser.tea_tickets.push({
-                      id: i.id,
-                      _id: _id,
-                      item_type: item_type,
-                      end_time: end_time,
-                      done: i.done,
-                      valid: i.valid
-                    });
-                  }
-                  // console.log(thatUser);
-                  toast.setData({
-                    message: "正在拉取娃娃券..."
-                  });
-                })
-                .catch(error => {
-                  Toast.clear();
-                  Toast.fail({
-                    duration: 2000,
-                    message: "获取失败" + error.message,
-                    selector: "#error"
-                  });
-                  console.log(error);
-                });
+              //     for (let i of res.result.drink.tickets) {
+              //       let _id = "000" + String(i.shop.id);
+              //       let item_type = i.item.id;
+              //       let end_time = i.valid ? moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
+              //         .add(i.effect_time, "h")
+              //         .format("YYYY-MM-DD HH:mm:SS") : "过期"
+              //       thatUser.tea_tickets.push({
+              //         id: i.id,
+              //         _id: _id,
+              //         item_type: item_type,
+              //         end_time: end_time,
+              //         done: i.done,
+              //         valid: i.valid
+              //       });
+              //     }
+              //     // console.log(thatUser);
+              //     toast.setData({
+              //       message: "正在拉取娃娃券..."
+              //     });
+              //   })
+              //   .catch(error => {
+              //     Toast.clear();
+              //     Toast.fail({
+              //       duration: 2000,
+              //       message: "获取失败" + error.message,
+              //       selector: "#error"
+              //     });
+              //     console.log(error);
+              //   });
 
-              let _3 = wx.cloud
-                .callFunction({
-                  name: "getdollpaperinfo",
-                  data: {}
-                })
-                .then(res => {
-                  console.log(res);
-                  for (let i of res.result.doll_paper) {
-                    thatUser.doll_tickets.push({
-                      name: "娃娃券",
-                      id: i.id,
-                      done: i.done,
-                      valid: i.valid,
-                      end_time: i.valid ?
-                        moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
-                        .add(i.effect_time, "h")
-                        .format("YYYY-MM-DD HH:mm:SS") : "过期"
-                    });
-                  }
-                  console.log(thatUser);
-                  Toast.clear();
-                })
-                .catch(error => {
-                  Toast.clear();
-                  Toast.fail({
-                    duration: 2000,
-                    message: "获取失败" + error.message,
-                    selector: "#error"
-                  });
-                  console.log(error);
-                });
+              // let _3 = wx.cloud
+              //   .callFunction({
+              //     name: "getdollpaperinfo",
+              //     data: {}
+              //   })
+              //   .then(res => {
+              //     console.log(res);
+              //     for (let i of res.result.doll_paper) {
+              //       thatUser.doll_tickets.push({
+              //         name: "娃娃券",
+              //         id: i.id,
+              //         done: i.done,
+              //         valid: i.valid,
+              //         end_time: i.valid ?
+              //           moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
+              //           .add(i.effect_time, "h")
+              //           .format("YYYY-MM-DD HH:mm:SS") : "过期"
+              //       });
+              //     }
+              //     console.log(thatUser);
+              //     Toast.clear();
+              //   })
+              //   .catch(error => {
+              //     Toast.clear();
+              //     Toast.fail({
+              //       duration: 2000,
+              //       message: "获取失败" + error.message,
+              //       selector: "#error"
+              //     });
+              //     console.log(error);
+              //   });
 
-              let _4 = wx.cloud
-                .callFunction({
-                  name: "getalldrinkorder",
-                  data: {}
-                })
-                .then(res => {
-                  console.log(res);
-                  for (let i of res.result.orders) {
-                    thatUser.recycle_records.push({
-                      type: "teacup",
-                      dataset: {
-                        id: String(i.id),
-                        submitTime: i.createTime,
-                        shopId: i.shop_id,
-                        status: i.done,
-                        cupId: i.cup_id
+              // let _4 = wx.cloud
+              //   .callFunction({
+              //     name: "getalldrinkorder",
+              //     data: {}
+              //   })
+              //   .then(res => {
+              //     console.log(res);
+              //     for (let i of res.result.orders) {
+              //       thatUser.recycle_records.push({
+              //         type: "teacup",
+              //         dataset: {
+              //           id: String(i.id),
+              //           submitTime: i.createTime,
+              //           shopId: i.shop_id,
+              //           status: i.done,
+              //           cupId: i.cup_id
 
-                      }
-                    });
-                  }
-                  console.log(thatUser);
-                })
-                .catch(error => {
-                  Toast.clear();
-                  Toast.fail({
-                    duration: 2000,
-                    message: "获取失败" + error.message,
-                    selector: "#error"
-                  });
-                  console.log(error);
-                });
-              let _5 = wx.cloud.callFunction({
-                name: 'getallbatteryorder',
-                data: {}
-              }).then(res => {
-                console.log(res);
-                for (let i of res.result.orders) {
+              //         }
+              //       });
+              //     }
+              //     console.log(thatUser);
+              //   })
+              //   .catch(error => {
+              //     Toast.clear();
+              //     Toast.fail({
+              //       duration: 2000,
+              //       message: "获取失败" + error.message,
+              //       selector: "#error"
+              //     });
+              //     console.log(error);
+              //   });
+              // let _5 = wx.cloud.callFunction({
+              //   name: 'getallbatteryorder',
+              //   data: {}
+              // }).then(res => {
+              //   console.log(res);
+              //   for (let i of res.result.orders) {
 
-                  thatUser.recycle_records.push({
-                    type: 'battery',
-                    dataset: {
-                      id: String(i.id),
-                      batteryNum: i.battery_num,
-                      status: i.done,
-                      submitTime: i.createTime,
-                      contactNumber: i.tel,
-                      pickedPlace: i.userLocation,
-                      pickedTime: i.freeTime,
-                      note: i.note
-                    }
-                  })
-                }
-                console.log(thatUser);
-              }).catch(error => {
-                Toast.clear();
-                Toast.fail({
-                  duration: 2000,
-                  message: "获取失败" + error.message,
-                  selector: "#error"
-                });
-                console.log(error);
-              });
+              //     thatUser.recycle_records.push({
+              //       type: 'battery',
+              //       dataset: {
+              //         id: String(i.id),
+              //         batteryNum: i.battery_num,
+              //         status: i.done,
+              //         submitTime: i.createTime,
+              //         contactNumber: i.tel,
+              //         pickedPlace: i.userLocation,
+              //         pickedTime: i.freeTime,
+              //         note: i.note
+              //       }
+              //     })
+              //   }
+              //   console.log(thatUser);
+              // }).catch(error => {
+              //   Toast.clear();
+              //   Toast.fail({
+              //     duration: 2000,
+              //     message: "获取失败" + error.message,
+              //     selector: "#error"
+              //   });
+              //   console.log(error);
+              // });
 
-              pList.push(_1);
-              pList.push(_2);
-              pList.push(_3);
-              pList.push(_4);
-              pList.push(_5);
-              Promise.all(pList).then(rest => {
-                this.setData({
-                  point_desc: "继续加油哦",
-                  tickets_label: "继续加油哦",
-                  recycle_records_label: "继续加油哦",
-                  user: {
-                    battery_point: thatUser.battery_point,
-                    tea_point: thatUser.tea_point,
-                    recycle_records: thatUser.recycle_records,
-                    logged: true,
-                    tea_point_list: thatUser.tea_point_list,
-                    username: res.userInfo.nickName,
-                    avatarUrl: res.userInfo.avatarUrl,
-                    userInfo: res.userInfo,
-                    tea_tickets: thatUser.tea_tickets,
+              // pList.push(_1);
+              // pList.push(_2);
+              // pList.push(_3);
+              // pList.push(_4);
+              // pList.push(_5);
+              // Promise.all(pList).then(rest => {
+              //   this.setData({
+              //     point_desc: "继续加油哦",
+              //     tickets_label: "继续加油哦",
+              //     recycle_records_label: "继续加油哦",
+              //     user: {
+              //       battery_point: thatUser.battery_point,
+              //       tea_point: thatUser.tea_point,
+              //       recycle_records: thatUser.recycle_records,
+              //       logged: true,
+              //       tea_point_list: thatUser.tea_point_list,
+              //       username: res.userInfo.nickName,
+              //       avatarUrl: res.userInfo.avatarUrl,
+              //       userInfo: res.userInfo,
+              //       tea_tickets: thatUser.tea_tickets,
 
-                    doll_tickets: thatUser.doll_tickets
-                  }
-                });
-                app.logged = true;
-                app.avaterUrl = res.userInfo.avatarUrl;
-                app.username = res.userInfo.nickName;
-                app.userInfo = res.userInfo;
-              });
+              //       doll_tickets: thatUser.doll_tickets
+              //     }
+              //   });
+              //   app.logged = true;
+              //   app.avaterUrl = res.userInfo.avatarUrl;
+              //   app.username = res.userInfo.nickName;
+              //   app.userInfo = res.userInfo;
+              // });
             }
           });
         }
@@ -490,6 +490,9 @@ Page({
       pList.push(_5);
       Promise.all(pList).then(rest => {
         this.setData({
+          point_desc: "继续加油哦",
+          tickets_label: "继续加油哦",
+          recycle_records_label: "继续加油哦",
           user: {
             battery_point: thatUser.battery_point,
             tea_point: thatUser.tea_point,
@@ -752,11 +755,11 @@ Page({
         data: {}
       })
       .then(res => {
-        // console.log(res);
+        console.log(res);
         // console.log(res.result.drink.tickets);
 
         for (let i of res.result.drink.lights) {
-
+          // console.log(i.shop);
           thatUser.tea_point_list[i.shop.id - 1] = i.number;
           thatUser.tea_point += i.number
         }
@@ -893,6 +896,9 @@ Page({
     pList.push(_5);
     Promise.all(pList).then(rest => {
       this.setData({
+        point_desc: "继续加油哦",
+        tickets_label: "继续加油哦",
+        recycle_records_label: "继续加油哦",
         user: {
           battery_point: thatUser.battery_point,
           tea_point: thatUser.tea_point,

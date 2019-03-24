@@ -102,7 +102,7 @@
                         <view class="desc">{{item.name+"券"}}</view>
                         <view class="point">{{"需" + item.point + "分"}}</view>
                         <view class="oper">
-                            <van-button size="small" data-exchangeID="{{index+' '+id}}" bind:click="onExchangeTeacup" type="primary" plain custom-class="custombtn" disabled="{{tea_point_list[index]<item.point}}">
+                            <van-button size="small" data-shopID="{{index}}" data-ticketId="{{id}}" data-ticketPoint="{{item.point}}" bind:click="onExchangeTeacup" type="primary" plain custom-class="custombtn" disabled="{{tea_point_list[index]<item.point}}">
                                 兑换
                             </van-button>
                         </view>

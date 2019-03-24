@@ -95,8 +95,15 @@
 .ticket .wrap .id {
   float: left;
   clear: both;
-  font-size: 24rpx;
-  padding: 10rpx;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+}
+
+.ticket .doll_wrap .doll_id {
+  position: absolute;
+  top: 10rpx;
+  left: 20rpx;
+  font-size: 30rpx;
 }
 
 .ticket .doll_wrap .doll_title {
