@@ -39,11 +39,24 @@
                     <view class="id">券码:{{id}}</view>
                     <view class="title">{{item_title[item_type]}}</view>
                     <view class="shop">{{shop[_id]}}</view>
-                    <view class="end_time">请在 {{end_time}} 前使用</view>
+                    <view class="end_time">
+                        <view wx:if="{{!done && valid}}" style="display:inline-block">
+                            <van-icon name="clock-o" size="20rpx"></van-icon>
+                            请在 {{end_time}} 前使用
+                        </view>
+                        <view wx:elif="{{done && valid}}" style="display:inline-block">
+                            <van-icon name="passed" size="20rpx" color="#00CC00"></van-icon>
+                            已使用
+                        </view>
+                        <view wx:elif="{{!valid}}" style="display:inline-block">
+                            <van-icon name="warn-o" size="20rpx"></van-icon>
+                            已过期
+                        </view>
+                    </view>
                 </view>
             </movable-view>
         </movable-area>
-        <view class="use {{show_shadow[index]? 'show':''}}" data-id="{{id}}" data-index="{{index}}" bindtap="onTapUseTeaTicket">
+        <view class="use {{show_shadow[index]? 'show':''}}" data-shopname="{{shop[_id]}}" data-itemname="{{item_title[item_type]}}" data-done="{{done}}" data-valid="{{valid}}" data-id="{{id}}" data-index="{{index}}" bindtap="onTapUseTeaTicket">
             使用
         </view>
     </view>
@@ -54,13 +67,27 @@
             <movable-view out-of-bounds="true" direction="horizontal" x="{{x}}" inertia="true" data-productIndex="{{index}}" bindtouchstart="handleTouchStart" bindtouchend="handleTouchEnd" bindchange="handleMovableChange">
                 <view class="doll_wrap">
                     <view class="doll_line"></view>
+                    <view class="doll_id">券码: {{id}}</view>
                     <view class="doll_title">{{name}}</view>
                     <!-- <view class="shop">未指定</view> -->
-                    <view class="doll_end_time">请在 {{end_time}} 前使用</view>
+                    <view class="doll_end_time">
+                        <view wx:if="{{!done && valid}}" style="display:inline-block">
+                            <van-icon name="clock-o" size="20rpx"></van-icon>
+                            请在 {{end_time}} 前使用
+                        </view>
+                        <view wx:elif="{{done && valid}}" style="display:inline-block">
+                            <van-icon name="passed" size="20rpx" color="#00CC00"></van-icon>
+                            已使用
+                        </view>
+                        <view wx:elif="{{!valid}}" style="display:inline-block">
+                            <van-icon name="warn-o" size="20rpx"></van-icon>
+                            已过期
+                        </view>
+                    </view>
                 </view>
             </movable-view>
         </movable-area>
-        <view class="use {{show_shadow[index]? 'show':''}}" data-index="{{index}}" bindtap="onTapUseDollTicket">
+        <view class="use {{show_shadow[index]? 'show':''}}" data-done="{{done}}" data-valid="{{valid}}" data-id="{{id}}" data-index="{{index}}" bindtap="onTapUseDollTicket">
             使用
         </view>
     </view>

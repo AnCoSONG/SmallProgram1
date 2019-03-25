@@ -7,7 +7,7 @@
 const got = require('got');
 
 // 时间库
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
@@ -25,7 +25,7 @@ exports.main = async (event, context) => {
   let result = {};
   result.battery = {};
   result.battery.num = num;
-  result.serv_time = moment().format("YYYY-MM-DD HH:mm:SS");
+  result.serv_time = moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS");
 
   let lo = event.user_location.room;
 
@@ -36,6 +36,7 @@ exports.main = async (event, context) => {
     },
     json: true,
     body: {
+      createTime: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
       battery_num: num,
       free_time: event.rest_time,
       openid: wxContext.OPENID,

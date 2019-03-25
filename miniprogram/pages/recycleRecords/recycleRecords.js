@@ -94,5 +94,21 @@ Page({
       compolish: compolish,
       pending: pending
     })
+  },
+
+  onFeedBack(e) {
+    wx.showModal({
+      title: '反馈',
+      content: '请联系负责人微信: xxxxxxxxxx',
+      showCancel: false
+    })
+  },
+
+  onQuestion(e) {
+    wx.showModal({
+      title: '提示',
+      content: '请联系负责人微信: xxxxxxxxx',
+      showCancel: false
+    })
   }
 })

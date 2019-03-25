@@ -37,7 +37,6 @@ public class DrinkOrderService extends CanGetAllService implements BaseService {
     @Override
     public BaseEntity create(BaseEntity entity) {
         ((DrinkOrder) entity).setDone(false);
-        ((DrinkOrder) entity).setCreate_time(new Timestamp(new Date().getTime()));
         return repository.save((DrinkOrder) entity);
     }
 

@@ -483,3 +483,64 @@
 }
 ```
 
+## 奶茶积分换奶茶券
+
+### 传入参数
+
+```javascript
+{
+    cost: 6,                      // 花费的积分 6或者8
+    shop_id: 0,                   // 商家id, 从0开始
+    item_type: 0                  // 商品类型 0-任意单品 1-其他
+}
+
+```
+
+### 返回参数
+
+```javascript
+{
+    serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
+    status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
+    reason: "success",                          // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+
+    left_point: {                               // 在该商家剩余的积分数
+        id: 8,
+        openid: "oKLU95aFCbjEKOc0OGtZuKYMl5RU",
+        point: 123,
+        shop_id: 0                              // 从0开始
+    },
+    ticket: {
+      id: 4,
+      shop_id: 2,                             // 从0开始
+      item_id: 3,                             // 从0开始
+      openid: "string",
+      createTime: "2019-03-23 12:02:45",
+      effect_time: 48,
+      done: false,
+      valid: true
+    }
+
+}
+```
+
+## 娃娃券消费
+
+### 传入参数
+
+```javascript
+{
+    doll_id: 12312
+}
+
+```
+
+### 返回参数
+
+```javascript
+{
+    serv_datetime: "2019-03-07 12:30:34",       // 服务器时间
+    status: "SUCCESS",                          // 是否成功，成功返回"SUCCESS", 失败返回"FAILURE"
+    reason: "success"                           // 返回结果的原因，提交失败返回失败原因，成功返回"success"
+}
+```

@@ -5,7 +5,7 @@
  */
 
 // moment
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 
 // 云函数入口文件
@@ -23,7 +23,7 @@ exports.main = async (event, context) => {
 
 
   let result = {
-    serv_time: moment().format("YYYY-MM-DD HH:mm:ss"),
+    serv_time: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
     status: "SUCCESS",                            
     reason: "success",                  
   };

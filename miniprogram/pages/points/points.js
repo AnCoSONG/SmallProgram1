@@ -1,6 +1,8 @@
 // miniprogram/pages/points.js
 import Toast from "../../dist/toast/toast";
 
+const itemList = ['任意单品', '四季奶青', '牛奶烧仙草', '小芋圆烧仙草', '蜂蜜柚子茶', '幽兰拿铁', '熊猫奶盖茶']
+
 Page({
 
   /**
@@ -145,17 +147,78 @@ Page({
 
   },
 
-  onExchangeTeacup(e) {
-    console.log(e)
+  onExchangeTeacup({
+    currentTarget: {
+      dataset: {
+        shopid,
+        ticketid,
+        ticketpoint
+
+      }
+    }
+  }) {
+    var that = this;
     const toast = Toast.loading({
-      duration: 3000,
+      duration: 0,
       mask: true,
       forbidClick: true,
       message: '正在兑换...',
       selector: '#toast'
     })
-
     //调函数
+    wx.showModal({
+      title: '请确认',
+      content: '确定兑换' + that.data.shop_list[shopid].tick[ticketid].name + '券(适用于:' + that.data.shop_list[shopid].name + '么?',
+      showCancel: true,
+      success: res => {
+        if (res.cancel) {
+          Toast.clear();
+          Toast.fail({
+            duration: 2000,
+            message: '您已取消兑换',
+            selector: '#toast'
+          })
+        } else if (res.confirm) {
+
+          wx.cloud.callFunction({
+            name: 'drinktoticket',
+
+            data: {
+              cost: ticketpoint,
+              shop_id: shopid,
+              item_type: ticketid
+            }
+          }).then(res => {
+            console.log(res);
+            Toast.clear();
+            wx.showModal({
+              title: '兑换成功',
+              content: '奶茶券码: ' + res.result.ticket.id + ',券型: ' + itemList[res.result.ticket.item_id] + ',适用于商店: ' + that.data.shop_list[res.result.ticket.shop_id].name,
+              showCancel: false,
+              success: res => {
+                wx.navigateBack({
+                  delta: 1, // 回退前 delta(默认为1) 页面
+                  success: function (res) {
+                    // success
+                  },
+                  fail: function () {
+                    // fail
+                  },
+                  complete: function () {
+                    // complete
+                  }
+                })
+              }
+            })
+          }).catch(error => {
+            console.log(error);
+          })
+        }
+      },
+      fail: error => {
+        console.log(error)
+      }
+    })
   },
 
   onExchangeBattery(e) {

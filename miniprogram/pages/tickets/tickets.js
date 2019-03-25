@@ -42,22 +42,7 @@ Page({
     ],
     item_type: 0,
 
-    tea_tickets: [{
-        _id: "0001",
-        item_type: 1,
-        end_time: "2018-12-30 13:30:34"
-      },
-      {
-        _id: "0007",
-        item_type: 5,
-        end_time: "2018-12-30 13:30:34"
-      },
-      {
-        _id: "0003",
-        item_type: 4,
-        end_time: "2018-12-30 13:30:34"
-      }
-    ],
+    tea_tickets: [],
     doll_tickets: []
   },
 
@@ -99,13 +84,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.createSelectorQuery()
-      .select(".use")
-      .boundingClientRect(rect => {
-        console.log(rect.width);
-        actionWidth = rect.width;
-      })
-      .exec();
+    if ((this.data.type == 'tea' && this.data.tea_tickets.length > 0) || (this.data.type == 'doll' && this.data.doll_tickets.length > 0)) {
+
+      wx.createSelectorQuery()
+        .select(".use")
+        .boundingClientRect(rect => {
+          console.log(rect.width);
+          actionWidth = rect.width;
+        })
+        .exec();
+    }
   },
 
   /**
@@ -139,7 +127,7 @@ Page({
   onShareAppMessage: function () {},
 
   /**
-   * 显示删除按钮
+   * 显示使用按钮
    */
   showDeleteButton: function (e) {
     let productIndex = e.currentTarget.dataset.productindex;
@@ -152,11 +140,21 @@ Page({
   },
 
   /**
-   * 隐藏删除按钮
+   * 隐藏使用按钮
    */
   hideDeleteButton: function (e) {
     let productIndex = e.currentTarget.dataset.productindex;
 
+    this.setXmove(productIndex, 0);
+
+    let show = this.data.show_shadow;
+    show[productIndex] = false;
+    this.setData({
+      show_shadow: show
+    });
+  },
+
+  hideUseButton(productIndex) {
     this.setXmove(productIndex, 0);
 
     let show = this.data.show_shadow;
@@ -236,89 +234,201 @@ Page({
   onTapUseDollTicket({
     currentTarget: {
       dataset: {
+        done,
+        valid,
+        id,
         index
       }
     }
   }) {
     let productList = this.data.doll_tickets;
 
-    // 使用这张娃娃券的逻辑
+    if (!done && valid) {
 
-    //从用户列表里删掉这张娃娃券的逻辑
-    productList.splice(index, 1);
+      // 使用这张娃娃券的逻辑
+      wx.showModal({
+        title: '券码: ' + id,
+        content: '确定使用这张娃娃券?',
+        showCancel: true,
+        success: res => {
+          if (res.cancel) {
+            Toast.fail({
+              duration: 2000,
+              message: '您已取消',
+              selector: '#toast'
+            })
+          } else if (res.confirm) {
+            Toast.loading({
+              duration: 0,
+              mask: true,
+              forbidClick: true,
+              message: '正在使用...',
+              selector: '#toast'
+            });
+            wx.cloud.callFunction({
+              name: 'completedoll',
+              data: {
+                doll_id: id
+              }
+            }).then(res => {
+              wx.showModal({
+                title: '使用成功！',
+                content: '点击确认返回主页',
+                showCancel: false,
+                success: res => {
+                  wx.navigateBack({
+                    delta: 1, // 回退前 delta(默认为1) 页面
+                    success: function (res) {
+                      // success
+                    },
+                    fail: function () {
+                      // fail
+                    },
+                    complete: function () {
+                      // complete
+                    }
+                  })
+                }
+              })
+            }).catch(error => {
+              console.log(error);
+              Toast.fail({
+                duration: 3000,
+                message: '失败:' + error.errCode,
+                selector: '#toast'
+              })
+            })
 
-    this.setData({
-      doll_tickets: productList
-    });
-    if (productList[index]) {
-      this.setXmove(index, 0);
+
+          }
+        }
+      })
+    } else if (done) {
+      Toast.fail({
+        duration: 2000,
+        message: '您已经使用过了~',
+        selector: '#toast'
+      })
+
+      this.hideUseButton(index);
+    } else if (!valid) {
+      Toast.fail({
+        duration: 2000,
+        message: '已经过期啦~',
+        selector: '#toast'
+      })
+      this.hideUseButton(index);
     }
+
+
+    // //从用户列表里删掉这张娃娃券的逻辑
+    // productList.splice(index, 1);
+
+    // this.setData({
+    //   doll_tickets: productList
+    // });
+    // if (productList[index]) {
+    //   this.setXmove(index, 0);
+    // }
   },
 
   onTapUseTeaTicket({
     currentTarget: {
       dataset: {
+        shopname,
+        itemname,
+        done,
+        valid,
         id,
         index
       }
     }
   }) {
-    var productList = this.data.tea_tickets;
+    if (!done && valid) {
 
-    // 使用这张奶茶券的逻辑
+      var productList = this.data.tea_tickets;
 
-    wx.showModal({
-      title: '券ID:' + id,
-      content: '请向商家出示本界面，确认无误后再点击确认！',
-      showCancel: true,
-      success: res => {
-        if (res.cancel) {
-          Toast.fail({
-            duration: 3000,
-            message: '您已取消使用',
-            selector: '#toast'
-          })
-        } else if (res.confirm) {
-          const toast = Toast.loading({
-            duration: 0,
-            mask: true,
-            forbidClick: true,
-            message: '正在为您处理...',
-            selector: '#toast'
-          })
-          wx.cloud.callFunction({
-            name: 'completeticket',
-            data: {
-              ticket_id: id
-            }
-          }).then(res => {
-            Toast.clear();
-            Toast.success({
-              duration: 2000,
-              message: '祝您用饮愉快',
-              selector: '#toast'
-            })
-            //从用户列表里删掉这张奶茶券的逻辑
-            productList.splice(index, 1);
+      // 使用这张奶茶券的逻辑
 
-            this.setData({
-              tea_tickets: productList
-            });
-            if (productList[index]) {
-              this.setXmove(index, 0);
-            }
-          }).catch(error => {
-            Toast.clear();
-            console.log(error);
+      wx.showModal({
+        title: '券码: ' + id + ' ' + '产品: ' + itemname,
+        content: '请向商家: "' + shopname + '" 出示本界面，确认无误后再点击确认！(支付完成后会返回到之前页面)',
+        showCancel: true,
+        success: res => {
+          if (res.cancel) {
             Toast.fail({
               duration: 3000,
-              message: '错误' + error,
-              select: '#toast'
+              message: '您已取消使用',
+              selector: '#toast'
+            });
+          } else if (res.confirm) {
+            const toast = Toast.loading({
+              duration: 0,
+              mask: true,
+              forbidClick: true,
+              message: '正在为您处理...',
+              selector: '#toast'
             })
-          })
+            wx.cloud.callFunction({
+              name: 'completeticket',
+              data: {
+                ticket_id: id
+              }
+            }).then(res => {
+              Toast.clear();
+              Toast.success({
+                duration: 2000,
+                message: '祝您用饮愉快',
+                selector: '#toast'
+              });
+              wx.navigateBack({
+                delta: 1, // 回退前 delta(默认为1) 页面
+                success: function (res) {
+                  // success
+                },
+                fail: function () {
+                  // fail
+                },
+                complete: function () {
+                  // complete
+                }
+              })
+              // //从用户列表里删掉这张奶茶券的逻辑
+              // let ret = productList.splice(index, 1);
+              // this.setData({
+              //   tea_tickets: productList
+              // });
+              // if (productList[index]) {
+              //   this.setXmove(index, 0);
+              // }
+            }).catch(error => {
+              Toast.clear();
+              console.log(error);
+              Toast.fail({
+                duration: 3000,
+                message: '错误' + error,
+                select: '#toast'
+              })
+            })
+          }
         }
-      }
-    })
+      })
+    } else if (done) {
+      Toast.fail({
+        duration: 2000,
+        message: '您已经使用过了~',
+        selector: '#toast'
+      })
+
+      this.hideUseButton(index);
+    } else if (!valid) {
+      Toast.fail({
+        duration: 2000,
+        message: '已经过期啦~',
+        selector: '#toast'
+      })
+      this.hideUseButton(index);
+    }
 
   }
 

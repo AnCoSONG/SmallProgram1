@@ -70,18 +70,19 @@ public class DrinkPointController extends CanGetAllController {
 
 
     @ApiOperation(value = "更改积分" ,  notes="更改积分数值")
-    @RequestMapping(value = "/drinkpoint/change/{openid}/{number}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/drinkpoint/change/{openid}/{shop_id}/{number}", method = RequestMethod.PUT)
     @ResponseBody
-    public Map<String, Object> changeNumber(@PathVariable String openid, @PathVariable Integer number) {
+    public Map<String, Object> changeNumber(@PathVariable String openid,  @PathVariable Integer shop_id, @PathVariable Integer number) {
 
         Map<String, Object> map = new HashMap<>();
 
         map.put("code", 0);
 
-        DrinkPoint point = (DrinkPoint) service.getByOpenid(openid);
+        DrinkPoint point = service.getByOpenidAndShopid(openid, shop_id);
 
         point.setPoint(number);
 
+        map.put("data", point);
         service.change(point);
 
         return map;

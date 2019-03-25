@@ -1,1 +1,9 @@
 /* miniprogram/pages/infoDetail/infoDetail.wxss */
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}

@@ -242,21 +242,13 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "postbatteryorder",
+      name: "completedoll",
       data: {
-        note: "留言信息",                  // 用户留言
-        tel: "15100000000",               // 用户联系方式
-        user_location: {                  // 用户输入地理位置
-          school: "Default",            // 固定参数，用于后期扩展功能
-          building: 7,                  // 楼栋数，Number类型
-          room: "201"                   // 具体寝室号，String类型
-        },
-        rest_time: "2019-02-04 16-18",
-        battery: {
-          num: 13                       // 电池个数
-        }
-
+        doll_id: 5,                      // 花费的积分 6或者8
+        shop_id: 0,                   // 商家id, 从0开始
+        item_type: 0                  // 商品类型 0-任意单品 1-其他
       },
+
       success: res => {
         console.log(res.result);
       },

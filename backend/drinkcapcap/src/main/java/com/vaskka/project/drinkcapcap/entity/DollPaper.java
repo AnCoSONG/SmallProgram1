@@ -15,6 +15,8 @@ public class DollPaper extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private Boolean done;
+
     public Integer getId() {
         return id;
     }
@@ -26,11 +28,20 @@ public class DollPaper extends BaseEntity {
     public DollPaper() {
     }
 
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
+
     public String getOpenid() {
         return openid;
     }
 
-    public DollPaper(String openid, Integer doll_paper_val, Timestamp create_time, Integer effect_time, Boolean valid) {
+    public DollPaper(Boolean done, String openid, Integer doll_paper_val, Timestamp create_time, Integer effect_time, Boolean valid) {
+        this.done = done;
         this.openid = openid;
         this.doll_paper_val = doll_paper_val;
         this.create_time = create_time;

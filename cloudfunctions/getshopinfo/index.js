@@ -5,7 +5,7 @@
  */
 
 // moment
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
@@ -22,7 +22,7 @@ const coll = db.collection("shop");
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  let result = {serv_time: moment().format("YYYY-MM-DD HH:mm:SS")};
+  let result = { serv_time: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS")};
 
   await coll.get().then(function(res) {
     result.status = "SUCCESS";
