@@ -27,7 +27,7 @@ exports.main = async (event, context) => {
   result.battery.num = num;
   result.serv_time = moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS");
 
-  let lo = event.user_location.school + "-" + event.user_location.room;
+  let lo = event.user_location.room;
 
   let resp = await got('http://129.204.216.249:8080/batteryorder/create', {
     method: 'POST',
