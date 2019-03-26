@@ -1,5 +1,6 @@
 // miniprogram/pages/home/home.js
 import Toast from '../../dist/toast/toast';
+import Dialog from '../../dist/dialog/dialog';
 // 全局app引用
 const app = getApp()
 
@@ -14,6 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showOpenDialog: false,
     page_show: false,
     page_loading: false,
     btnsize: "large",
@@ -156,18 +158,30 @@ Page({
     })
   },
 
-  onMoreInfo() {
-    wx.navigateTo({
-      url: '../moreinfo/moreinfo',
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
+  onMoreInfo(e) {
+    this.setData({
+      showOpenDialog: true
+    })
+    // 进入小程序内的资讯页面
+    // wx.navigateTo({
+    //   url: '../moreinfo/moreinfo',
+    //   success: function (res) {
+    //     // success
+    //   },
+    //   fail: function () {
+    //     // fail
+    //   },
+    //   complete: function () {
+    //     // complete
+    //   }
+    // })
+  },
+
+  onCloseDialog(e) {
+    console.log('关闭');
+    console.log(e);
+    this.setData({
+      showOpenDialog: false
     })
   },
   onLoadingTap() {
@@ -244,9 +258,9 @@ Page({
     wx.cloud.callFunction({
       name: "completedoll",
       data: {
-        doll_id: 5,                      // 花费的积分 6或者8
-        shop_id: 0,                   // 商家id, 从0开始
-        item_type: 0                  // 商品类型 0-任意单品 1-其他
+        doll_id: 5, // 花费的积分 6或者8
+        shop_id: 0, // 商家id, 从0开始
+        item_type: 0 // 商品类型 0-任意单品 1-其他
       },
 
       success: res => {
