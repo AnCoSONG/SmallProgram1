@@ -29,6 +29,10 @@ exports.main = async (event, context) => {
 
   let lo = event.user_location.room;
 
+  let ct = moment().format("YYYY-MM-DD HH:mm:SS");
+
+  console.log("\n\n\n---ct---:" + ct + "\n\n\n");
+
   let resp = await got('http://129.204.216.249:8080/batteryorder/create', {
     method: 'POST',
     headers: {
@@ -36,7 +40,7 @@ exports.main = async (event, context) => {
     },
     json: true,
     body: {
-      createTime: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
+      createTime: ct,
       battery_num: num,
       free_time: event.rest_time,
       openid: wxContext.OPENID,

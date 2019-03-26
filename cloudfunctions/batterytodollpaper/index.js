@@ -112,7 +112,7 @@ exports.main = async (event, context) => {
       },
       json: true,
       body: {
-        createTime: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
+        create_time: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
         effect_time: DOLLPAPER_EFFECT,
         openid: wxContext.OPENID
       }
