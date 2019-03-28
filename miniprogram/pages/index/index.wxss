@@ -1,7 +1,7 @@
 /* miniprogram/pages/home/home.wxss */
 
 .btn-item {
-  margin: 20rpx 0rpx;
+  margin: 40rpx 0rpx;
 }
 
 .text-center {
@@ -13,8 +13,8 @@
   vertical-align: top;
   width: 70rpx;
   /* height: 60%; */
-  margin-top: 1.5%;
-  margin-right: 20rpx;
+  margin-top: 10rpx;
+  margin-right: 10rpx;
 }
 
 .btn-image-battery {
@@ -45,7 +45,7 @@
 }
 
 .btn-group {
-  margin-top: 100rpx;
+  margin-top: 90rpx;
 
 }
 
@@ -61,7 +61,7 @@
 .banner {
   height: 480rpx;
   width: 100%;
-  margin: 20rpx auto;
+  margin: 30rpx auto;
 }
 
 .banner .swiper-image {

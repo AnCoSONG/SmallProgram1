@@ -1,3 +1,5 @@
+import Dialog from "../../dist/dialog/dialog";
+
 // miniprogram/pages/recycleRecords/recycleRecords.js
 Page({
 
@@ -97,11 +99,24 @@ Page({
   },
 
   onFeedBack(e) {
-    wx.showModal({
-      title: '反馈',
-      content: '请联系负责人微信: xxxxxxxxxx',
-      showCancel: false
+
+    Dialog({
+      title: '订单编号' + e.currentTarget.dataset.id,
+      message: '请点击确认进入客服页面并将您的订单编号: ' + e.currentTarget.dataset.id + ' 发送给客服',
+      selector: '#feedback',
+      showCancelButton: true,
+      confirmButtonOpenType: 'contact'
+    }).then(res => {
+      Dialog.close()
+    }).catch(function (error) {
+      console.log(error)
     })
+
+    // wx.showModal({
+    //   title: '反馈',
+    //   content: '请联系负责人微信: xxxxxxxxxx',
+    //   showCancel: false
+    // })
   },
 
   onQuestion(e) {

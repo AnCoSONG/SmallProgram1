@@ -96,3 +96,4 @@
         </van-col>
     </van-row>
 </template>
+<van-dialog id="feedback"></van-dialog>

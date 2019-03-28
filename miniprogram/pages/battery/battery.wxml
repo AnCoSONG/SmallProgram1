@@ -20,7 +20,7 @@
                 <van-field error="{{field_error_phone}}" clearable required name="contact_phone" label="联系电话" placeholder="请输入手机号" type="number" value="{{phone_number}}" bind:change="onPhoneNumberChange"></van-field>
                 <van-field error="{{field_error_place}}" clearable required name="recycle_place" label="回收地点" placeholder="请输入回收地点信息" value="{{recycle_place}}" bind:change="onRecyclePlaceChange"></van-field>
                 <van-cell required title="电池数量" label="1个废电池兑换一个电池积分哦">
-                    <van-stepper name="countofbattery" value="{{numOfBattery}}" min="1" max="100" disable-input integer async-change bind:change="onBatteryStepperChange"></van-stepper>
+                    <van-stepper name="countofbattery" value="{{numOfBattery}}" min="1" max="100" integer async-change bind:change="onBatteryStepperChange"></van-stepper>
                 </van-cell>
                 <!-- <van-cell title="上门时间" value="{{'每晚6-10点'}}"></van-cell> -->
                 <van-field error="{{field_error_time}}" required name="recycle_time" title="上门时间" label="上门时间" placeholder="点击此处选择一个上门时间段" disabled value="{{pickedTime}}" bindtap="onTimePicker" bind:change="onRecycleTimeChange" icon="question-o" bind:click-icon="onClickPickerQuestionIcon"></van-field>
@@ -49,10 +49,15 @@
     </van-collapse-item>
     <van-collapse-item name="no_battery" title="我没电池" label="查看一些我们提供的帮助信息">
         <van-cell-group>
-            <van-cell icon="info-o" title="什么是废电池？" is-link></van-cell>
-            <van-cell icon="info-o" title="废旧电池的危害" is-link></van-cell>
+            <van-cell icon="info-o" title="什么是废电池？" is-link bindtap="onClickMoreInfo"></van-cell>
+            <van-cell icon="info-o" title="废旧电池的危害" is-link bindtap="onClickMoreInfo"></van-cell>
         </van-cell-group>
     </van-collapse-item>
 </van-collapse>
 <van-toast id="question-time" />
 <van-toast id="toast"></van-toast>
+<van-dialog id="subscribe" use-slot show="{{showOpenDialog}}" title="关注公众号查看相关信息" bind:cancel="onCloseDialog">
+    <view class="wrap" style="text-align: center;">
+        <image src="cloud://anco001-ba193c.616e-anco001-ba193c/TIM图片20190327134312.jpg" style="width:200px; height:200px;" />
+    </view>
+</van-dialog>

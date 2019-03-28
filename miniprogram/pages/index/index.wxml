@@ -73,7 +73,7 @@
         </van-button>
       </van-col>
     </van-row>
-    <van-row custom-class="btn-item">
+    <van-row wx:if="{{false}}" custom-class="btn-item">
       <van-col span="24" offset="0">
         <van-button open-type="contact" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
           <image mode="widthFix" src="../../images/info.jpg" class="btn-image" />
@@ -82,7 +82,7 @@
       </van-col>
     </van-row>
     <!-- 测试接口用start -->
-    <van-row custom-class="btn-item">
+    <van-row wx:if="{{false}}" custom-class="btn-item">
       <van-col span="24" offset="0">
         <van-button bind:click="onTestInterface" custom-class="hp-btn text-center" type="default" size="{{btnsize}}">
           <image mode="widthFix" src="../../images/info.jpg" class="btn-image" />
@@ -120,6 +120,6 @@
 </template>
 <van-dialog id="subscribe" use-slot show="{{showOpenDialog}}" title="关注公众号查看我们的资讯" bind:cancel="onCloseDialog" send-message-title="测试标题">
   <view class="wrap" style="text-align: center;">
-    <image src="cloud://anco001-ba193c.616e-anco001-ba193c/TIM图片20190326185818.jpg" style="width:200px; height:200px;" />
+    <image src="cloud://anco001-ba193c.616e-anco001-ba193c/TIM图片20190327134312.jpg" style="width:200px; height:200px;" />
   </view>
 </van-dialog>

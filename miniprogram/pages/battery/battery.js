@@ -17,6 +17,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showOpenDialog: false,
     b_activeNames: ["has_battery"],
 
     timepicker_show: false,
@@ -354,6 +355,12 @@ Page({
 
 
 
+  },
+
+  onClickMoreInfo(e) {
+    this.setData({
+      showOpenDialog: true
+    })
   },
 
   onResetButton() {
