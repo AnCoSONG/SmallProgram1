@@ -3,6 +3,7 @@ import Toast from "../../dist/toast/toast";
 const moment = require("../../utils/moment");
 // miniprogram/pages/exchange/exchange.js
 
+const root = ['oKLU95T0UapFjTfY9Snb21cNxGl4', 'oKLU95eh0nwl-B4XgvRLygIxY23c', 'oKLU95UjYNQKeZJQi_8FnS6qEW70', 'oKLU95aFCbjEKOc0OGtZuKYMl5RU']
 const app = getApp();
 Page({
   /**
@@ -10,7 +11,7 @@ Page({
    */
   data: {
     activeNames: ["1"],
-
+    isRoot: false,
     recycle_records_label: "请先登录",
     tickets_label: "请先登录",
     point_desc: "请先登录",
@@ -44,6 +45,17 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              // console.log(app.globalData.openid);
+
+              for (let i of root) {
+                // console.log(i)
+                if (app.globalData.openid == i) {
+                  this.setData({
+                    isRoot: true
+                  })
+                  break
+                }
+              }
               // var thatUser = this.data.user;
               // var pList = [];
               // const toast = Toast.loading({

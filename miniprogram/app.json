@@ -10,12 +10,14 @@
     "pages/infoDetail/infoDetail",
     "pages/points/points",
     "pages/tickets/tickets",
-    "pages/copeTeaCup/copeTeaCup"
+    "pages/copeTeaCup/copeTeaCup",
+    "pages/manage/manage"
   ],
   "tabBar": {
     "position": "bottom",
     "backgroundColor": "#fff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/selectedhome.png",

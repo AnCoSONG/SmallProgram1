@@ -1,0 +1,103 @@
+/* miniprogram/pages/manage/manage.wxss */
+/* miniprogram/pages/recycleRecords/recycleRecords.wxss */
+
+.header {
+    text-align: center;
+    font-size: 20rpx;
+    color: #444;
+    margin-bottom: 10rpx;
+}
+
+.pending .head {
+    font-size: 32rpx;
+    margin: 10rpx 20rpx;
+}
+
+.record-info {
+    background-color: white;
+    border-radius: 10rpx;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    margin: 30rpx 0;
+}
+
+.record-info .line {
+    width: 100%;
+    height: 4rpx;
+    background: #eee;
+    margin: 10rpx 0;
+}
+
+.record-info .head {
+    padding: 5rpx 15rpx;
+    padding-top: 20rpx;
+}
+
+.record-info .head view {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.record-info .head .status {
+    float: right;
+    clear: both;
+}
+
+.record-info .head .title {
+    color: #333;
+    font-size: 30rpx;
+    letter-spacing: 2rpx;
+}
+
+.record-info .main-wrap {
+    font-size: 24rpx;
+    letter-spacing: 2rpx;
+    padding: 10rpx 15rpx;
+    color: #444;
+}
+
+.record-info .oper {
+    text-align: right;
+    font-size: 24rpx;
+    color: #444;
+    letter-spacing: 2rpx;
+    padding: 15rpx 15rpx;
+}
+
+.record-info .oper button {
+    display: inline-block;
+}
+
+.record-info .oper .feedback {
+    margin-right: 20rpx;
+}
+
+.divLine {
+    background: #E0E3DA;
+    width: 100%;
+    height: 5rpx;
+    margin: 10rpx 0rpx;
+}
+
+.noUn {
+    margin: 20% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+}
+
+.noUn .info {
+    margin-top: 10%;
+    font-size: 24rpx;
+}
+
+.text {
+    background-color: white;
+    font-size: 30rpx;
+    padding: 10rpx;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    letter-spacing: 2rpx;
+    margin: 30px 0;
+}

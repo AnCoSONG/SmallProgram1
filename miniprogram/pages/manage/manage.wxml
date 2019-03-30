@@ -2,7 +2,46 @@
 <view class="header">
     <text>共{{pending+compolish}}条记录,{{compolish}}条已完成,{{pending}}条待处理</text>
 </view>
-<template is="record" wx:for="{{records}}" wx:key="{{index}}" data="{{...item ,...{shop: shop} }}"></template>
+<view class="uncomp">
+    <van-row>
+        <van-col span="10" offset="7">
+            <view class="text" style="text-align:center;margin:20rpx;">待处理</view>
+        </van-col>
+    </van-row>
+    <view wx:if="{{uncompleteRecord.length>0}}">
+        <template is="uncompleteRecord" wx:for="{{uncompleteRecord}}" wx:key="{{index}}" data="{{...item ,...{shop: shop} }}"></template>
+    </view>
+    <view wx:else>
+        <van-row>
+            <van-col span="12" offset="6">
+                <view class="noUn">
+                    <van-icon name="passed" size="100px" color="#00CC00"></van-icon>
+                    <view class="info">没有待处理的记录!</view>
+                </view>
+            </van-col>
+        </van-row>
+    </view>
+</view>
+<view class="comp">
+    <van-row>
+        <van-col span="10" offset="7">
+            <view class="text" style="text-align:center;margin:20rpx;">已完成</view>
+        </van-col>
+    </van-row>
+    <view wx:if="{{completeRecord.length>0}}">
+        <template is="completeRecord" wx:for="{{completeRecord}}" wx:key="{{index}}" data="{{...item ,...{shop: shop} }}"></template>
+    </view>
+    <view wx:else>
+        <van-row>
+            <van-col span="12" offset="6">
+                <view class="noUn">
+                    <van-icon name="passed" size="100px" color="#00CC00"></van-icon>
+                    <view class="info">没有已完成的记录</view>
+                </view>
+            </van-col>
+        </van-row>
+    </view>
+</view>
 <!-- <template wx:for="{{batteryRecord}}" is="batteryRecord" data="{{...batteryRecord}}"></template>
 <template is="teacupRecord"></template> -->
 <!-- <view class="pending">
@@ -24,10 +63,14 @@
 
     </view>
 </view> -->
-<template name="record">
+<!-- <template name="record">
     <template is="{{ type=='battery'?'batteryRecord':'teacupRecord' }}" data="{{...dataset,...{shop: shop} }}"></template>
-    <!-- <template wx:if="{{type=='battery'}}" is="batteryRecord" data="{{...dataset}}"></template>
-    <template wx:else is="teacupRecord" data="{{...dataset, ...{shop:shop} }}"></template> -->
+</template> -->
+<template name="completeRecord">
+    <template is="{{ type=='battery'?'batteryRecord':'teacupRecord' }}" data="{{...dataset,...{shop: shop} }}"></template>
+</template>
+<template name="uncompleteRecord">
+    <template is="{{ type=='battery'?'batteryRecord':'teacupRecord' }}" data="{{...dataset,...{shop: shop} }}"></template>
 </template>
 <template name="batteryRecord">
     <van-row>
@@ -52,12 +95,12 @@
                     <view class="status">您的留言: {{note}}</view>
                 </view>
                 <view class="line"></view>
-                <view class="oper">
-                    <van-button data-id="{{id}}" data-type="battery" custom-class="feedback" size="mini" plain type="primary" bindtap="onFeedBack">
-                        反馈
+                <view class="oper" wx:if="{{!status}}">
+                    <van-button data-id="{{id}}" data-type="battery" custom-class="feedback" size="small" plain type="primary" bindtap="onPass">
+                        通过
                     </van-button>
-                    <van-button data-id="{{id}}" data-type="battery" custom-class="question" size="mini" plain type="danger" bindtap="onQuestion">
-                        有疑问?
+                    <van-button data-id="{{id}}" data-type="battery" custom-class="question" size="small" plain type="danger" bindtap="onDelete">
+                        取消并删除
                     </van-button>
                 </view>
             </view>
@@ -84,12 +127,12 @@
                     <view class="status">当前状态: {{status?"已完成":"待处理"}}</view>
                 </view>
                 <view class="line"></view>
-                <view class="oper">
-                    <van-button data-id="{{id}}" data-type="teacup" custom-class="feedback" size="mini" plain type="primary" bindtap="onFeedBack">
-                        反馈
+                <view class="oper" wx:if="{{!status}}">
+                    <van-button data-id="{{id}}" data-type="teacup" custom-class="feedback" size="small" plain type="primary" bindtap="onPass">
+                        通过
                     </van-button>
-                    <van-button data-id="{{id}}" data-type="teacup" custom-class="question" size="mini" plain type="danger" bindtap="onQuestion">
-                        有疑问?
+                    <van-button data-id="{{id}}" data-type="teacup" custom-class="question" size="small" plain type="danger" bindtap="onDelete">
+                        取消并删除
                     </van-button>
                 </view>
             </view>

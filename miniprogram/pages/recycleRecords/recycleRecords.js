@@ -122,7 +122,7 @@ Page({
   onQuestion(e) {
     wx.showModal({
       title: '提示',
-      content: '请联系负责人微信: xxxxxxxxx',
+      content: '请联系负责人微信: 1197252996',
       showCancel: false
     })
   }

@@ -36,7 +36,7 @@
             </van-collapse-item>
             <!-- 用van-cell代替 -->
             <van-cell name="about_us" title="关于我们" icon="friends-o" label="一个xxx的团队" is-link bindtap="onClickAboutUs"></van-cell>
-            <!-- <van-cell is-link title="客服消息测试" icon="manager-o" value="进入客服页面" open-type="contact"></van-cell> -->
+            <van-cell is-link title="后台管理" icon="manager-o" wx:if="{{isRoot}}" url="../manage/manage"></van-cell>
         </van-collapse>
         <van-dialog id="van-dialog" />
         <!-- 改用Dialog -->
