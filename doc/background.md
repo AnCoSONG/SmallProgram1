@@ -1,12 +1,12 @@
 # 后台管理需要的功能
 
-* 拿到已完成的记录(按量)
+- 拿到已完成的记录(按量)
 
-* 拿到未完成的记录(按量)
+- 拿到未完成的记录(按量)
 
-* 通过未完成的记录
+- 通过未完成的记录
 
-* 取消并删除未完成的记录
+- 取消并删除未完成的记录
 
 ## getuncompleterecord — 拿到未成的记录
 
@@ -14,7 +14,8 @@
 
 ```json
 {
-    openid: 'woqwejqwopd'
+  "openid": "woqwejqwopd", //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
+  "num_already": 10 // 在获取完之前都是10的倍数
 }
 ```
 
@@ -34,7 +35,7 @@
               pickedPlace: '四川大学江安校区',
               batteryNum: 10,
               pickedTime: '2019-04-02 18-20',
-              status: false, 
+              status: false,
 
               note: '搞快点'
         },
@@ -53,7 +54,7 @@
 }
 ```
 
-> 限制一次最多获取10个（即uncompleteRecord最长为10），前端不会限制需要后端限制，通过more属性实现加载更多
+> 限制一次最多获取 10 个（即 uncompleteRecord 最长为 10），前端不会限制需要后端限制，通过 more 属性实现加载更多
 
 ## getcompleterecord — 拿到已完成的记录
 
@@ -61,7 +62,8 @@
 
 ```json
 {
-    openid: 'sdjaodjqdqwhdioqwhiod' //二次验证用户管理员身份
+  "openid": "sdjaodjqdqwhdioqwhiod", //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
+  "num_already": 10 // 在获取完之前都是10的倍数
 }
 ```
 
@@ -99,20 +101,20 @@
 }
 ```
 
-> 限制一次最多获取10个（即completeRecord最长为10），前端不会限制需要后端限制，通过more属性实现加载更多
+> 限制一次最多获取 10 个（即 completeRecord 最长为 10），前端不会限制需要后端限制，通过 more 属性实现加载更多
 
 ## passuncompleterecord — 通过未完成的记录
 
 > 一次只能/只会通过一个
 
-具体实现没有限制，只要可以实现数据库里status变true就可以
+具体实现没有限制，只要可以实现数据库里 status 变 true 就可以
 
 ### 提交参数
 
 ```json
 {
-    openid: 'ssdasdwdqwdqwd'
-    type: 'battery' //或者'teacup'
+    openid: 'ssdasdwdqwdqwd', //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
+    type: 'battery', //或者'teacup'
     id: 10 //对应编号
 }
 ```
@@ -121,8 +123,8 @@
 
 ```json
 {
-    status: 'success',
-    reason: 'success'
+  "status": "success",
+  "reason": "success"
 }
 ```
 
@@ -134,9 +136,9 @@
 
 ```json
 {
-    openid: 'sdadadwdqdqwd',
-    type: 'battery', //或者'teacup'
-    id: 20
+  "openid": "sdadadwdqdqwd",
+  "type": "battery", //或者'teacup'
+  "id": 20
 }
 ```
 
@@ -144,7 +146,7 @@
 
 ```json
 {
-    status: 'success',
-    reason: 'success'
+  "status": "success",
+  "reason": "success"
 }
 ```
