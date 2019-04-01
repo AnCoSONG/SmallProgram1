@@ -1,5 +1,6 @@
 package com.vaskka.project.drinkcapcap.controller;
 
+import com.vaskka.project.drinkcapcap.controller.base.BaseController;
 import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.Item;
 import com.vaskka.project.drinkcapcap.service.ItemService;
@@ -14,7 +15,7 @@ import java.util.Map;
 
 @Api(description = "商品接口")
 @Controller
-public class ItemController extends CanGetAllController {
+public class ItemController extends BaseController {
 
     @Autowired
     private ItemService service;
@@ -37,12 +38,11 @@ public class ItemController extends CanGetAllController {
      * 获取全部Item
      * @return HashMap => json
      */
-    @Override
     @ApiOperation(value = "获取全部商品记录" ,  notes="获取全部商品信息")
     @RequestMapping(value = "/item/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String , Object> getAll() {
-        return this.innerGetAll(service);
+        return this.fromObjectToMapping(service.getAll());
     }
 
 

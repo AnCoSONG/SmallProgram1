@@ -7,7 +7,7 @@ package com.vaskka.project.drinkcapcap.exceptions;
  * @create: 2019/3/19 2:45 PM
  **/
 
-public class ItemShopCombineNotExistException extends DrinkCapcapBaseException {
+public class ItemShopCombineNotExistException extends NotExistException {
     private Integer shopId;
 
     private Integer itemId;

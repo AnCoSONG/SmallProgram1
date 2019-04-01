@@ -2,15 +2,15 @@ package com.vaskka.project.drinkcapcap.jpa;
 
 import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface BatteryOrderRepository extends CrudRepository<BatteryOrder, Integer> {
+public interface BatteryOrderRepository extends JpaRepository<BatteryOrder, Integer> {
 
     /**
      * 根据openid筛选
@@ -37,4 +37,5 @@ public interface BatteryOrderRepository extends CrudRepository<BatteryOrder, Int
     List<BatteryOrder> findByCreateTimeBetween(Timestamp start, Timestamp end);
 
 
+    List<BaseEntity> findByDone(Boolean done, Pageable pageable);
 }

@@ -1,5 +1,6 @@
 package com.vaskka.project.drinkcapcap.controller;
 
+import com.vaskka.project.drinkcapcap.controller.base.BaseController;
 import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.BatteryPoint;
 import com.vaskka.project.drinkcapcap.entity.DrinkPoint;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 @Api(description = "奶茶商家积分接口")
 @Controller
-public class DrinkPointController extends CanGetAllController {
+public class DrinkPointController extends BaseController {
 
     @Autowired
     private DrinkPointService service;
@@ -65,7 +66,7 @@ public class DrinkPointController extends CanGetAllController {
     @ResponseBody
     @RequestMapping(value = "/drinkpoint/all", method = RequestMethod.GET)
     public Map<String, Object> getAll() {
-        return this.innerGetAll(service);
+        return this.fromObjectToMapping(service.getAll());
     }
 
 

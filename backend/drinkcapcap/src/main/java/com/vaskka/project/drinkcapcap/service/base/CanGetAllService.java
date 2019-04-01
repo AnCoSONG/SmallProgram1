@@ -32,15 +32,16 @@ public abstract class CanGetAllService implements BaseService {
      * @return List&lt;BaseEntity&gt;
      */
      protected List<BaseEntity> innerGetAll(CrudRepository repository) {
-        Iterator iterator = repository.findAll().iterator();
+         Iterator iterator = repository.findAll().iterator();
 
-        List<BaseEntity> list = new ArrayList<>();
+         List<BaseEntity> list = new ArrayList<>();
 
-        while (iterator.hasNext()) {
-            list.add((BaseEntity) iterator.next());
-        }
+         while (iterator.hasNext()) {
+             list.add((BaseEntity) iterator.next());
+         }
 
-        return list;
-    }
+         return list;
+     }
+
 
 }
