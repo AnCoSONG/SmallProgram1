@@ -15,7 +15,8 @@
 ```json
 {
   "openid": "woqwejqwopd", //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
-  "num_already": 10 // 在获取完之前都是10的倍数
+  "battery_already_show": 5, // 这两个和是10的倍数
+  "drink_already_show": 5
 }
 ```
 
@@ -43,7 +44,6 @@
             type: 'teacup',
             dataset: {
               id: 3,
-              contactNumber: '18512855406',
               submitTime: '2019-03-31 12:22:33',
               shopId: 2,
               cupId: 10,
@@ -63,7 +63,9 @@
 ```json
 {
   "openid": "sdjaodjqdqwhdioqwhiod", //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
-  "num_already": 10 // 在获取完之前都是10的倍数
+  "num_already": 10, // 在获取完之前都是10的倍数
+    "battery_already_show": 5, // 这两个和是10的倍数
+  "drink_already_show": 5
 }
 ```
 
@@ -90,7 +92,6 @@
          type: 'teacup',
          dataset: {
          id: 3,
-         contactNumber: '18512855406',
          submitTime: '2019-03-31 12:22:33',
          shopId: 2,
          cupId: 10,
