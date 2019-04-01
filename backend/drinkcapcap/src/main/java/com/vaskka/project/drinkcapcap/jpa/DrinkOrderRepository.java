@@ -1,15 +1,18 @@
 package com.vaskka.project.drinkcapcap.jpa;
 
 import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
-import org.springframework.data.repository.CrudRepository;
+import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Pageable;
+
 
 import java.sql.Timestamp;
 import java.util.List;
 
 
 @Repository
-public interface DrinkOrderRepository extends CrudRepository<DrinkOrder, Integer> {
+public interface DrinkOrderRepository extends JpaRepository<DrinkOrder, Integer> {
 
     /**
      * 根据openid筛选
@@ -35,4 +38,6 @@ public interface DrinkOrderRepository extends CrudRepository<DrinkOrder, Integer
      */
     List<DrinkOrder> findByCreateTimeBetween(Timestamp start, Timestamp end);
 
+
+    List<BaseEntity> findByDone(Boolean done, Pageable pageable);
 }

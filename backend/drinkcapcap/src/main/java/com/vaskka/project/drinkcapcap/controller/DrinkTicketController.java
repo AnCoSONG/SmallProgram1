@@ -2,6 +2,7 @@ package com.vaskka.project.drinkcapcap.controller;
 
 import java.util.List;
 
+import com.vaskka.project.drinkcapcap.controller.base.BaseController;
 import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.DrinkTicket;
 import com.vaskka.project.drinkcapcap.exceptions.TicketNotExistExcrption;
@@ -25,7 +26,7 @@ import java.util.Map;
 
 @Api(description = "奶茶券接口")
 @Controller
-public class DrinkTicketController extends CanGetAllController {
+public class DrinkTicketController extends BaseController {
 
     @Autowired
     DrinkTicketService service;
@@ -116,11 +117,4 @@ public class DrinkTicketController extends CanGetAllController {
         return map;
     }
 
-    @Override
-    @ApiOperation(value = "获取全部奶茶券记录" ,  notes="获取全部奶茶券记录")
-    @RequestMapping(value = "/drinkticket/all", method = RequestMethod.GET)
-    @ResponseBody
-    public Map<String , Object> getAll() {
-        return this.innerGetAll(service);
-    }
 }

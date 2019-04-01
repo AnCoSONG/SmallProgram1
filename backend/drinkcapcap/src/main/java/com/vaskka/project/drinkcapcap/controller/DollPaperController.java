@@ -2,6 +2,7 @@ package com.vaskka.project.drinkcapcap.controller;
 
 import java.util.List;
 
+import com.vaskka.project.drinkcapcap.controller.base.BaseController;
 import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
 import com.vaskka.project.drinkcapcap.entity.DollPaper;
 import com.vaskka.project.drinkcapcap.service.DollPaperService;
@@ -24,7 +25,7 @@ import java.util.Map;
 
 @Api(description = "娃娃券接口")
 @Controller
-public class DollPaperController extends CanGetAllController {
+public class DollPaperController extends BaseController {
 
     @Autowired
     DollPaperService service;
@@ -73,12 +74,11 @@ public class DollPaperController extends CanGetAllController {
         return map;
     }
 
-    @Override
     @ApiOperation(value = "获取全部娃娃券" ,  notes="获取全部娃娃券")
     @ResponseBody
     @RequestMapping(value = "/dollpaper/get/all", method = RequestMethod.GET)
     public Map<String, Object> getAll() {
-        return this.innerGetAll(service);
+        return this.fromObjectToMapping(service.getAll());
     }
 
 

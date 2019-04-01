@@ -2,7 +2,6 @@ package com.vaskka.project.drinkcapcap.controller;
 
 
 import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
-import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
 import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import com.vaskka.project.drinkcapcap.service.DrinkOrderService;
 import com.vaskka.project.drinkcapcap.service.DrinkPointService;
@@ -34,7 +33,7 @@ public class DrinkOrderController extends CanGetAllController {
     private DrinkPointService pointService;
 
     @Autowired
-    DrinkOrderService service;
+    private DrinkOrderService service;
 
     @ApiOperation(value = "创建一条奶茶订单" ,  notes="插入一条新奶茶订单记录")
     @ResponseBody
@@ -132,9 +131,19 @@ public class DrinkOrderController extends CanGetAllController {
 
     @Override
     @ApiOperation(value = "获取全部" ,  notes="获取全部order")
-    @RequestMapping(value = "/drinkorder/get/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/drinkorder/get/all/{done}/{page}/{size}", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> getAll() {
-        return this.innerGetAll(service);
+    public Map<String, Object> getAll(@PathVariable Boolean done, @PathVariable  Integer page, @PathVariable Integer size) {
+        return this.innerGetAllPageable(service, page, size, done);
     }
+
+
+    @ApiOperation(value = "删除某个order" ,  notes="根据id删除某个order")
+    @RequestMapping(value = "/drinkorder/delete/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Map<String, Object> del(@PathVariable Integer id) {
+        service.del(id);
+        return this.fromObjectToMapping(null);
+    }
+
 }

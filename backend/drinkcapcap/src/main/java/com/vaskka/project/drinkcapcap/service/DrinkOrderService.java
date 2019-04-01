@@ -3,11 +3,13 @@ package com.vaskka.project.drinkcapcap.service;
 
 import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
+import com.vaskka.project.drinkcapcap.exceptions.OrderNotExistException;
 import com.vaskka.project.drinkcapcap.jpa.DrinkOrderRepository;
-import com.vaskka.project.drinkcapcap.service.base.BaseService;
-import com.vaskka.project.drinkcapcap.service.base.CanGetAllService;
+import com.vaskka.project.drinkcapcap.service.base.CanGetAllPageableService;
 import com.vaskka.project.drinkcapcap.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -24,14 +26,15 @@ import java.util.List;
  **/
 
 @Service
-public class DrinkOrderService extends CanGetAllService implements BaseService {
+public class DrinkOrderService extends CanGetAllPageableService {
 
     @Autowired
     DrinkOrderRepository repository;
 
+
     @Override
-    public List<BaseEntity> getAll() {
-        return this.innerGetAll(repository);
+    public List<BaseEntity> innerGetAllPageable(int page, int size, boolean done) {
+        return repository.findByDone(done, PageRequest.of(page, size));
     }
 
     @Override
@@ -101,5 +104,14 @@ public class DrinkOrderService extends CanGetAllService implements BaseService {
         order.setDone_time(new Timestamp(sf.parse(sf.format(new Date())).getTime()));
 
         repository.save(order);
+    }
+
+    @Override
+    public List<BaseEntity> getAllPageable(JpaRepository repository, int page, int size) {
+        return null;
+    }
+
+    public void del(int id) {
+        this.repository.delete(repository.findById(id).orElseThrow(new OrderNotExistException("订单号不存在", id)));
     }
 }

@@ -1,6 +1,6 @@
 package com.vaskka.project.drinkcapcap.controller;
 
-import com.vaskka.project.drinkcapcap.controller.base.CanGetAllController;
+import com.vaskka.project.drinkcapcap.controller.base.BaseController;
 import com.vaskka.project.drinkcapcap.entity.DrinkControl;
 import com.vaskka.project.drinkcapcap.service.DrinkControlService;
 import io.swagger.annotations.Api;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Api(description = "奶茶数量约束接口")
 @Controller
-public class DrinkControlController extends CanGetAllController {
+public class DrinkControlController extends BaseController {
 
     @Autowired
     private DrinkControlService service;
@@ -48,7 +48,7 @@ public class DrinkControlController extends CanGetAllController {
     @RequestMapping(value = "/drinkcontrol/all", method = RequestMethod.GET)
     @ResponseBody
     public Map<String , Object> getAll() {
-        return this.innerGetAll(service);
+        return this.fromObjectToMapping(service.getAll());
     }
 
 }

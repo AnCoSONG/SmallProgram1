@@ -143,9 +143,19 @@ public class BatteryOrderController extends CanGetAllController {
 
     @Override
     @ApiOperation(value = "查找全部order" ,  notes="查找全部")
-    @RequestMapping(value = "/batteryorder/get/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/batteryorder/get/all/{done}/{page}/{size}", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> getAll() {
-        return this.innerGetAll(service);
+    public Map<String, Object> getAll(@PathVariable Boolean done, @PathVariable Integer page, @PathVariable Integer size) {
+        return this.innerGetAllPageable(service, page, size, done);
     }
+
+
+    @ApiOperation(value = "删除某个order" ,  notes="根据id删除某个order")
+    @RequestMapping(value = "/batteryorder/delete/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Map<String, Object> del(@PathVariable Integer id) {
+        service.del(id);
+        return this.fromObjectToMapping(null);
+    }
+
 }
