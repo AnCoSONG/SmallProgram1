@@ -22,7 +22,7 @@
 
 ### 返回参数
 
-```json
+```js
 {
     status: 'success',
     reason: 'success',
@@ -64,14 +64,14 @@
 {
   "openid": "sdjaodjqdqwhdioqwhiod", //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
   "num_already": 10, // 在获取完之前都是10的倍数
-    "battery_already_show": 5, // 这两个和是10的倍数
+  "battery_already_show": 5, // 这两个和是10的倍数
   "drink_already_show": 5
 }
 ```
 
 ### 返回参数
 
-```JSON
+```JS
 {
     status: 'success',
     reason: 'success',
@@ -114,9 +114,9 @@
 
 ```json
 {
-    openid: 'ssdasdwdqwdqwd', //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
-    type: 'battery', //或者'teacup'
-    id: 10 //对应编号
+  "openid": "ssdasdwdqwdqwd", //用于后端验证是否是管理员，是: 执行后端管理员接口,否: 返回相关错误信息。
+  "type": "battery", //或者'teacup'
+  "id": 10 //对应编号
 }
 ```
 

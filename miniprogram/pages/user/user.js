@@ -3,7 +3,12 @@ import Toast from "../../dist/toast/toast";
 const moment = require("../../utils/moment");
 // miniprogram/pages/exchange/exchange.js
 
-const root = ['oKLU95T0UapFjTfY9Snb21cNxGl4', 'oKLU95eh0nwl-B4XgvRLygIxY23c', 'oKLU95UjYNQKeZJQi_8FnS6qEW70', 'oKLU95aFCbjEKOc0OGtZuKYMl5RU']
+const root = [
+  "oKLU95T0UapFjTfY9Snb21cNxGl4",
+  "oKLU95eh0nwl-B4XgvRLygIxY23c",
+  "oKLU95UjYNQKeZJQi_8FnS6qEW70",
+  "oKLU95aFCbjEKOc0OGtZuKYMl5RU"
+];
 const app = getApp();
 Page({
   /**
@@ -46,16 +51,15 @@ Page({
           wx.getUserInfo({
             success: res => {
               // console.log(app.globalData.openid);
-
-              for (let i of root) {
-                // console.log(i)
-                if (app.globalData.openid == i) {
-                  this.setData({
-                    isRoot: true
-                  })
-                  break
-                }
-              }
+              // for (let i of root) {
+              //   // console.log(i)
+              //   if (app.globalData.openid == i) {
+              //     this.setData({
+              //       isRoot: true
+              //     });
+              //     break;
+              //   }
+              // }
               // var thatUser = this.data.user;
               // var pList = [];
               // const toast = Toast.loading({
@@ -86,7 +90,6 @@ Page({
               //     });
               //     console.log(error);
               //   });
-
               // let _2 = wx.cloud
               //   .callFunction({
               //     name: "getdrinklightandticket",
@@ -95,14 +98,11 @@ Page({
               //   .then(res => {
               //     // console.log(res);
               //     // console.log(res.result.drink.tickets);
-
               //     for (let i of res.result.drink.lights) {
-
               //       // thatUser.tea_point_dict[i.shop.id] = i.number; //字典不如直接列表方便
               //       thatUser.tea_point_list[i.shop.id - 1] = i.number;
               //       thatUser.tea_point += i.number
               //     }
-
               //     for (let i of res.result.drink.tickets) {
               //       let _id = "000" + String(i.shop.id);
               //       let item_type = i.item.id;
@@ -132,7 +132,6 @@ Page({
               //     });
               //     console.log(error);
               //   });
-
               // let _3 = wx.cloud
               //   .callFunction({
               //     name: "getdollpaperinfo",
@@ -164,7 +163,6 @@ Page({
               //     });
               //     console.log(error);
               //   });
-
               // let _4 = wx.cloud
               //   .callFunction({
               //     name: "getalldrinkorder",
@@ -181,7 +179,6 @@ Page({
               //           shopId: i.shop_id,
               //           status: i.done,
               //           cupId: i.cup_id
-
               //         }
               //       });
               //     }
@@ -202,7 +199,6 @@ Page({
               // }).then(res => {
               //   console.log(res);
               //   for (let i of res.result.orders) {
-
               //     thatUser.recycle_records.push({
               //       type: 'battery',
               //       dataset: {
@@ -227,7 +223,6 @@ Page({
               //   });
               //   console.log(error);
               // });
-
               // pList.push(_1);
               // pList.push(_2);
               // pList.push(_3);
@@ -248,7 +243,6 @@ Page({
               //       avatarUrl: res.userInfo.avatarUrl,
               //       userInfo: res.userInfo,
               //       tea_tickets: thatUser.tea_tickets,
-
               //       doll_tickets: thatUser.doll_tickets
               //     }
               //   });
@@ -292,8 +286,6 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     this.refreshAllData();
-
-
   },
 
   /**
@@ -341,6 +333,7 @@ Page({
         .then(function (res) {
           // console.log(res);
           thatUser.battery_point = res.result.battery_light;
+          app.globalData.openid = res.result.openid;
           toast.setData({
             message: "正在拉取奶茶积分..."
           });
@@ -365,17 +358,18 @@ Page({
           // console.log(res.result.drink.tickets);
 
           for (let i of res.result.drink.lights) {
-
             thatUser.tea_point_list[i.shop.id - 1] = i.number;
-            thatUser.tea_point += i.number
+            thatUser.tea_point += i.number;
           }
 
           for (let i of res.result.drink.tickets) {
             let _id = "000" + String(i.shop.id);
             let item_type = i.item.id;
-            let end_time = i.valid ? moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
+            let end_time = i.valid ?
+              moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
               .add(i.effect_time, "h")
-              .format("YYYY-MM-DD HH:mm:SS") : "过期"
+              .format("YYYY-MM-DD HH:mm:SS") :
+              "过期";
             thatUser.tea_tickets.push({
               id: i.id,
               _id: _id,
@@ -448,7 +442,6 @@ Page({
                 shopId: i.shop_id,
                 status: i.done,
                 cupId: i.cup_id
-
               }
             });
           }
@@ -463,37 +456,39 @@ Page({
           });
           console.log(error);
         });
-      let _5 = wx.cloud.callFunction({
-        name: 'getallbatteryorder',
-        data: {}
-      }).then(res => {
-        console.log(res);
-        for (let i of res.result.orders) {
-
-          thatUser.recycle_records.push({
-            type: 'battery',
-            dataset: {
-              id: String(i.id),
-              batteryNum: i.battery_num,
-              status: i.done,
-              submitTime: i.createTime,
-              contactNumber: i.tel,
-              pickedPlace: i.userLocation,
-              pickedTime: i.freeTime,
-              note: i.note
-            }
-          })
-        }
-        console.log(thatUser);
-      }).catch(error => {
-        Toast.clear();
-        Toast.fail({
-          duration: 2000,
-          message: "获取失败" + error.errCode,
-          selector: "#error"
+      let _5 = wx.cloud
+        .callFunction({
+          name: "getallbatteryorder",
+          data: {}
+        })
+        .then(res => {
+          console.log(res);
+          for (let i of res.result.orders) {
+            thatUser.recycle_records.push({
+              type: "battery",
+              dataset: {
+                id: String(i.id),
+                batteryNum: i.battery_num,
+                status: i.done,
+                submitTime: i.createTime,
+                contactNumber: i.tel,
+                pickedPlace: i.userLocation,
+                pickedTime: i.freeTime,
+                note: i.note
+              }
+            });
+          }
+          console.log(thatUser);
+        })
+        .catch(error => {
+          Toast.clear();
+          Toast.fail({
+            duration: 2000,
+            message: "获取失败" + error.errCode,
+            selector: "#error"
+          });
+          console.log(error);
         });
-        console.log(error);
-      });
 
       pList.push(_1);
       pList.push(_2);
@@ -523,7 +518,10 @@ Page({
         app.avaterUrl = thatUser.avatarUrl;
         app.username = thatUser.username;
         app.userInfo = thatUser.userInfo;
+        this.judgeRoot();
       });
+
+
       // this.setData({
       //     point_desc: "继续加油哦",
       //     tickets_label: "继续加油哦!",
@@ -682,10 +680,13 @@ Page({
   },
 
   onTeaCupPoint(e) {
-    let tea_point_list = this.data.user.tea_point_list
-    let tp = this.data.user.tea_point
+    let tea_point_list = this.data.user.tea_point_list;
+    let tp = this.data.user.tea_point;
     wx.navigateTo({
-      url: '../points/points?type=tea&tea_point=' + tp + '&tea_point_list=' + JSON.stringify(tea_point_list),
+      url: "../points/points?type=tea&tea_point=" +
+        tp +
+        "&tea_point_list=" +
+        JSON.stringify(tea_point_list),
       success: function (res) {
         // success
       },
@@ -695,12 +696,10 @@ Page({
       complete: function () {
         // complete
       }
-    })
+    });
   },
 
-  onBatteryPoint(e) {
-
-  },
+  onBatteryPoint(e) {},
 
   refreshAllData() {
     var thatUser = {
@@ -730,7 +729,7 @@ Page({
       complete: function () {
         // complete
       }
-    })
+    });
     var pList = [];
     const toast = Toast.loading({
       duration: 0,
@@ -745,8 +744,11 @@ Page({
         data: {}
       })
       .then(function (res) {
-        // console.log(res);
+        console.log("电池积分");
+        console.log(res);
+        app.globalData.openid = res.result.openid;
         thatUser.battery_point = res.result.battery_light;
+
         toast.setData({
           message: "正在拉取奶茶积分..."
         });
@@ -773,15 +775,17 @@ Page({
         for (let i of res.result.drink.lights) {
           // console.log(i.shop);
           thatUser.tea_point_list[i.shop.id - 1] = i.number;
-          thatUser.tea_point += i.number
+          thatUser.tea_point += i.number;
         }
 
         for (let i of res.result.drink.tickets) {
           let _id = "000" + String(i.shop.id);
           let item_type = i.item.id;
-          let end_time = i.valid ? moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
+          let end_time = i.valid ?
+            moment(i.create_time, "YYYY-MM-DD HH:mm:SS")
             .add(i.effect_time, "h")
-            .format("YYYY-MM-DD HH:mm:SS") : "过期"
+            .format("YYYY-MM-DD HH:mm:SS") :
+            "过期";
           thatUser.tea_tickets.push({
             id: i.id,
             _id: _id,
@@ -854,7 +858,6 @@ Page({
               shopId: i.shop_id,
               status: i.done,
               cupId: i.cup_id
-
             }
           });
         }
@@ -869,37 +872,39 @@ Page({
         });
         console.log(error);
       });
-    let _5 = wx.cloud.callFunction({
-      name: 'getallbatteryorder',
-      data: {}
-    }).then(res => {
-      console.log(res);
-      for (let i of res.result.orders) {
-
-        thatUser.recycle_records.push({
-          type: 'battery',
-          dataset: {
-            id: String(i.id),
-            batteryNum: i.battery_num,
-            status: i.done,
-            submitTime: i.createTime,
-            contactNumber: i.tel,
-            pickedPlace: i.userLocation,
-            pickedTime: i.freeTime,
-            note: i.note
-          }
-        })
-      }
-      console.log(thatUser);
-    }).catch(error => {
-      Toast.clear();
-      Toast.fail({
-        duration: 2000,
-        message: "获取失败" + error.errCode,
-        selector: "#error"
+    let _5 = wx.cloud
+      .callFunction({
+        name: "getallbatteryorder",
+        data: {}
+      })
+      .then(res => {
+        console.log(res);
+        for (let i of res.result.orders) {
+          thatUser.recycle_records.push({
+            type: "battery",
+            dataset: {
+              id: String(i.id),
+              batteryNum: i.battery_num,
+              status: i.done,
+              submitTime: i.createTime,
+              contactNumber: i.tel,
+              pickedPlace: i.userLocation,
+              pickedTime: i.freeTime,
+              note: i.note
+            }
+          });
+        }
+        console.log(thatUser);
+      })
+      .catch(error => {
+        Toast.clear();
+        Toast.fail({
+          duration: 2000,
+          message: "获取失败" + error.errCode,
+          selector: "#error"
+        });
+        console.log(error);
       });
-      console.log(error);
-    });
 
     pList.push(_1);
     pList.push(_2);
@@ -931,7 +936,21 @@ Page({
       app.userInfo = thatUser.userInfo;
       wx.stopPullDownRefresh();
       wx.hideNavigationBarLoading();
+      this.judgeRoot();
     });
 
+  },
+
+  judgeRoot() {
+    // console.log("judge");
+    for (let i of root) {
+      // console.log(i)
+      if (app.globalData.openid == i) {
+        this.setData({
+          isRoot: true
+        });
+        break;
+      }
+    }
   }
 });

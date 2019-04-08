@@ -1,8 +1,8 @@
 // miniprogram/pages/home/home.js
-import Toast from '../../dist/toast/toast';
-import Dialog from '../../dist/dialog/dialog';
+import Toast from "../../dist/toast/toast";
+import Dialog from "../../dist/dialog/dialog";
 // 全局app引用
-const app = getApp()
+const app = getApp();
 
 var touchDotX = 0; //触摸时的原点
 var touchDotY = 0; //触摸原点
@@ -10,7 +10,6 @@ var time = 0; // 时间记录，用于滑动时且时间小于1s则执行左右�
 var interval = ""; // 记录/清理时间记录
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -20,44 +19,40 @@ Page({
     page_loading: false,
     btnsize: "large",
     hover: true,
-    list: [{
-        title: '奶茶杯',
-        desc: '将购买的奶茶杯扔到指定的垃圾桶以兑换积分'
+    list: [
+      {
+        title: "奶茶杯",
+        desc: "将购买的奶茶杯扔到指定的垃圾桶以兑换积分"
       },
       {
-        title: '废电池',
-        desc: '将废旧电池正确回收以兑换积分'
+        title: "废电池",
+        desc: "将废旧电池正确回收以兑换积分"
       }
     ],
     imgUrls: [
-      '../../images/banner/1.jpg',
-      '../../images/banner/2.jpg',
-      '../../images/banner/3.jpg'
+      "../../images/banner/1.jpg",
+      "../../images/banner/2.jpg",
+      "../../images/banner/3.jpg"
     ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
     // 登录获取openid
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        // 登录成功获取openid
-        // 存入app.golbalData.openid保存
-        app.globalData.openid = res.result.openid;
-      },
-      fail: err => {
-        console.log(err);
-      }
-
-    });
-
-
-
+    // wx.cloud.callFunction({
+    //   name: 'login',
+    //   data: {},
+    //   success: res => {
+    //     // 登录成功获取openid
+    //     // 存入app.golbalData.openid保存
+    //     app.globalData.openid = res.result.openid;
+    //   },
+    //   fail: err => {
+    //     console.log(err);
+    //   }
+    // });
     // const toast = Toast.loading({
     //   mask: true,
     //   duration: 0, // 持续展示 toast
@@ -66,7 +61,6 @@ Page({
     //   loadingType: 'spinner',
     //   selector: '#van-toast'
     // });
-
     // let second = 3;
     // const timer = setInterval(() => {
     //   second--;
@@ -79,116 +73,106 @@ Page({
     //     Toast.clear();
     //   }
     // }, 1000);
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 接口测试
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
-    this.onTestInterface();
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 接口测试
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
+  onReady: function() {
+    // /**
+    //  *
+    //  *
+    //  *
+    //  *
+    //  * 接口测试
+    //  *
+    //  *
+    //  *
+    //  *
+    //  *
+    //  */
+    // this.onTestInterface();
+    // /**
+    //  *
+    //  *
+    //  *
+    //  *
+    //  * 接口测试
+    //  *
+    //  *
+    //  *
+    //  *
+    //  *
+    //  */
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {},
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: function() {},
 
   onTeaCup() {
     wx.navigateTo({
-      url: '../teacup/teacup',
-      success: function (res) {
+      url: "../teacup/teacup",
+      success: function(res) {
         // success
         console.log("success");
       },
-      fail: function () {
+      fail: function() {
         // fail
         console.log("fail");
       },
-      complete: function () {
+      complete: function() {
         // complete
         console.log("complete");
       }
-    })
+    });
   },
 
   onBattery() {
     wx.navigateTo({
-      url: '../battery/battery',
-      success: function (res) {
+      url: "../battery/battery",
+      success: function(res) {
         // success
       },
-      fail: function () {
+      fail: function() {
         // fail
       },
-      complete: function () {
+      complete: function() {
         // complete
       }
-    })
+    });
   },
 
   onMoreInfo(e) {
     this.setData({
       showOpenDialog: true
-    })
+    });
     // 进入小程序内的资讯页面
     // wx.navigateTo({
     //   url: '../moreinfo/moreinfo',
@@ -205,16 +189,16 @@ Page({
   },
 
   onCloseDialog(e) {
-    console.log('关闭');
+    console.log("关闭");
     console.log(e);
     this.setData({
       showOpenDialog: false
-    })
+    });
   },
   onLoadingTap() {
     this.setData({
       page_loading: false
-    })
+    });
   },
 
   touchstart(e) {
@@ -224,7 +208,7 @@ Page({
     touchDotX = e.touches[0].pageX;
     touchDotY = e.touches[0].pageY;
     // console.log(touchDot)
-    interval = setInterval(function () {
+    interval = setInterval(function() {
       time++;
     }, 100);
   },
@@ -236,24 +220,23 @@ Page({
     var touchMovedY = e.touches[0].pageY;
     // console.log("touchMove: " + touchMoved + " touchDot:" + touchDot);
     if (Math.abs(touchMovedY - touchDotY) > Math.abs(touchMovedX - touchDotX)) {
-      return
+      return;
     } else {
       if (touchMovedX - touchDotX <= -80 && time < 10) {
         wx.switchTab({
-          url: '../user/user',
-          success: function (res) {
+          url: "../user/user",
+          success: function(res) {
             // success
           },
-          fail: function () {
+          fail: function() {
             // fail
           },
-          complete: function () {
+          complete: function() {
             // complete
           }
-        })
+        });
       }
     }
-
   },
 
   touchend(e) {
@@ -264,22 +247,6 @@ Page({
     time = 0;
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
@@ -287,7 +254,7 @@ Page({
       data: {
         battery_already_show: 10, // 花费的积分 6或者8
         id: 10, // 商家id, 从0开始
-        type: 'battery' // 商品类型 0-任意单品 1-其他
+        type: "battery" // 商品类型 0-任意单品 1-其他
       },
 
       success: res => {
@@ -298,4 +265,4 @@ Page({
       }
     });
   }
-})
+});

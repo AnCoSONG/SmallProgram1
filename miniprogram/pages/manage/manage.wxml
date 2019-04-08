@@ -15,7 +15,7 @@
         <van-row>
             <van-col span="12" offset="6">
                 <view class="noUn">
-                    <van-icon name="passed" size="100px" color="#00CC00"></van-icon>
+                    <van-icon name="passed" size="100px" color="#999"></van-icon>
                     <view class="info">没有待处理的记录!</view>
                 </view>
             </van-col>
@@ -35,7 +35,7 @@
         <van-row>
             <van-col span="12" offset="6">
                 <view class="noUn">
-                    <van-icon name="passed" size="100px" color="#00CC00"></van-icon>
+                    <van-icon name="passed" size="100px" color="#999"></van-icon>
                     <view class="info">没有已完成的记录</view>
                 </view>
             </van-col>
@@ -140,3 +140,4 @@
     </van-row>
 </template>
 <van-dialog id="feedback"></van-dialog>
+<van-toast id="toast"></van-toast>

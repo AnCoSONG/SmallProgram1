@@ -20,6 +20,7 @@ exports.main = async (event, context) => {
     serv_datetime: moment.tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:SS"),
     status: "SUCCESS",
     reason: "success",  
+    openid: wxContext.OPENID
   };
 
   let resp = await got('http://129.204.216.249:8080/batterypoint/get/' + wxContext.OPENID, {
