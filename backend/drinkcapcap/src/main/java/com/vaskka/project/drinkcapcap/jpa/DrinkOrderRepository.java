@@ -40,4 +40,6 @@ public interface DrinkOrderRepository extends JpaRepository<DrinkOrder, Integer>
 
 
     List<BaseEntity> findByDone(Boolean done, Pageable pageable);
+
+    List<DrinkOrder> findByDone(Boolean done);
 }

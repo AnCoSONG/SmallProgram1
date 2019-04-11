@@ -38,4 +38,6 @@ public interface BatteryOrderRepository extends JpaRepository<BatteryOrder, Inte
 
 
     List<BaseEntity> findByDone(Boolean done, Pageable pageable);
+
+    List<BatteryOrder> findByDone(Boolean done);
 }

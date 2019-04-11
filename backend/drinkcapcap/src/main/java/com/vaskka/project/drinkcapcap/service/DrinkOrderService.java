@@ -1,6 +1,7 @@
 package com.vaskka.project.drinkcapcap.service;
 
 
+import com.vaskka.project.drinkcapcap.entity.BatteryOrder;
 import com.vaskka.project.drinkcapcap.entity.DrinkOrder;
 import com.vaskka.project.drinkcapcap.entity.base.BaseEntity;
 import com.vaskka.project.drinkcapcap.exceptions.OrderNotExistException;
@@ -113,5 +114,9 @@ public class DrinkOrderService extends CanGetAllPageableService {
 
     public void del(int id) {
         this.repository.delete(repository.findById(id).orElseThrow(new OrderNotExistException("订单号不存在", id)));
+    }
+
+    public List<DrinkOrder> alpthGetAll() {
+        return repository.findByDone(false);
     }
 }

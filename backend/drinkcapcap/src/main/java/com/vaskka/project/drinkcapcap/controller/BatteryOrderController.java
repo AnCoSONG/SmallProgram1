@@ -158,4 +158,11 @@ public class BatteryOrderController extends CanGetAllController {
         return this.fromObjectToMapping(null);
     }
 
+
+    @ApiOperation(value = "查找全部order" ,  notes="查找全部")
+    @RequestMapping(value = "/batteryorder/get/all/uncompleted", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> alphaGetAll() {
+        return this.fromObjectToMapping(service.alpthGetAll());
+    }
 }
