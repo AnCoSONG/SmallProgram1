@@ -111,7 +111,10 @@ public class BatteryOrderService extends CanGetAllPageableService {
         this.repository.delete(repository.findById(id).orElseThrow(new OrderNotExistException("订单号不存在", id)));
     }
 
-    public List<BatteryOrder> alpthGetAll() {
+    public List<BatteryOrder> alpthGetAllUncomleted() {
         return repository.findByDone(false);
+    }
+    public List<BatteryOrder> alpthGetAllComleted() {
+        return repository.findByDone(true);
     }
 }

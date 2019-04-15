@@ -91,7 +91,7 @@ Page({
     //  *
     //  *
     //  */
-    // this.onTestInterface();
+     this.onTestInterface();
     // /**
     //  *
     //  *
@@ -250,11 +250,8 @@ Page({
   /// ////////////// 测试接口用
   onTestInterface() {
     wx.cloud.callFunction({
-      name: "deleteuncompleterecord",
+      name: "getuncompleterecord",
       data: {
-        battery_already_show: 10, // 花费的积分 6或者8
-        id: 10, // 商家id, 从0开始
-        type: "battery" // 商品类型 0-任意单品 1-其他
       },
 
       success: res => {

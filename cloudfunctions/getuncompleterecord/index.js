@@ -10,17 +10,14 @@ cloud.init()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  let battery_already = parseInt(event.battery_already_show);
-  let drink_already = parseInt(event.drink_already_show);
-
-  let d_resp = await got('http://129.204.216.249:8080/drinkorder/get/all/false/' + String(drink_already / 10 - 1) + '/5', {
+  let d_resp = await got('http://129.204.216.249:8080/drinkorder/get/all/uncompleted', {
     method: 'GET',
     headers: {
       accept: "*/*"
     }
   });
 
-  let b_resp = await got('http://129.204.216.249:8080/batteryorder/get/all/false/' + String(battery_already / 10 - 1) + '/5', {
+  let b_resp = await got('http://129.204.216.249:8080/batteryorder/get/all/uncompleted', {
     method: 'GET',
     headers: {
       accept: "*/*"
@@ -73,6 +70,6 @@ exports.main = async (event, context) => {
     battery_num: b_num,
     tea_num: d_num,
     uncompleteRecord: result_list,
-    more: result_list.length == 10 ? true : false //是否还有更多记录，false说明没有更多，true说明有更多
+    more: false //是否还有更多记录，false说明没有更多，true说明有更多
   }
 }

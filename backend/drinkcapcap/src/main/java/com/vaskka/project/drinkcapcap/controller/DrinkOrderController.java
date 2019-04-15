@@ -146,11 +146,18 @@ public class DrinkOrderController extends CanGetAllController {
         return this.fromObjectToMapping(null);
     }
 
-    @ApiOperation(value = "查找全部order" ,  notes="查找全部")
+    @ApiOperation(value = "查找全部未完成order" ,  notes="查找全部")
     @RequestMapping(value = "/drinkorder/get/all/uncompleted", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> alphaGetAll() {
-        return this.fromObjectToMapping(service.alpthGetAll());
+    public Map<String, Object> alphaGetAllUncompleted() {
+        return this.fromObjectToMapping(service.alpthGetAllUncompleted());
+    }
+
+    @ApiOperation(value = "查找全部已完成order" ,  notes="查找全部")
+    @RequestMapping(value = "/drinkorder/get/all/completed", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> alphaGetAllCompleted() {
+        return this.fromObjectToMapping(service.alpthGetAllCompleted());
     }
 
 }

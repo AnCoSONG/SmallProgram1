@@ -116,7 +116,11 @@ public class DrinkOrderService extends CanGetAllPageableService {
         this.repository.delete(repository.findById(id).orElseThrow(new OrderNotExistException("订单号不存在", id)));
     }
 
-    public List<DrinkOrder> alpthGetAll() {
+    public List<DrinkOrder> alpthGetAllUncompleted() {
         return repository.findByDone(false);
+    }
+
+    public List<DrinkOrder> alpthGetAllCompleted() {
+        return repository.findByDone(true);
     }
 }
