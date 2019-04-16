@@ -22,7 +22,7 @@ const rules = {
 
 const imageUrl = {
   YHT: 'https://10225702.s21i.faiusr.com/4/ABUIABAEGAAg2fXt0QUo_PmhvAQwlgE4Sw.png',
-  SYSXC: 'http://www.85tea.com/Template/Site1/images/foot_logo2.gif',
+  SYSXC: 'http://www.shuyisxc.com/images/logo.png',
   MXBC: 'http://seese-websites.oss-cn-beijing.aliyuncs.com/mxbc/public/pc/static/images/logo.png',
   CYYS: 'http://www.chayanys.com/images/logo.jpg  ',
   ALSGC: 'http://www.alsgongcha.com/image/logo.png',

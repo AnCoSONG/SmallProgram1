@@ -82,6 +82,22 @@ Page({
 
   },
 
+  checkAuth() {
+    const root = [
+      "oKLU95T0UapFjTfY9Snb21cNxGl4",
+      "oKLU95eh0nwl-B4XgvRLygIxY23c",
+      "oKLU95UjYNQKeZJQi_8FnS6qEW70",
+      "oKLU95aFCbjEKOc0OGtZuKYMl5RU"
+    ];
+    for (let i of root) {
+      if (i === app.globalData.openid) {
+        console.log("管理员权限验证");
+        return true;
+      }
+    }
+    return false;
+  },
+
   onPass({
     currentTarget: {
       dataset: {
@@ -99,7 +115,17 @@ Page({
         if (uncompleteRecord[i].dataset.id == id) {
           console.log("matched");
           console.log(i);
-          this.makeComplete(i);
+          if (this.checkAuth()) {
+            this.makeComplete(i);
+          } else {
+            console.log("You dont have auth");
+            Toast.fail({
+              duration: 2000,
+              message: '权限不足',
+              selector: '#toast'
+            });
+          }
+
           break
         }
       }
@@ -123,7 +149,17 @@ Page({
         if (uncompleteRecord[i].dataset.id == id) {
           console.log("matched");
           console.log(i);
-          this.makeDelete(i);
+          if (this.checkAuth()) {
+            this.makeDelete(i);
+          } else {
+            console.log("You dont have auth");
+            Toast.fail({
+              duration: 2000,
+              message: '权限不足',
+              selector: '#toast'
+            });
+          }
+
           break
         }
       }
@@ -255,8 +291,8 @@ Page({
   },
 
   refreshData(uncomp, comp) {
-    var uncompRecord = this.data.uncompleteRecord;
-    var compRecord = this.data.completeRecord;
+    var uncompRecord = [];
+    var compRecord = [];
     // uncompRecord.concat(this.data.uncompleteRecord);
     // compRecord.concat(this.data.completeRecord);
     console.log()
