@@ -107,8 +107,8 @@ public class BatteryOrderController extends CanGetAllController {
         try {
             service.changeOrderToComplete(id);
             BatteryOrder  order = (BatteryOrder) service.getById(id);
-            BatteryPoint point = (BatteryPoint) pointService.findByOpenid(order.getOpenid());
-            point.setBattery_val(point.getBattery_val() + 1);
+            BatteryPoint point =  pointService.findByOpenid(order.getOpenid());
+            point.setBattery_val(point.getBattery_val() + order.getBattery_num());
             pointService.change(point);
             map.put("code", 0);
         }catch (NullPointerException | ParseException e) {
