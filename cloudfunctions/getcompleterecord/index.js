@@ -69,7 +69,7 @@ exports.main = async (event, context) => {
     reason: 'success',
     battery_num: b_num,
     tea_num: d_num,
-    uncompleteRecord: result_list,
+    completeRecord: result_list,
     more: false //是否还有更多记录，false说明没有更多，true说明有更多
   }
 }
