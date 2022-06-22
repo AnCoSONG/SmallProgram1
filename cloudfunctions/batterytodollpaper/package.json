@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "got": "^9.6.0",
+    "got": "^11.8.5",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
     "wx-server-sdk": "latest"
