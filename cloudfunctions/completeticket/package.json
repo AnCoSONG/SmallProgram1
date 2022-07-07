@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "got": "^9.6.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.23",
     "wx-server-sdk": "latest"
   }
